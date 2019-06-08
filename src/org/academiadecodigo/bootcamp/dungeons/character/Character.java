@@ -13,4 +13,6 @@ public abstract class Character {
 
     public void calculateDamage(int damage, DAMAGE_TYPES damageType){};
     public void attack(){};
+
+    //todo next step.
 }
