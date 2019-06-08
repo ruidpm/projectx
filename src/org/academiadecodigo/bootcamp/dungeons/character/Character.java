@@ -1,7 +1,7 @@
 package org.academiadecodigo.bootcamp.dungeons.character;
 
 public abstract class Character {
-
+//#sopraxprimentarseistodogithubfuncionaicomo-tamujuntos;)
     private int healthPoints;
     private int strength;
     private int intelligence;
