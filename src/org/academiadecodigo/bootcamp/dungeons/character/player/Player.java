@@ -9,17 +9,28 @@ import org.academiadecodigo.bootcamp.dungeons.character.player.items.WEAPON_TYPE
 public class Player extends Character {
 
     private int manaPoints;
-    private String playerClass;
+    private PLAYER_CLASSES playerClass;
     private String name;
     private int experience;
     private WEAPON_TYPES weapon;
     private ITEM_TYPES[] backPack;
     private int numberOfTimesRested;
+    private PLAYER_SKILLS[] skills;
 
     public Player(PLAYER_CLASSES player_classes) {
         super(player_classes.getHealthPoints(), player_classes.getStrength(), player_classes.getIntelligence(),
                 player_classes.getPhysicalResistance(), player_classes.getMagicalResistance(),
                 player_classes.getEvasionChance(), player_classes.getCriticalChance());
+
+        this.name=player_classes.getName();
+        this.manaPoints=player_classes.getManaPoints();
+        this.playerClass=player_classes;
+        this.backPack=new ITEM_TYPES[5]; // fazer o mesmo que em baixo????
+        this.skills= new PLAYER_SKILLS[]{PLAYER_SKILLS.values()[Randomizer.randomizeBetween(0,PLAYER_SKILLS.values().length-1)],
+                PLAYER_SKILLS.values()[Randomizer.randomizeBetween(0,PLAYER_SKILLS.values().length-1)],
+                PLAYER_SKILLS.values()[Randomizer.randomizeBetween(0,PLAYER_SKILLS.values().length-1)]};
+        //tentativa de ao ser criado o player, ele ter um array random de skills...mas podem ser repetidos??????
+        this.weapon=player_classes.getWeapon();
     }
 
     public int getExperience() {
