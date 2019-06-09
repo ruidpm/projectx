@@ -20,6 +20,9 @@ public class Player extends Character {
         super(healthPoints, strength, intelligence, physicalResistance, magicalResistance, evasionChance, criticalChance);
     }
 
+    public int getExperience() {
+        return experience;
+    }
 
     public boolean flee(){
         int prob = Randomizer.getPercentage();
@@ -33,9 +36,14 @@ public class Player extends Character {
 
     public void castSpell(){}
 
-    public void useHealthPotion(){}
 
-    public void useManaPotion(){}
+    public void useHealthPotion(){ }
+
+
+    public void useManaPotion(){
+        manaPoints = manaPoints + ITEM_TYPES.MANAPOTION.getValue();
+    }
+
 
     @Override
     public ReturningAttackValues attack(){
