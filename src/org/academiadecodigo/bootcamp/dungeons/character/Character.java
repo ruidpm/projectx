@@ -38,6 +38,11 @@ public abstract class Character {
         return dead;
     }
 
+
+    // Magical types impact intelligence; Physical impact strength;
+    // Magical resistance decrements damage made with Magical type;
+    // Physical resistance decrements damage made with Physical type;
+    // No logic in the choice of values yet;
     public void calculateDamage(int damage, DAMAGE_TYPES damageType){
 
         switch (damageType) {
@@ -45,22 +50,24 @@ public abstract class Character {
                 damage -= magicalResistance;
                 intelligence -= damage;
             break;
-                // Magical types impact intelligence; Physical impact strength;
-                // Magical resistance decrements damage made with Magical type;
-                // Physical resistance decrements damage made with Physical type;
-                // No logic in the choice of values yet;
+
             case PHYSICAL:
                 damage -= physicalResistance;
                 strength -= damage;
             break;
+
+            // Include default?
         }
-        healthPoints = intelligence + strength*2; // physical strength values 2/3 total health points;
+        healthPoints = intelligence + strength*2; // physical strength values 2/3 total health points raw version of a multiplier;;
+
         if (healthPoints <= 0) {
             dead = true;
         }
     }
 
     public void attack(){
+
+
 
     }
 
