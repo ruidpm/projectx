@@ -16,8 +16,10 @@ public class Player extends Character {
     private ITEM_TYPES[] backPack;
     private int numberOfTimesRested;
 
-    public Player(int healthPoints, int strength, int intelligence, int physicalResistance, int magicalResistance, int evasionChance, int criticalChance) {
-        super(healthPoints, strength, intelligence, physicalResistance, magicalResistance, evasionChance, criticalChance);
+    public Player(PLAYER_CLASSES player_classes) {
+        super(player_classes.getHealthPoints(), player_classes.getStrength(), player_classes.getIntelligence(),
+                player_classes.getPhysicalResistance(), player_classes.getMagicalResistance(),
+                player_classes.getEvasionChance(), player_classes.getCriticalChance());
     }
 
     public int getExperience() {
