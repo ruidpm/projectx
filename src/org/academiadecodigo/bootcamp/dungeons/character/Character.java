@@ -11,7 +11,7 @@ public abstract class Character {
     private int criticalChance;
     private boolean dead; // If usefull for the game
 
-    public Character(int healthPoints, int strength, int intelligence, int physicalResistance, int magicalResistance, int evasionChance, int criticalChance, ReturningAttackValues returningAttackValues){
+    public Character(int healthPoints, int strength, int intelligence, int physicalResistance, int magicalResistance, int evasionChance, int criticalChance){
         this.healthPoints = healthPoints;
         this.strength = strength;
         this.intelligence = intelligence;
