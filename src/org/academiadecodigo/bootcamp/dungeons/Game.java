@@ -1,4 +1,5 @@
 package org.academiadecodigo.bootcamp.dungeons;
+import org.academiadecodigo.bootcamp.dungeons.character.ReturningAttackValues;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyFactory;
 import org.academiadecodigo.bootcamp.dungeons.character.player.PLAYER_SKILLS;
 import org.academiadecodigo.bootcamp.dungeons.character.player.Player;
@@ -47,12 +48,17 @@ public class Game {
 
     private boolean battle(Enemy enemy){
 
-        while (player.getHealthPoints > 0 || enemy.getHealthPoints > 0){
+        ReturningAttackValues damage;
+
+        while (player.getHealthPoints > 0 && enemy.getHealthPoints > 0){
 
             player.takeAction();
 
-            if (enemy.getHealthPoints() > 0) {
-                enemy.attack();
+            if (enemy.getHealthPoints() > 0) { //enemy attack method returns a ReturningAttackValues object
+                damage = enemy.attack();        //which contains damage dealt and damage type
+
+                player.calculateDamage(damage.getDamage(), damage.getDamageType());
+                            //after that we pass those values to player calculateDamage()
             }
         }
 
