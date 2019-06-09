@@ -5,7 +5,9 @@ public enum WEAPON_TYPES {
     METALSWORD(15),
     FIRESWORD(40),
     SLIPPER(1),
-    CANNON(50);
+    CANNON(50),
+    STAFF (30),
+    SHURIKEN (10);
 
     private int armour;
 
