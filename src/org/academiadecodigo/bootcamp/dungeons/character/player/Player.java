@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp.dungeons.character.player;
 
 import org.academiadecodigo.bootcamp.dungeons.Randomizer;
 import org.academiadecodigo.bootcamp.dungeons.character.Character;
+import org.academiadecodigo.bootcamp.dungeons.character.ReturningAttackValues;
 import org.academiadecodigo.bootcamp.dungeons.character.player.items.ITEM_TYPES;
 import org.academiadecodigo.bootcamp.dungeons.character.player.items.WEAPON_TYPES;
 
@@ -37,7 +38,10 @@ public class Player extends Character {
     public void useManaPotion(){}
 
     @Override
-    public void attack(){}
+    public ReturningAttackValues attack(){
+
+        return new ReturningAttackValues();
+    }
 
     public boolean rest(){
         int prob = Randomizer.getPercentage();
@@ -62,7 +66,7 @@ public class Player extends Character {
             return true;
         }
 
-        if (prob < 30 && numberOfTimesRested > 5){
+        if (prob < 30 && numberOfTimesRested >= 4){
             numberOfTimesRested++;
             return true;
         }
