@@ -11,8 +11,18 @@ public abstract class Character {
     private int criticalChance;
     private boolean dead;
 
-    public void calculateDamage(int damage, DAMAGE_TYPES damageType){};
-    public void attack(){};
+    public void calculateDamage(int damage, DAMAGE_TYPES damageType){}
+    public void attack(){}
 
-    //todo next step.
+    public Character(int healthPoints, int strength, int intelligence, int physicalResistance, int magicalResistance, int evasionChance, int criticalChance){
+        this.healthPoints = healthPoints;
+        this.strength = strength;
+        this.intelligence = intelligence;
+        this.physicalResistance = physicalResistance;
+        this.magicalResistance = magicalResistance;
+        this.evasionChance = evasionChance;
+        this.criticalChance = criticalChance;
+    }
+
+//todo next step.
 }

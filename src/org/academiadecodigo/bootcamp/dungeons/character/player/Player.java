@@ -32,5 +32,6 @@ public class Player extends Character {
     public boolean rest(){
         return false;
     }
-
+    // TODO: 09-06-2019 create an enum for player classes 
+    // TODO: 09-06-2019 create getHealthPoints or getIsDead 
 }
