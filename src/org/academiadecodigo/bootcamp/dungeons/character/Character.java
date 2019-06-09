@@ -1,7 +1,7 @@
 package org.academiadecodigo.bootcamp.dungeons.character;
 
 public abstract class Character {
-//#sopraxprimentarseistodogithubfuncionaicomo-tamujuntos;)
+
     private int healthPoints;
     private int strength;
     private int intelligence;
@@ -10,11 +10,9 @@ public abstract class Character {
     private int evasionChance;
     private int criticalChance;
     private boolean dead;
+    private ReturningAttackValues returningAttackValues;
 
-    public void calculateDamage(int damage, DAMAGE_TYPES damageType){}
-    public void attack(){}
-
-    public Character(int healthPoints, int strength, int intelligence, int physicalResistance, int magicalResistance, int evasionChance, int criticalChance){
+    public Character(int healthPoints, int strength, int intelligence, int physicalResistance, int magicalResistance, int evasionChance, int criticalChance, ReturningAttackValues returningAttackValues){
         this.healthPoints = healthPoints;
         this.strength = strength;
         this.intelligence = intelligence;
@@ -22,7 +20,18 @@ public abstract class Character {
         this.magicalResistance = magicalResistance;
         this.evasionChance = evasionChance;
         this.criticalChance = criticalChance;
+        this.dead = false;
     }
+
+    public void calculateDamage(int damage, DAMAGE_TYPES damageType){
+
+
+
+    }
+
+    public void attack(){}
+
+
 
 //todo next step.
 }
