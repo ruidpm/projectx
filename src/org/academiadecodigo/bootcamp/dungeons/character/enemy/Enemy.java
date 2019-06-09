@@ -8,5 +8,8 @@ public class Enemy extends Character {
         super(healthPoints, strength, intelligence, physicalResistance, magicalResistance, evasionChance, criticalChance);
     }
 
-    //todo
+    @Override
+    public void attack(){
+        super.attack();
+    }
 }
