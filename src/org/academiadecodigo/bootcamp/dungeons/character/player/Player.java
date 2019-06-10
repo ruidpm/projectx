@@ -92,6 +92,7 @@ public class Player extends Character {
         return new ReturningAttackValues(damage, DamageTypes.PHYSICAL);
     }
 
+
     public boolean rest(){
         int prob = Randomizer.getPercentage();
 

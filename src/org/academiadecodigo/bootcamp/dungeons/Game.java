@@ -5,6 +5,7 @@ import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerClasses;
 import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerSkills;
 import org.academiadecodigo.bootcamp.dungeons.character.player.Player;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.Enemy;
+import org.academiadecodigo.bootcamp.dungeons.keyboard.GameKeyboardHandler;
 
 import java.util.LinkedList;
 
@@ -23,6 +24,7 @@ public class Game {
     public void init(){
 
         player = new Player (PlayerClasses.WARRIOR);
+        GameKeyboardHandler gameKeyboardHandler = new GameKeyboardHandler(this);
 
       //  createPlayerPossibleSkillsList();        //store all possible player skills in a list
     }
