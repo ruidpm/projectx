@@ -127,6 +127,12 @@ public class Player extends Character {
     public void gainExperience(int experience){
         this.experience += experience;
     }
-    // TODO: 09-06-2019 create an enum for player classes 
+
+    public String getName() {
+        return name;
+    }
+
+
+    // TODO: 09-06-2019 create an enum for player classes
     // TODO: 09-06-2019 create getHealthPoints or getIsDead 
 }

@@ -1,5 +1,7 @@
 package org.academiadecodigo.bootcamp.dungeons.character;
 
+import org.academiadecodigo.bootcamp.dungeons.Randomizer;
+
 public abstract class Character {
 
 
@@ -49,6 +51,11 @@ public abstract class Character {
     // Physical resistance decrements damage made with Physical type;
     // No logic in the choice of values yet;
     public void calculateDamageTaken(ReturningAttackValues damage){
+
+        if (Randomizer.getPercentage() <= evasionChance){
+            System.out.println("Attack evaded");
+            return;
+        }
 
         switch (damage.getDamageType()) {
 

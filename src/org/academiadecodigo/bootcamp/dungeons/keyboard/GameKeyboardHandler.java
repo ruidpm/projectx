@@ -82,12 +82,6 @@ public class GameKeyboardHandler implements KeyboardHandler {
     private void addKeysAndEvents(){
         setKeyAndEvent(KeyboardEvent.KEY_SPACE, KeyboardEventType.KEY_PRESSED);
 
-        setKeyAndEvent(KeyboardEvent.KEY_UP, KeyboardEventType.KEY_PRESSED);
-
-        setKeyAndEvent(KeyboardEvent.KEY_LEFT, KeyboardEventType.KEY_PRESSED);
-
-        setKeyAndEvent(KeyboardEvent.KEY_RIGHT, KeyboardEventType.KEY_PRESSED);
-
         setKeyAndEvent(KeyboardEvent.KEY_1, KeyboardEventType.KEY_PRESSED);
 
         setKeyAndEvent(KeyboardEvent.KEY_2, KeyboardEventType.KEY_PRESSED);

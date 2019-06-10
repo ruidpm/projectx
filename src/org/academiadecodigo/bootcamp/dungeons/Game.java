@@ -66,7 +66,7 @@ public class Game {
         while (player.getHealthPoints() > 0 && enemy.getHealthPoints() > 0){
 
             //player.takeAction();
-            System.out.println("Player attacking");
+            System.out.println("Player " + player.getName() + " attacking");
             damage = player.attack();
             enemy.calculateDamageTaken(damage);
 
