@@ -1,8 +1,8 @@
 package org.academiadecodigo.bootcamp.dungeons;
 import org.academiadecodigo.bootcamp.dungeons.character.ReturningAttackValues;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyFactory;
-import org.academiadecodigo.bootcamp.dungeons.character.player.PLAYER_CLASSES;
-import org.academiadecodigo.bootcamp.dungeons.character.player.PLAYER_SKILLS;
+import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerClasses;
+import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerSkills;
 import org.academiadecodigo.bootcamp.dungeons.character.player.Player;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.Enemy;
 
@@ -11,7 +11,7 @@ import java.util.LinkedList;
 public class Game {
 
     private Player player;
-    private LinkedList<PLAYER_SKILLS> playerPossibleSpellsList;
+    private LinkedList<PlayerSkills> playerPossibleSpellsList;
 
 
     public Game(){
@@ -22,7 +22,7 @@ public class Game {
 
     public void init(){
 
-        player = new Player (PLAYER_CLASSES.NINJA);
+        player = new Player (PlayerClasses.WARRIOR);
 
       //  createPlayerPossibleSkillsList();        //store all possible player skills in a list
     }
@@ -82,7 +82,7 @@ public class Game {
 
     private void createPlayerPossibleSkillsList(){
 
-        for (PLAYER_SKILLS skill : PLAYER_SKILLS.values()) {
+        for (PlayerSkills skill : PlayerSkills.values()) {
             playerPossibleSpellsList.add(skill);
         }
     }

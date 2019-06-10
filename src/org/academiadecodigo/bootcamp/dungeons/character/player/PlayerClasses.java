@@ -1,14 +1,14 @@
 package org.academiadecodigo.bootcamp.dungeons.character.player;
 
-import org.academiadecodigo.bootcamp.dungeons.character.player.items.WEAPON_TYPES;
+import org.academiadecodigo.bootcamp.dungeons.character.player.items.WeaponTypes;
 
-public enum PLAYER_CLASSES {
+public enum PlayerClasses {
     WIZARD ("Izadarian",100,5,20,1,10,
-            5,10, 50, WEAPON_TYPES.STAFF),
+            5,10, 50, WeaponTypes.STAFF),
     WARRIOR("Edoqor",100,15,5,10,1,
-            5,5, 20,WEAPON_TYPES.IRONAXE),
+            5,5, 20, WeaponTypes.IRONAXE),
     NINJA("Ogorim",100,10,15,5,5,
-            15,15, 30, WEAPON_TYPES.SHURIKEN);
+            15,15, 30, WeaponTypes.SHURIKEN);
 
     private String name;
     private int healthPoints;
@@ -19,10 +19,10 @@ public enum PLAYER_CLASSES {
     private int evasionChance;
     private int criticalChance;
     private int manaPoints;
-    private WEAPON_TYPES weapon;
+    private WeaponTypes weapon;
 
-    PLAYER_CLASSES(String name, int healthPoints, int strength, int intelligence, int physicalResistance, int magicalResistance,
-                   int evasionChance, int criticalChance, int manaPoints, WEAPON_TYPES weapon) {
+    PlayerClasses(String name, int healthPoints, int strength, int intelligence, int physicalResistance, int magicalResistance,
+                  int evasionChance, int criticalChance, int manaPoints, WeaponTypes weapon) {
         this.name=name;
         this.healthPoints=healthPoints;
         this.strength=strength;
@@ -71,7 +71,7 @@ public enum PLAYER_CLASSES {
         return manaPoints;
     }
 
-    public WEAPON_TYPES getWeapon() {
+    public WeaponTypes getWeapon() {
         return weapon;
     }
 }

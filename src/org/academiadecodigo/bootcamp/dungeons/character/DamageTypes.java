@@ -1,6 +1,6 @@
 package org.academiadecodigo.bootcamp.dungeons.character;
 
-public enum DAMAGE_TYPES {
+public enum DamageTypes {
 
     PHYSICAL,
     MAGICAL ;
