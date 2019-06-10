@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp.dungeons;
 import org.academiadecodigo.bootcamp.dungeons.character.ReturningAttackValues;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyFactory;
+import org.academiadecodigo.bootcamp.dungeons.character.player.PLAYER_CLASSES;
 import org.academiadecodigo.bootcamp.dungeons.character.player.PLAYER_SKILLS;
 import org.academiadecodigo.bootcamp.dungeons.character.player.Player;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.Enemy;
@@ -21,7 +22,7 @@ public class Game {
 
     public void init(){
 
-        player = new Player ();
+        player = new Player (PLAYER_CLASSES.NINJA);
 
         createPlayerPossibleSkillsList();        //store all possible player skills in a list
     }
@@ -29,7 +30,7 @@ public class Game {
 
     public void start(){
 
-        while (player.getHealthPoints >= 0){
+        while (player.getHealthPoints() >= 0){
 
             if ( battle(EnemyFactory.createEnemy())) { //battle returns true if player defeats the enemy
                                                        //or false if he flees
@@ -50,7 +51,7 @@ public class Game {
 
         ReturningAttackValues damage;
 
-        while (player.getHealthPoints > 0 && enemy.getHealthPoints > 0){
+        while (player.getHealthPoints() > 0 && enemy.getHealthPoints() > 0){
 
             player.takeAction();
 
@@ -62,7 +63,7 @@ public class Game {
             }
         }
 
-        if (player.getHealthPoints <= 0){
+        if (player.getHealthPoints() <= 0){
             gameOver();
         }
 
@@ -80,5 +81,7 @@ public class Game {
 
     private void generateLoot(){ }
 
-    private void gameOver(){}
+    private void gameOver(){
+        System.exit(0);
+    }
 }

@@ -37,6 +37,7 @@ public class Player extends Character {
         return experience;
     }
 
+
     public boolean flee(){
         int prob = Randomizer.getPercentage();
 

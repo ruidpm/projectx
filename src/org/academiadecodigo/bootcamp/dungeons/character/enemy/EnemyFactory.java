@@ -8,4 +8,8 @@ public class EnemyFactory {
 
         return null;
     }
+
+    public static Enemy createEliteEnemy(){
+        return null;
+    }
 }
