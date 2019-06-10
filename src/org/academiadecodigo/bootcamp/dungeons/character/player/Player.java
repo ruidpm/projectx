@@ -150,10 +150,13 @@ public class Player extends Character {
     }
 
 
-    @Override
-    protected void levelUp(){
-        super.levelUp();
-
+    private void levelUp(){
+        strength = (int) (strength * 1.5);
+        intelligence = (int) (intelligence * 1.5);
+        physicalResistance = (int) (physicalResistance * 1.5);
+        magicalResistance = (int) (magicalResistance * 1.5);
+        evasionChance = (int) (evasionChance * 1.5);
+        criticalChance = (int) (criticalChance * 1.5);
         maxManaPoints = (int) (maxManaPoints * 1.5);
         maxHealthPoints = (int) (maxHealthPoints * 1.5);
     }

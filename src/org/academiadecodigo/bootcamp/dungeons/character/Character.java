@@ -5,14 +5,13 @@ import org.academiadecodigo.bootcamp.dungeons.Randomizer;
 public abstract class Character {
 
 
-    private int healthPoints;
-    private int strength;
-    private int intelligence;
-    private int physicalResistance;
-    private int magicalResistance;
-    private int evasionChance;
-    private int criticalChance;
-    private boolean dead; // If usefull for the game
+    protected int healthPoints;
+    protected int strength;
+    protected int intelligence;
+    protected int physicalResistance;
+    protected int magicalResistance;
+    protected int evasionChance;
+    protected int criticalChance;
 
 
     public Character(int healthPoints, int strength, int intelligence, int physicalResistance, int magicalResistance, int evasionChance, int criticalChance){
@@ -24,8 +23,6 @@ public abstract class Character {
         this.magicalResistance = magicalResistance;
         this.evasionChance = evasionChance;
         this.criticalChance = criticalChance;
-        this.dead = false;
-
     }
 
 
@@ -39,10 +36,6 @@ public abstract class Character {
 
     public int getCriticalChance() {
         return criticalChance;
-    }
-
-    public boolean isDead() {
-        return dead;
     }
 
 
@@ -70,10 +63,6 @@ public abstract class Character {
             // Include default?
         }
 
-                                                  // raw version of a multiplier;;
-        if (healthPoints <= 0) {
-            dead = true;
-        }
         System.out.println("Current " + this.getClass().getSimpleName() + " HP: " + healthPoints + "\n");
 
     }
@@ -100,16 +89,6 @@ public abstract class Character {
     public void heal(int healthToAdd){
         healthPoints = healthPoints + healthToAdd;
 
-    }
-
-
-    protected void levelUp(){
-        strength = (int) (strength * 1.5);
-        intelligence = (int) (intelligence * 1.5);
-        physicalResistance = (int) (physicalResistance * 1.5);
-        magicalResistance = (int) (magicalResistance * 1.5);
-        evasionChance = (int) (evasionChance * 1.5);
-        criticalChance = (int) (criticalChance * 1.5);
     }
 
 }
