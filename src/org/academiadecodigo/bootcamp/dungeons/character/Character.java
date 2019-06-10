@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp.dungeons.character;
 
 public abstract class Character {
 
+
     private int healthPoints;
     private int strength;
     private int intelligence;
@@ -11,7 +12,9 @@ public abstract class Character {
     private int criticalChance;
     private boolean dead; // If usefull for the game
 
+
     public Character(int healthPoints, int strength, int intelligence, int physicalResistance, int magicalResistance, int evasionChance, int criticalChance){
+
         this.healthPoints = healthPoints;
         this.strength = strength;
         this.intelligence = intelligence;
@@ -20,7 +23,9 @@ public abstract class Character {
         this.evasionChance = evasionChance;
         this.criticalChance = criticalChance;
         this.dead = false;
+
     }
+
 
     public int getHealthPoints() {
         return healthPoints;
@@ -46,6 +51,7 @@ public abstract class Character {
     public void calculateDamage(int damage, DAMAGE_TYPES damageType){
 
         switch (damageType) {
+
             case MAGICAL:
                 damage -= magicalResistance;
                 intelligence -= damage;
@@ -58,20 +64,24 @@ public abstract class Character {
 
             // Include default?
         }
-        healthPoints = intelligence + strength*2; // physical strength values 2/3 total health points raw version of a multiplier;;
 
+        healthPoints = intelligence + strength*2; // physical strength values 2/3 total health points;
+                                                  // raw version of a multiplier;;
         if (healthPoints <= 0) {
             dead = true;
         }
-    }
-
-    public void attack(){
-
-
 
     }
 
 
+    // Returns an object with damage and damageType
+    // Values and variable names to test
+    public ReturningAttackValues attack(){
 
-//todo next step.
+        int charDamage = 10;
+        DAMAGE_TYPES charDamageType = DAMAGE_TYPES.MAGICAL;
+
+        return new ReturningAttackValues (charDamage, charDamageType);
+
+    }
 }
