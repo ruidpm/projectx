@@ -6,7 +6,7 @@ public enum PLAYER_CLASSES {
     WIZARD ("Izadarian",100,5,20,1,10,
             5,10, 50, WEAPON_TYPES.STAFF),
     WARRIOR("Edoqor",100,15,5,10,1,
-            5,5, 20,WEAPON_TYPES.AXE),
+            5,5, 20,WEAPON_TYPES.IRONAXE),
     NINJA("Ogorim",100,10,15,5,5,
             15,15, 30, WEAPON_TYPES.SHURIKEN);
 
