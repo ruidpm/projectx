@@ -11,7 +11,7 @@ public class Player extends Character {
 
     private int manaPoints;
     private int maxManaPoints;
-    private int maxHealth;
+    private int maxHealthPoints;
     private String name;
     private int experience;
     private WeaponTypes weapon;
@@ -28,7 +28,7 @@ public class Player extends Character {
         this.name=player_classes.getName();
         this.manaPoints=player_classes.getManaPoints();
         this.weapon=player_classes.getWeapon();
-        this.maxHealth = player_classes.getHealthPoints();
+        this.maxHealthPoints = player_classes.getHealthPoints();
         this.manaPotion = 1;
         this.healthPotion = 1;
         this.experience = 0;
@@ -55,8 +55,8 @@ public class Player extends Character {
     public void useHealthPotion(){
         if (healthPotion > 0){
 
-            if (maxHealth-getHealthPoints() < ItemTypes.HEALTHPOTION.getValue()){
-                heal(maxHealth-getHealthPoints());
+            if (maxHealthPoints -getHealthPoints() < ItemTypes.HEALTHPOTION.getValue()){
+                heal(maxHealthPoints -getHealthPoints());
                 healthPotion--;
                 return;
             }
@@ -97,6 +97,8 @@ public class Player extends Character {
 
         int damage = getStrength() + weapon.getDamage();
 
+        System.out.println(damage + " damage");
+
         return new ReturningAttackValues(damage, DamageTypes.PHYSICAL);
     }
 
@@ -134,10 +136,26 @@ public class Player extends Character {
 
     public void gainExperience(int experience){
         this.experience += experience;
+
+        if (this.experience >= 100){
+            this.experience = this.experience -100;
+            levelUp();
+
+            System.out.println("LevelUp");
+        }
     }
 
     public String getName() {
         return name;
+    }
+
+
+    @Override
+    protected void levelUp(){
+        super.levelUp();
+
+        maxManaPoints = (int) (maxManaPoints * 1.5);
+        maxHealthPoints = (int) (maxHealthPoints * 1.5);
     }
 
 

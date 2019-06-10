@@ -74,7 +74,7 @@ public abstract class Character {
         if (healthPoints <= 0) {
             dead = true;
         }
-        System.out.println("Current " + this.getClass().getName() + " HP: " + healthPoints + "\n");
+        System.out.println("Current " + this.getClass().getSimpleName() + " HP: " + healthPoints + "\n");
 
     }
 
@@ -101,4 +101,15 @@ public abstract class Character {
         healthPoints = healthPoints + healthToAdd;
 
     }
+
+
+    protected void levelUp(){
+        strength = (int) (strength * 1.5);
+        intelligence = (int) (intelligence * 1.5);
+        physicalResistance = (int) (physicalResistance * 1.5);
+        magicalResistance = (int) (magicalResistance * 1.5);
+        evasionChance = (int) (evasionChance * 1.5);
+        criticalChance = (int) (criticalChance * 1.5);
+    }
+
 }

@@ -15,6 +15,7 @@ public class Game {
     private LinkedList<PlayerSkills> playerPossibleSpellsList;
 
     private boolean characterChosen;
+    private boolean gameStarted;
 
 
     public Game(){
@@ -38,6 +39,8 @@ public class Game {
     }
 
     public void start(){
+
+        gameStarted = true;
 
         while (player.getHealthPoints() >= 0){
 
@@ -108,7 +111,12 @@ public class Game {
     }
 
 
-    public boolean isCharacterChosen() {
+    public boolean isCharacterChosen()
+    {
         return characterChosen;
+    }
+
+    public boolean isGameStarted() {
+        return gameStarted;
     }
 }

@@ -30,7 +30,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case KeyboardEvent.KEY_SPACE:
 
-                if (game.isCharacterChosen()) {
+                if (game.isCharacterChosen() && !game.isGameStarted()) {
 
                     game.start();
                 }

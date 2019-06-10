@@ -3,11 +3,11 @@ package org.academiadecodigo.bootcamp.dungeons.character.player;
 import org.academiadecodigo.bootcamp.dungeons.character.player.items.WeaponTypes;
 
 public enum PlayerClasses {
-    WIZARD ("Izadarian",150,5,20,1,10,
+    WIZARD ("Izadarian",250,5,20,1,10,
             5,10, 50, WeaponTypes.STAFF),
-    WARRIOR("Edoqor",200,15,5,10,1,
+    WARRIOR("Edoqor",300,15,5,10,1,
             5,5, 20, WeaponTypes.IRONAXE),
-    NINJA("Ogorim",150,10,15,5,5,
+    NINJA("Ogorim",250,10,15,5,5,
             15,15, 30, WeaponTypes.SHURIKEN);
 
     private String name;
