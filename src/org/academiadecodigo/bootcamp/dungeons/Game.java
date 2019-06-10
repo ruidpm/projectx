@@ -32,6 +32,8 @@ public class Game {
 
         while (player.getHealthPoints() >= 0){
 
+            System.out.println("Creating new enemy");
+
             if ( battle(EnemyFactory.createEnemy())) { //battle returns true if player defeats the enemy
                                                        //or false if he flees
                 generateLoot();                         //he only gets a chance for loot if he doesn't flee
@@ -67,6 +69,7 @@ public class Game {
                 player.calculateDamageTaken(damage);
                             //after that we pass those values to player calculateDamageTaken()
             }
+
         }
 
         if (player.getHealthPoints() <= 0){

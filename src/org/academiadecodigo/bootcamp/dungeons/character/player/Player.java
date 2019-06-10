@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp.dungeons.character.player;
 
 import org.academiadecodigo.bootcamp.dungeons.Randomizer;
 import org.academiadecodigo.bootcamp.dungeons.character.Character;
+import org.academiadecodigo.bootcamp.dungeons.character.DAMAGE_TYPES;
 import org.academiadecodigo.bootcamp.dungeons.character.ReturningAttackValues;
 import org.academiadecodigo.bootcamp.dungeons.character.player.items.ITEM_TYPES;
 import org.academiadecodigo.bootcamp.dungeons.character.player.items.WEAPON_TYPES;
@@ -9,11 +10,12 @@ import org.academiadecodigo.bootcamp.dungeons.character.player.items.WEAPON_TYPE
 public class Player extends Character {
 
     private int manaPoints;
-    private PLAYER_CLASSES playerClass;
+    private int maxHealth;
     private String name;
     private int experience;
     private WEAPON_TYPES weapon;
-    private ITEM_TYPES[] backPack;
+    private int manaPotion;
+    private int healthPotion;
     private int numberOfTimesRested;
     private PLAYER_SKILLS[] skills;
 
@@ -24,13 +26,10 @@ public class Player extends Character {
 
         this.name=player_classes.getName();
         this.manaPoints=player_classes.getManaPoints();
-        this.playerClass=player_classes;
-        this.backPack=new ITEM_TYPES[5]; // fazer o mesmo que em baixo????
-        this.skills= new PLAYER_SKILLS[]{PLAYER_SKILLS.values()[Randomizer.randomizeBetween(0,PLAYER_SKILLS.values().length-1)],
-                PLAYER_SKILLS.values()[Randomizer.randomizeBetween(0,PLAYER_SKILLS.values().length-1)],
-                PLAYER_SKILLS.values()[Randomizer.randomizeBetween(0,PLAYER_SKILLS.values().length-1)]};
-        //tentativa de ao ser criado o player, ele ter um array random de skills...mas podem ser repetidos??????
         this.weapon=player_classes.getWeapon();
+        this.maxHealth = player_classes.getHealthPoints();
+        this.manaPotion = 1;
+        this.healthPotion = 1;
     }
 
     public int getExperience() {
@@ -51,20 +50,27 @@ public class Player extends Character {
     public void castSpell(){}
 
 
-    public void useHealthPotion(){ }
+    public void useHealthPotion(){
 
-
-    public void useManaPotion(){
-        manaPoints = manaPoints + ITEM_TYPES.MANAPOTION.getValue();
     }
 
 
-    /*@Override
+    public void useManaPotion(){
+        if (manaPotion > 0){
+            manaPoints = manaPoints + ITEM_TYPES.MANAPOTION.getValue();
+            manaPotion--;
+        }
+
+    }
+
+
+    @Override
     public ReturningAttackValues attack(){
 
-        //return new ReturningAttackValues();
-        return  null;
-    }*/
+        int damage = getStrength() + weapon.getDamage();
+
+        return new ReturningAttackValues(damage, DAMAGE_TYPES.PHYSICAL);
+    }
 
     public boolean rest(){
         int prob = Randomizer.getPercentage();

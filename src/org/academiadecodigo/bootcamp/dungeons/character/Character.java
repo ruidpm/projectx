@@ -67,7 +67,7 @@ public abstract class Character {
         if (healthPoints <= 0) {
             dead = true;
         }
-        System.out.println("Current HP: " + healthPoints);
+        System.out.println("Current " + this.getClass().getName() + " HP: " + healthPoints);
 
     }
 
@@ -79,7 +79,7 @@ public abstract class Character {
         int charDamage = 10;
         DAMAGE_TYPES charDamageType = DAMAGE_TYPES.MAGICAL;
 
-        System.out.println("Attack damage: " + charDamage + "\nAttack type: " + charDamageType);
+        System.out.println("Attack damage: " + charDamage + "\nAttack type: " + charDamageType + "\n");
 
         return new ReturningAttackValues (charDamage, charDamageType);
 

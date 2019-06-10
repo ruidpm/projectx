@@ -6,6 +6,7 @@ public class EnemyFactory {
 
     public static Enemy createEnemy() {
 
+<<<<<<< HEAD
         Enemy enemy = new Enemy(EnemyTypes.RAT);
 
 
@@ -36,6 +37,9 @@ public class EnemyFactory {
         }
       
         return enemy;
+=======
+        return null;
+>>>>>>> d81081dd1f5c384584ab23832b6d8fbcc4037d06
     }
 
     public static Enemy createEliteEnemy() {
