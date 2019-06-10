@@ -5,7 +5,7 @@ import org.academiadecodigo.bootcamp.dungeons.Randomizer;
 public class EnemyFactory {
 
     public static Enemy createEnemy() {
-        Enemy enemy = new Enemy(EnemyTypes.RAT);
+        Enemy enemy;
 
 
         if (Randomizer.getPercentage() > 95) {
@@ -33,8 +33,8 @@ public class EnemyFactory {
             enemy = new Enemy(EnemyTypes.TROLL);
             return enemy;
         }
-      
-        return enemy;
+
+        return enemy = new Enemy(EnemyTypes.RAT);
 
     }
 
