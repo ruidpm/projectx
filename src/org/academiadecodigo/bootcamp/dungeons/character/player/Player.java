@@ -87,6 +87,14 @@ public class Player extends Character {
     @Override
     public ReturningAttackValues attack(){
 
+        if (Randomizer.getPercentage() <= getCriticalChance()){
+            int damage = (int) (getStrength() * 1.5 + weapon.getDamage());
+            System.out.println("CRITICAL ATTACK");
+
+
+            return new ReturningAttackValues(damage, DamageTypes.PHYSICAL);
+        }
+
         int damage = getStrength() + weapon.getDamage();
 
         return new ReturningAttackValues(damage, DamageTypes.PHYSICAL);
