@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.dungeons.character.enemy;
 
+import org.academiadecodigo.bootcamp.dungeons.Randomizer;
 import org.academiadecodigo.bootcamp.dungeons.character.Character;
 import org.academiadecodigo.bootcamp.dungeons.character.DamageTypes;
 import org.academiadecodigo.bootcamp.dungeons.character.ReturningAttackValues;
@@ -22,6 +23,14 @@ public class Enemy extends Character {
 
     @Override
     public ReturningAttackValues attack() {
+        if (Randomizer.getPercentage() < super.getCriticalChance()){
+            System.out.println("Critical hit!!!");
+            ReturningAttackValues attackDamage;
+            attackDamage = new ReturningAttackValues((int )(super.getStrength() * 1.5), DamageTypes.PHYSICAL);
+            return attackDamage;
+
+        }
+
         ReturningAttackValues attackDamage;
         attackDamage = new ReturningAttackValues(super.getStrength(), DamageTypes.PHYSICAL);
         return attackDamage;
