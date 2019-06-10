@@ -28,6 +28,70 @@ public enum EnemyTypes {
         this.magicalResistance = magicalResistance;
         this.criticalChance = criticalChance;
     }
+
+    public int getHealthPoints() {
+        return healthPoints;
+    }
+
+    public void setHealthPoints(int healthPoints) {
+        this.healthPoints = healthPoints;
+    }
+
+    public int getExperience() {
+        return experience;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+
+    public int getEvasionChance() {
+        return evasionChance;
+    }
+
+    public void setEvasionChance(int evasionChance) {
+        this.evasionChance = evasionChance;
+    }
+
+    public int getPhysicalResistance() {
+        return physicalResistance;
+    }
+
+    public void setPhysicalResistance(int physicalResistance) {
+        this.physicalResistance = physicalResistance;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getIntelligence() {
+        return intelligence;
+    }
+
+    public void setIntelligence(int intelligence) {
+        this.intelligence = intelligence;
+    }
+
+    public int getMagicalResistance() {
+        return magicalResistance;
+    }
+
+    public void setMagicalResistance(int magicalResistance) {
+        this.magicalResistance = magicalResistance;
+    }
+
+    public int getCriticalChance() {
+        return criticalChance;
+    }
+
+    public void setCriticalChance(int criticalChance) {
+        this.criticalChance = criticalChance;
+    }
 }
 
 

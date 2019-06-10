@@ -7,5 +7,4 @@ public enum PLAYER_SKILLS {
     DARKSOUL,
     INNERDEAMON,
 
-
 }
