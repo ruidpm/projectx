@@ -17,6 +17,7 @@ public class Enemy extends Character {
 
         this.enemyName = enemy.name();
         this.experience = enemy.getExperience();
+        System.out.println("A new enemy appears: " + enemyName);
     }
 
     @Override
