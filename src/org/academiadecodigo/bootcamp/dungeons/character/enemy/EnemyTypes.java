@@ -1,6 +1,6 @@
 package org.academiadecodigo.bootcamp.dungeons.character.enemy;
 
-public enum ENEMY_TYPES {
+public enum EnemyTypes {
     RAT (20,5,6,1,8,0,0,6),
     TROLL(50,20,6,6,15,0,0,6),
     GOBLIN(50,25,6,6,35,0,0,6),
@@ -18,7 +18,7 @@ public enum ENEMY_TYPES {
     private int magicalResistance;
     private int criticalChance;
 
-    ENEMY_TYPES(int healthPoints, int experience, int evasionChance, int physicalResistance, int strength, int intelligence, int magicalResistance, int criticalChance){
+    EnemyTypes(int healthPoints, int experience, int evasionChance, int physicalResistance, int strength, int intelligence, int magicalResistance, int criticalChance){
         this.healthPoints = healthPoints;
         this.experience = experience;
         this.evasionChance = evasionChance;
@@ -29,3 +29,5 @@ public enum ENEMY_TYPES {
         this.criticalChance = criticalChance;
     }
 }
+
+
