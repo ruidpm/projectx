@@ -15,7 +15,7 @@ public enum WEAPON_TYPES {
         this.damage=damage;
     }
 
-    public int getArmour() {
+    public int getDamage() {
         return damage;
     }
 }

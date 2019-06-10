@@ -1,8 +1,7 @@
 package org.academiadecodigo.bootcamp.dungeons.character.player.items;
 
 public enum ITEM_TYPES {
-    HEALTHPOTIONLARGE(60),
-    HEALTHPOTIONSMALL(20),
+    HEALTHPOTION(60),
     MANAPOTION(30);
 
     private int value;
