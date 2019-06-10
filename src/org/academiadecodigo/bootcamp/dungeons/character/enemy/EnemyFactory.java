@@ -7,4 +7,8 @@ public class EnemyFactory {
     public static Enemy createEnemy(){
         return null;
     }
+
+    public static Enemy createEliteEnemy(){
+        return null;
+    }
 }
