@@ -33,11 +33,12 @@ public class Game {
         while (player.getHealthPoints() >= 0){
 
             System.out.println("Creating new enemy");
+            System.out.println("Current experience: " + player.getExperience());
 
-            if ( battle(EnemyFactory.createEnemy())) { //battle returns true if player defeats the enemy
+            battle(EnemyFactory.createEnemy()); //battle returns true if player defeats the enemy
                                                        //or false if he flees
-                generateLoot();                         //he only gets a chance for loot if he doesn't flee
-            }
+                                       //he only gets a chance for loot if he doesn't flee
+
 
            // if ("player chooses to rest"){
 
@@ -49,7 +50,7 @@ public class Game {
     }
 
 
-    private boolean battle(Enemy enemy){
+    private void battle(Enemy enemy){
 
         ReturningAttackValues damage;
 
@@ -75,8 +76,9 @@ public class Game {
         if (player.getHealthPoints() <= 0){
             gameOver();
         }
+// TODO: 10/06/2019 only generateLoot if player doesnt flee
 
-        return true;
+        generateLoot(enemy.getExperience());
     }
 
 
@@ -88,7 +90,9 @@ public class Game {
     }
 
 
-    private void generateLoot(){ }
+    private void generateLoot(int experience){
+        player.gainExperience(experience);
+    }
 
     private void gameOver(){
         System.exit(0);
