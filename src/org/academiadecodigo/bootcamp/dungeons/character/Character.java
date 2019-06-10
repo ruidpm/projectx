@@ -89,4 +89,6 @@ public abstract class Character {
     public int getStrength() {
         return strength;
     }
+
+    public void heal(int )
 }

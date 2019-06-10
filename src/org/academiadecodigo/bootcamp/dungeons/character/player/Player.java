@@ -51,6 +51,9 @@ public class Player extends Character {
 
 
     public void useHealthPotion(){
+        if (healthPotion > 0){
+            he
+        }
 
     }
 
