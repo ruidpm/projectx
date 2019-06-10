@@ -28,7 +28,9 @@ public class Game {
 
         GameKeyboardHandler gameKeyboardHandler = new GameKeyboardHandler(this);
 
-      //  createPlayerPossibleSkillsList();        //store all possible player skills in a list
+        playerPossibleSpellsList = new LinkedList<PlayerSkills>();
+
+        createPlayerPossibleSkillsList();        //store all possible player skills in a list
     }
 
 
@@ -97,6 +99,9 @@ public class Game {
     private void createPlayerPossibleSkillsList(){
 
         for (PlayerSkills skill : PlayerSkills.values()) {
+
+            System.out.println(skill.name());
+
             playerPossibleSpellsList.add(skill);
         }
     }
