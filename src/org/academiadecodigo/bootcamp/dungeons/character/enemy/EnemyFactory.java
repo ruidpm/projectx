@@ -6,7 +6,7 @@ public class EnemyFactory {
 
     public static Enemy createEnemy(){
 
-        return new Enemy(10,10,10,10,10,10,10);
+        return new Enemy(50,10,10,2,2,10,10);
     }
 
     public static Enemy createEliteEnemy(){
