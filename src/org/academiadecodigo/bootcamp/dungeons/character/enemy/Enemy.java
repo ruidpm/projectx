@@ -1,7 +1,7 @@
 package org.academiadecodigo.bootcamp.dungeons.character.enemy;
 
 import org.academiadecodigo.bootcamp.dungeons.character.Character;
-import org.academiadecodigo.bootcamp.dungeons.character.DAMAGE_TYPES;
+import org.academiadecodigo.bootcamp.dungeons.character.DamageTypes;
 import org.academiadecodigo.bootcamp.dungeons.character.ReturningAttackValues;
 
 public class Enemy extends Character {
@@ -23,7 +23,7 @@ public class Enemy extends Character {
     @Override
     public ReturningAttackValues attack() {
         ReturningAttackValues attackDamage;
-        attackDamage = new ReturningAttackValues(super.getStrength(), DAMAGE_TYPES.PHYSICAL);
+        attackDamage = new ReturningAttackValues(super.getStrength(), DamageTypes.PHYSICAL);
         return attackDamage;
     }
 

@@ -1,17 +1,18 @@
 package org.academiadecodigo.bootcamp.dungeons;
 import org.academiadecodigo.bootcamp.dungeons.character.ReturningAttackValues;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyFactory;
-import org.academiadecodigo.bootcamp.dungeons.character.player.PLAYER_CLASSES;
-import org.academiadecodigo.bootcamp.dungeons.character.player.PLAYER_SKILLS;
+import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerClasses;
+import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerSkills;
 import org.academiadecodigo.bootcamp.dungeons.character.player.Player;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.Enemy;
+import org.academiadecodigo.bootcamp.dungeons.keyboard.GameKeyboardHandler;
 
 import java.util.LinkedList;
 
 public class Game {
 
     private Player player;
-    private LinkedList<PLAYER_SKILLS> playerPossibleSpellsList;
+    private LinkedList<PlayerSkills> playerPossibleSpellsList;
 
 
     public Game(){
@@ -22,7 +23,8 @@ public class Game {
 
     public void init(){
 
-        player = new Player (PLAYER_CLASSES.NINJA);
+        player = new Player (PlayerClasses.WARRIOR);
+        GameKeyboardHandler gameKeyboardHandler = new GameKeyboardHandler(this);
 
       //  createPlayerPossibleSkillsList();        //store all possible player skills in a list
     }
@@ -33,11 +35,12 @@ public class Game {
         while (player.getHealthPoints() >= 0){
 
             System.out.println("Creating new enemy");
+            System.out.println("Current experience: " + player.getExperience());
 
-            if ( battle(EnemyFactory.createEnemy())) { //battle returns true if player defeats the enemy
+            battle(EnemyFactory.createEnemy()); //battle returns true if player defeats the enemy
                                                        //or false if he flees
-                generateLoot();                         //he only gets a chance for loot if he doesn't flee
-            }
+                                       //he only gets a chance for loot if he doesn't flee
+
 
            // if ("player chooses to rest"){
 
@@ -49,7 +52,7 @@ public class Game {
     }
 
 
-    private boolean battle(Enemy enemy){
+    private void battle(Enemy enemy){
 
         ReturningAttackValues damage;
 
@@ -75,20 +78,23 @@ public class Game {
         if (player.getHealthPoints() <= 0){
             gameOver();
         }
+// TODO: 10/06/2019 only generateLoot if player doesnt flee
 
-        return true;
+        generateLoot(enemy.getExperience());
     }
 
 
     private void createPlayerPossibleSkillsList(){
 
-        for (PLAYER_SKILLS skill : PLAYER_SKILLS.values()) {
+        for (PlayerSkills skill : PlayerSkills.values()) {
             playerPossibleSpellsList.add(skill);
         }
     }
 
 
-    private void generateLoot(){ }
+    private void generateLoot(int experience){
+        player.gainExperience(experience);
+    }
 
     private void gameOver(){
         System.exit(0);

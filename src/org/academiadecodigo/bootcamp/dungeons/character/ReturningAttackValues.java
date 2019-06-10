@@ -8,9 +8,9 @@ package org.academiadecodigo.bootcamp.dungeons.character;
 public class ReturningAttackValues {
 
     private int damage;
-    private DAMAGE_TYPES damageType;
+    private DamageTypes damageType;
 
-    public ReturningAttackValues(int damage, DAMAGE_TYPES damageType){
+    public ReturningAttackValues(int damage, DamageTypes damageType){
 
         this.damage = damage;
         this.damageType = damageType;
@@ -20,7 +20,7 @@ public class ReturningAttackValues {
         return damage;
     }
 
-    public DAMAGE_TYPES getDamageType() {
+    public DamageTypes getDamageType() {
         return damageType;
     }
 }

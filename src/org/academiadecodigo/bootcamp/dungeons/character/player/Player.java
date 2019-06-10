@@ -2,24 +2,25 @@ package org.academiadecodigo.bootcamp.dungeons.character.player;
 
 import org.academiadecodigo.bootcamp.dungeons.Randomizer;
 import org.academiadecodigo.bootcamp.dungeons.character.Character;
-import org.academiadecodigo.bootcamp.dungeons.character.DAMAGE_TYPES;
+import org.academiadecodigo.bootcamp.dungeons.character.DamageTypes;
 import org.academiadecodigo.bootcamp.dungeons.character.ReturningAttackValues;
-import org.academiadecodigo.bootcamp.dungeons.character.player.items.ITEM_TYPES;
-import org.academiadecodigo.bootcamp.dungeons.character.player.items.WEAPON_TYPES;
+import org.academiadecodigo.bootcamp.dungeons.character.player.items.ItemTypes;
+import org.academiadecodigo.bootcamp.dungeons.character.player.items.WeaponTypes;
 
 public class Player extends Character {
 
     private int manaPoints;
+    private int maxManaPoints;
     private int maxHealth;
     private String name;
     private int experience;
-    private WEAPON_TYPES weapon;
+    private WeaponTypes weapon;
     private int manaPotion;
     private int healthPotion;
     private int numberOfTimesRested;
-    private PLAYER_SKILLS[] skills;
+    private PlayerSkills[] skills;
 
-    public Player(PLAYER_CLASSES player_classes) {
+    public Player(PlayerClasses player_classes) {
         super(player_classes.getHealthPoints(), player_classes.getStrength(), player_classes.getIntelligence(),
                 player_classes.getPhysicalResistance(), player_classes.getMagicalResistance(),
                 player_classes.getEvasionChance(), player_classes.getCriticalChance());
@@ -30,6 +31,7 @@ public class Player extends Character {
         this.maxHealth = player_classes.getHealthPoints();
         this.manaPotion = 1;
         this.healthPotion = 1;
+        this.experience = 0;
     }
 
     public int getExperience() {
@@ -52,7 +54,15 @@ public class Player extends Character {
 
     public void useHealthPotion(){
         if (healthPotion > 0){
-            he
+
+            if (maxHealth-getHealthPoints() < ItemTypes.HEALTHPOTION.getValue()){
+                heal(maxHealth-getHealthPoints());
+                healthPotion--;
+                return;
+            }
+
+            heal(ItemTypes.HEALTHPOTION.getValue());
+            healthPotion--;
         }
 
     }
@@ -60,8 +70,15 @@ public class Player extends Character {
 
     public void useManaPotion(){
         if (manaPotion > 0){
-            manaPoints = manaPoints + ITEM_TYPES.MANAPOTION.getValue();
+            if (maxManaPoints < ItemTypes.MANAPOTION.getValue()){
+                manaPoints = maxManaPoints - ItemTypes.MANAPOTION.getValue();
+                manaPotion--;
+                return;
+            }
+
+            manaPoints = ItemTypes.MANAPOTION.getValue();
             manaPotion--;
+
         }
 
     }
@@ -72,8 +89,9 @@ public class Player extends Character {
 
         int damage = getStrength() + weapon.getDamage();
 
-        return new ReturningAttackValues(damage, DAMAGE_TYPES.PHYSICAL);
+        return new ReturningAttackValues(damage, DamageTypes.PHYSICAL);
     }
+
 
     public boolean rest(){
         int prob = Randomizer.getPercentage();
@@ -104,6 +122,10 @@ public class Player extends Character {
         }
         return false;
 
+    }
+
+    public void gainExperience(int experience){
+        this.experience += experience;
     }
     // TODO: 09-06-2019 create an enum for player classes 
     // TODO: 09-06-2019 create getHealthPoints or getIsDead 
