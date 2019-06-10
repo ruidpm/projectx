@@ -9,13 +9,13 @@ public enum WEAPON_TYPES {
     STAFF (30),
     SHURIKEN (10);
 
-    private int armour;
+    private int damage;
 
-    WEAPON_TYPES(int armour) {
-        this.armour=armour;
+    WEAPON_TYPES(int damage) {
+        this.damage=damage;
     }
 
     public int getArmour() {
-        return armour;
+        return damage;
     }
 }

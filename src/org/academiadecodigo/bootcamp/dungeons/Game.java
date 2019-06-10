@@ -24,7 +24,7 @@ public class Game {
 
         player = new Player (PLAYER_CLASSES.NINJA);
 
-        createPlayerPossibleSkillsList();        //store all possible player skills in a list
+      //  createPlayerPossibleSkillsList();        //store all possible player skills in a list
     }
 
 
@@ -37,12 +37,12 @@ public class Game {
                 generateLoot();                         //he only gets a chance for loot if he doesn't flee
             }
 
-            if ("player chooses to rest"){
+           // if ("player chooses to rest"){
 
-                if (!player.rest()){ //if rest is not successful generate elite battle
-                    battle(EnemyFactory.createEliteEnemy()); //monster with random skills and higher stats
-                }
-            }
+             //   if (!player.rest()){ //if rest is not successful generate elite battle
+              //      battle(EnemyFactory.createEliteEnemy()); //monster with random skills and higher stats
+               // }
+            //}
         }
     }
 
@@ -53,13 +53,19 @@ public class Game {
 
         while (player.getHealthPoints() > 0 && enemy.getHealthPoints() > 0){
 
-            player.takeAction();
+            //player.takeAction();
+            System.out.println("Player attacking");
+            damage = player.attack();
+            enemy.calculateDamageTaken(damage);
+
 
             if (enemy.getHealthPoints() > 0) { //enemy attack method returns a ReturningAttackValues object
+
+                System.out.println("Enemy attacking");
                 damage = enemy.attack();        //which contains damage dealt and damage type
 
-                player.calculateDamage(damage.getDamage(), damage.getDamageType());
-                            //after that we pass those values to player calculateDamage()
+                player.calculateDamageTaken(damage);
+                            //after that we pass those values to player calculateDamageTaken()
             }
         }
 

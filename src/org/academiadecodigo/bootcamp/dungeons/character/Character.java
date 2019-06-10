@@ -48,28 +48,26 @@ public abstract class Character {
     // Magical resistance decrements damage made with Magical type;
     // Physical resistance decrements damage made with Physical type;
     // No logic in the choice of values yet;
-    public void calculateDamage(int damage, DAMAGE_TYPES damageType){
+    public void calculateDamageTaken(ReturningAttackValues damage){
 
-        switch (damageType) {
+        switch (damage.getDamageType()) {
 
             case MAGICAL:
-                damage -= magicalResistance;
-                intelligence -= damage;
+                healthPoints -= damage.getDamage() - magicalResistance;
             break;
 
             case PHYSICAL:
-                damage -= physicalResistance;
-                strength -= damage;
+                healthPoints -= damage.getDamage() - physicalResistance;
             break;
 
             // Include default?
         }
 
-        healthPoints = intelligence + strength*2; // physical strength values 2/3 total health points;
                                                   // raw version of a multiplier;;
         if (healthPoints <= 0) {
             dead = true;
         }
+        System.out.println("Current HP: " + healthPoints);
 
     }
 
@@ -80,6 +78,8 @@ public abstract class Character {
 
         int charDamage = 10;
         DAMAGE_TYPES charDamageType = DAMAGE_TYPES.MAGICAL;
+
+        System.out.println("Attack damage: " + charDamage + "\nAttack type: " + charDamageType);
 
         return new ReturningAttackValues (charDamage, charDamageType);
 

@@ -59,11 +59,12 @@ public class Player extends Character {
     }
 
 
-    @Override
+    /*@Override
     public ReturningAttackValues attack(){
 
-        return new ReturningAttackValues();
-    }
+        //return new ReturningAttackValues();
+        return  null;
+    }*/
 
     public boolean rest(){
         int prob = Randomizer.getPercentage();

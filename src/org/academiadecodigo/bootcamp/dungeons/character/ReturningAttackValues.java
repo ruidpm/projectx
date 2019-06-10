@@ -2,7 +2,7 @@ package org.academiadecodigo.bootcamp.dungeons.character;
 
 
 //this class is used to return damage dealt and damage type as an object so
-//it can be passed to calculateDamage on enemies and player
+//it can be passed to calculateDamageTaken on enemies and player
 
 
 public class ReturningAttackValues {
