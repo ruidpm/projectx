@@ -14,6 +14,8 @@ public class Game {
     private Player player;
     private LinkedList<PlayerSkills> playerPossibleSpellsList;
 
+    private boolean characterChosen;
+
 
     public Game(){
 
@@ -23,12 +25,17 @@ public class Game {
 
     public void init(){
 
-        player = new Player (PlayerClasses.WARRIOR);
         GameKeyboardHandler gameKeyboardHandler = new GameKeyboardHandler(this);
 
       //  createPlayerPossibleSkillsList();        //store all possible player skills in a list
     }
 
+
+    public void createPlayer(PlayerClasses playerClass){
+
+        player = new Player(playerClass);
+        characterChosen = true;
+    }
 
     public void start(){
 
@@ -98,5 +105,10 @@ public class Game {
 
     private void gameOver(){
         System.exit(0);
+    }
+
+
+    public boolean isCharacterChosen() {
+        return characterChosen;
     }
 }

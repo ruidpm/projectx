@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp.dungeons.keyboard;
 
 import org.academiadecodigo.bootcamp.dungeons.Game;
+import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerClasses;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -27,19 +28,37 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
         switch (keyboardEvent.getKey()){
 
-            case KeyboardEvent.KEY_DOWN:
+            case KeyboardEvent.KEY_SPACE:
 
-                game.start();
+                if (game.isCharacterChosen()) {
+
+                    game.start();
+                }
 
                 break;
 
-            case KeyboardEvent.KEY_UP:
+            case KeyboardEvent.KEY_1:
+
+                if (!game.isCharacterChosen()){
+                    game.createPlayer(PlayerClasses.WARRIOR);
+                }
+
                 break;
 
-            case KeyboardEvent.KEY_LEFT:
+            case KeyboardEvent.KEY_2:
+
+                if (!game.isCharacterChosen()){
+                    game.createPlayer(PlayerClasses.NINJA);
+                }
+
                 break;
 
-            case  KeyboardEvent.KEY_RIGHT:
+            case  KeyboardEvent.KEY_3:
+
+                if (!game.isCharacterChosen()){
+                    game.createPlayer(PlayerClasses.WIZARD);
+                }
+
                 break;
 
         }
@@ -52,7 +71,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
 
 
-    private void setKeyAndEvent(int key, KeyboardEventType type, Keyboard keyboard){
+    private void setKeyAndEvent(int key, KeyboardEventType type){
         KeyboardEvent event = new KeyboardEvent();
         event.setKey(key);
         event.setKeyboardEventType(type);
@@ -61,13 +80,20 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
 
     private void addKeysAndEvents(){
-        setKeyAndEvent(KeyboardEvent.KEY_DOWN, KeyboardEventType.KEY_PRESSED, keyboard);
+        setKeyAndEvent(KeyboardEvent.KEY_SPACE, KeyboardEventType.KEY_PRESSED);
 
-        setKeyAndEvent(KeyboardEvent.KEY_UP, KeyboardEventType.KEY_PRESSED, keyboard);
+        setKeyAndEvent(KeyboardEvent.KEY_UP, KeyboardEventType.KEY_PRESSED);
 
-        setKeyAndEvent(KeyboardEvent.KEY_LEFT, KeyboardEventType.KEY_PRESSED, keyboard);
+        setKeyAndEvent(KeyboardEvent.KEY_LEFT, KeyboardEventType.KEY_PRESSED);
 
-        setKeyAndEvent(KeyboardEvent.KEY_RIGHT, KeyboardEventType.KEY_PRESSED, keyboard);
+        setKeyAndEvent(KeyboardEvent.KEY_RIGHT, KeyboardEventType.KEY_PRESSED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_1, KeyboardEventType.KEY_PRESSED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_2, KeyboardEventType.KEY_PRESSED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_3, KeyboardEventType.KEY_PRESSED);
+
 
     }
 
