@@ -84,4 +84,9 @@ public abstract class Character {
         return new ReturningAttackValues (charDamage, charDamageType);
 
     }
+
+
+    public int getStrength() {
+        return strength;
+    }
 }
