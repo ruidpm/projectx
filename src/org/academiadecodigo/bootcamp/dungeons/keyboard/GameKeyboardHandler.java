@@ -58,9 +58,21 @@ public class GameKeyboardHandler implements KeyboardHandler {
                 if (!game.isCharacterChosen()){
                     game.createPlayer(PlayerClasses.WIZARD);
                 }
-
                 break;
 
+
+            case  KeyboardEvent.KEY_A:
+
+                if (game.isWaitingBattleInput()){
+                    System.out.println("i was here");
+                    game.waitingBattleInputOff();
+                }
+                break;
+
+             case  KeyboardEvent.KEY_0:
+
+                 System.out.println("got here");
+                break;
         }
 
     }
@@ -88,7 +100,9 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
         setKeyAndEvent(KeyboardEvent.KEY_3, KeyboardEventType.KEY_PRESSED);
 
+        setKeyAndEvent(KeyboardEvent.KEY_0, KeyboardEventType.KEY_PRESSED);
 
+        setKeyAndEvent(KeyboardEvent.KEY_A, KeyboardEventType.KEY_PRESSED);
     }
 
 }

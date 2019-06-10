@@ -6,6 +6,7 @@ import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerSkills;
 import org.academiadecodigo.bootcamp.dungeons.character.player.Player;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.Enemy;
 import org.academiadecodigo.bootcamp.dungeons.keyboard.GameKeyboardHandler;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 
 import java.util.LinkedList;
 
@@ -13,9 +14,11 @@ public class Game {
 
     private Player player;
     private LinkedList<PlayerSkills> playerPossibleSpellsList;
+    private GameKeyboardHandler gameKeyboardHandler;
 
     private boolean characterChosen;
     private boolean gameStarted;
+    private boolean waitingBattleInput;
 
 
     public Game(){
@@ -26,7 +29,7 @@ public class Game {
 
     public void init(){
 
-        GameKeyboardHandler gameKeyboardHandler = new GameKeyboardHandler(this);
+        gameKeyboardHandler = new GameKeyboardHandler(this);
 
         playerPossibleSpellsList = new LinkedList<PlayerSkills>();
 
@@ -70,7 +73,15 @@ public class Game {
 
         while (player.getHealthPoints() > 0 && enemy.getHealthPoints() > 0){
 
-            //player.takeAction();
+            waitingBattleInput = true;
+           /* while (waitingBattleInput){
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }*/
+
             System.out.println("Player " + player.getName() + " attacking");
             damage = player.attack();
             enemy.calculateDamageTaken(damage);
@@ -88,6 +99,7 @@ public class Game {
         }
 
         if (player.getHealthPoints() <= 0){
+            System.out.println("You are dead");
             gameOver();
         }
 // TODO: 10/06/2019 only generateLoot if player doesnt flee
@@ -99,9 +111,6 @@ public class Game {
     private void createPlayerPossibleSkillsList(){
 
         for (PlayerSkills skill : PlayerSkills.values()) {
-
-            System.out.println(skill.name());
-
             playerPossibleSpellsList.add(skill);
         }
     }
@@ -123,5 +132,13 @@ public class Game {
 
     public boolean isGameStarted() {
         return gameStarted;
+    }
+
+    public boolean isWaitingBattleInput() {
+        return waitingBattleInput;
+    }
+
+    public void waitingBattleInputOff(){
+        waitingBattleInput = false;
     }
 }
