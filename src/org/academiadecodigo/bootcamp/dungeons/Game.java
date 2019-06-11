@@ -13,7 +13,6 @@ import java.util.LinkedList;
 public class Game {
 
     private Player player;
-    private LinkedList<PlayerSkills> playerPossibleSpellsList;
     private GameKeyboardHandler gameKeyboardHandler;
 
     private boolean characterChosen;
@@ -31,9 +30,6 @@ public class Game {
 
         gameKeyboardHandler = new GameKeyboardHandler(this);
 
-        playerPossibleSpellsList = new LinkedList<PlayerSkills>();
-
-        createPlayerPossibleSkillsList();        //store all possible player skills in a list
     }
 
 
@@ -107,13 +103,6 @@ public class Game {
         generateLoot(enemy.getExperience());
     }
 
-
-    private void createPlayerPossibleSkillsList(){
-
-        for (PlayerSkills skill : PlayerSkills.values()) {
-            playerPossibleSpellsList.add(skill);
-        }
-    }
 
 
     private void generateLoot(int experience){

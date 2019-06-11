@@ -71,14 +71,7 @@ public abstract class Character {
     // Returns an object with damage and damageType
     // Values and variable names to test
     public ReturningAttackValues attack(){
-
-        int charDamage = 10;
-        DamageTypes charDamageType = DamageTypes.MAGICAL;
-
-        System.out.println("Attack damage: " + charDamage + "\nAttack type: " + charDamageType + "\n");
-
-        return new ReturningAttackValues (charDamage, charDamageType);
-
+        return null;
     }
 
 
