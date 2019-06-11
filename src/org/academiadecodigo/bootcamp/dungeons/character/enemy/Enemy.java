@@ -8,7 +8,7 @@ import org.academiadecodigo.bootcamp.dungeons.character.ReturningAttackValues;
 public class Enemy extends Character {
     private String enemyName;
     private int experience;
-    private EnemySkills[] enemySkills; //todo enemy skills
+    private EnemySkills[] enemySkills =  new EnemySkills[2];
 
 
     public Enemy(EnemyTypes enemy) {
@@ -19,6 +19,7 @@ public class Enemy extends Character {
         this.enemyName = enemy.name();
         this.experience = enemy.getExperience();
         System.out.println("A new enemy appears: " + enemyName);
+
     }
 
     @Override
@@ -28,7 +29,6 @@ public class Enemy extends Character {
             ReturningAttackValues attackDamage;
             attackDamage = new ReturningAttackValues((int )(super.getStrength() * 1.5), DamageTypes.PHYSICAL);
             return attackDamage;
-
         }
 
         ReturningAttackValues attackDamage;
