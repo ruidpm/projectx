@@ -30,7 +30,6 @@ public class Game {
 
         gameKeyboardHandler = new GameKeyboardHandler(this);
 
-               //store all possible player skills in a list
     }
 
 
