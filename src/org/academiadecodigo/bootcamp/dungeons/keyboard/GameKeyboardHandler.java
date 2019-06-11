@@ -63,15 +63,28 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case  KeyboardEvent.KEY_A:
 
-                if (game.isWaitingBattleInput()){
-                    System.out.println("i was here");
-                    game.waitingBattleInputOff();
+                if (!game.isEnemyDead()){
+
+                    game.playerAttack();
                 }
+
+                //aaaaaaSystem.out.println("not waiting battle input");
                 break;
 
              case  KeyboardEvent.KEY_0:
 
-                 System.out.println("got here");
+                if (game.isEnemyDead() && game.isGameStarted()){
+                    game.createEnemy();
+                }
+
+                break;
+
+            case  KeyboardEvent.KEY_R:
+
+                if (game.isEnemyDead()){
+                    game.playerRest();
+                }
+
                 break;
         }
 
@@ -103,6 +116,8 @@ public class GameKeyboardHandler implements KeyboardHandler {
         setKeyAndEvent(KeyboardEvent.KEY_0, KeyboardEventType.KEY_PRESSED);
 
         setKeyAndEvent(KeyboardEvent.KEY_A, KeyboardEventType.KEY_PRESSED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_R, KeyboardEventType.KEY_PRESSED);
     }
 
 }

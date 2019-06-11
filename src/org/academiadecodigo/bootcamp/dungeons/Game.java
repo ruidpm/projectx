@@ -14,10 +14,11 @@ public class Game {
 
     private Player player;
     private GameKeyboardHandler gameKeyboardHandler;
+    private Enemy enemy;
 
     private boolean characterChosen;
     private boolean gameStarted;
-    private boolean waitingBattleInput;
+    private boolean enemyDead;
 
 
     public Game(){
@@ -28,7 +29,13 @@ public class Game {
 
     public void init(){
 
+        enemyDead = true;
         gameKeyboardHandler = new GameKeyboardHandler(this);
+
+        System.out.println("1 for Warrior");
+        System.out.println("2 for Ninja");
+        System.out.println("3 for Wizard");
+        System.out.println("SPACEBAR to start");
 
     }
 
@@ -37,70 +44,83 @@ public class Game {
 
         player = new Player(playerClass);
         characterChosen = true;
+
     }
 
-    public void start(){
+
+
+
+    public void enemyTurn(){
+
+        System.out.println("Enemy attacking");
+
+        player.calculateDamageTaken(enemy.attack());
+
+        if (player.getHealthPoints() <= 0){
+            gameOver();
+        }
+
+
+        System.out.println("Press A to attack");
+    }
+
+
+
+
+    public void playerAttack(){
+
+        enemy.calculateDamageTaken(player.attack());
+
+        if (enemy.getHealthPoints() <= 0){
+
+            generateLoot(enemy.getExperience());
+            System.out.println("Enemy dead\nGained " + enemy.getExperience() + " experience");
+
+            System.out.println("Press 0 to new enemy or R to rest");
+
+            enemyDead = true;
+            return;
+
+        }
+
+        enemyTurn();
+
+    }
+
+
+    public void playerRest(){
+
+        enemyDead = false;
+
+        if (!player.rest()){
+
+            System.out.println("You are ambushed while resting");
+            enemy = EnemyFactory.createEnemy();
+            enemyTurn();
+        }else {
+
+            System.out.println("You rest successfully");
+            enemy = EnemyFactory.createEnemy();
+        }
+    }
+
+
+
+
+
+    public void start() {
+
+        enemyDead = false;
 
         gameStarted = true;
 
-        while (player.getHealthPoints() >= 0){
-
-            System.out.println("Creating new enemy");
-            System.out.println("Current experience: " + player.getExperience());
-
-            battle(EnemyFactory.createEnemy()); //battle returns true if player defeats the enemy
-                                                       //or false if he flees
-                                       //he only gets a chance for loot if he doesn't flee
-
-
-           // if ("player chooses to rest"){
-
-             //   if (!player.rest()){ //if rest is not successful generate elite battle
-              //      battle(EnemyFactory.createEliteEnemy()); //monster with random skills and higher stats
-               // }
-            //}
-        }
+        enemy = EnemyFactory.createEnemy();
     }
 
 
-    private void battle(Enemy enemy){
-
-        ReturningAttackValues damage;
-
-        while (player.getHealthPoints() > 0 && enemy.getHealthPoints() > 0){
-
-            waitingBattleInput = true;
-           /* while (waitingBattleInput){
-                try {
-                    Thread.sleep(200);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }*/
-
-            System.out.println("Player " + player.getName() + " attacking");
-            damage = player.attack();
-            enemy.calculateDamageTaken(damage);
-
-
-            if (enemy.getHealthPoints() > 0) { //enemy attack method returns a ReturningAttackValues object
-
-                System.out.println("Enemy attacking");
-                damage = enemy.attack();        //which contains damage dealt and damage type
-
-                player.calculateDamageTaken(damage);
-                            //after that we pass those values to player calculateDamageTaken()
-            }
-
-        }
-
-        if (player.getHealthPoints() <= 0){
-            System.out.println("You are dead");
-            gameOver();
-        }
-// TODO: 10/06/2019 only generateLoot if player doesnt flee
-
-        generateLoot(enemy.getExperience());
+    public void createEnemy(){
+        enemy = EnemyFactory.createEnemy();
+        enemyDead = false;
     }
 
 
@@ -123,11 +143,8 @@ public class Game {
         return gameStarted;
     }
 
-    public boolean isWaitingBattleInput() {
-        return waitingBattleInput;
-    }
 
-    public void waitingBattleInputOff(){
-        waitingBattleInput = false;
+    public boolean isEnemyDead() {
+        return enemyDead;
     }
 }
