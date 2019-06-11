@@ -7,6 +7,8 @@ import org.academiadecodigo.bootcamp.dungeons.character.ReturningAttackValues;
 import org.academiadecodigo.bootcamp.dungeons.character.player.items.ItemTypes;
 import org.academiadecodigo.bootcamp.dungeons.character.player.items.WeaponTypes;
 
+import java.util.LinkedList;
+
 public class Player extends Character {
 
     private int manaPoints;
@@ -19,6 +21,7 @@ public class Player extends Character {
     private int healthPotion;
     private int numberOfTimesRested;
     private PlayerSkills[] skills;
+    private LinkedList<PlayerSkills> playerPossibleSpellsList;
 
     public Player(PlayerClasses player_classes) {
         super(player_classes.getHealthPoints(), player_classes.getStrength(), player_classes.getIntelligence(),
@@ -32,6 +35,10 @@ public class Player extends Character {
         this.manaPotion = 1;
         this.healthPotion = 1;
         this.experience = 0;
+
+        playerPossibleSpellsList = new LinkedList<PlayerSkills>();
+
+        createPlayerPossibleSkillsList();
     }
 
     public int getExperience() {
@@ -48,6 +55,12 @@ public class Player extends Character {
         return false;
     }
 
+    private void createPlayerPossibleSkillsList(){
+
+        for (PlayerSkills skill : PlayerSkills.values()) {
+            playerPossibleSpellsList.add(skill);
+        }
+    }
 
     public void castSpell(){}
 
