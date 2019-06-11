@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp.dungeons.character.enemy;
 
 import org.academiadecodigo.bootcamp.dungeons.Randomizer;
+import org.academiadecodigo.bootcamp.dungeons.character.enemy.enemies.Hunter;
 
 public class EnemyFactory {
 
@@ -9,7 +10,7 @@ public class EnemyFactory {
 
 
         if (Randomizer.getPercentage() >= 98) {
-            enemy = new Enemy(EnemyTypes.HUNTER);
+            enemy = new Hunter();
             return enemy;
         }
 
