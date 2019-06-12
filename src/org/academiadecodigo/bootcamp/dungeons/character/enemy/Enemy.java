@@ -8,6 +8,8 @@ import org.academiadecodigo.bootcamp.dungeons.character.ReturningAttackValues;
 public class Enemy extends Character {
     private String enemyName;
     private int experience;
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_RESET = "\u001B[0m";
 
 
     public Enemy(EnemyTypes enemy) {
@@ -26,7 +28,7 @@ public class Enemy extends Character {
         if (Randomizer.getPercentage() < super.getCriticalChance()){
             ReturningAttackValues attackDamage;
             attackDamage = new ReturningAttackValues((int )(super.getStrength() * 1.5), DamageTypes.PHYSICAL);
-            System.out.println(getEnemyName() + " did a Critical hit!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! damage: " + attackDamage.getDamage());
+            System.out.println(ANSI_RED + getEnemyName() + " did a Critical hit! Damage: "+ attackDamage.getDamage() + ANSI_RESET);
             return attackDamage;
         }
 

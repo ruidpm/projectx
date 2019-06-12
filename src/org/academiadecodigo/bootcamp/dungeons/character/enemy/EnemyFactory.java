@@ -2,9 +2,8 @@ package org.academiadecodigo.bootcamp.dungeons.character.enemy;
 
 import org.academiadecodigo.bootcamp.dungeons.Randomizer;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.enemies.*;
-import org.academiadecodigo.bootcamp.dungeons.character.enemy.enemies.eliteEnemies.EliteHunter;
-import org.academiadecodigo.bootcamp.dungeons.character.enemy.enemies.eliteEnemies.EliteMinotaur;
-import org.academiadecodigo.bootcamp.dungeons.character.enemy.enemies.eliteEnemies.EliteSkeleton;
+import org.academiadecodigo.bootcamp.dungeons.character.enemy.enemies.eliteEnemies.*;
+
 
 public class EnemyFactory {
 
@@ -38,10 +37,9 @@ public class EnemyFactory {
         }
 
         return enemy = new Rat();
-
     }
 
-    
+
 
     public static Enemy createEliteEnemy() {
         Enemy enemy;
