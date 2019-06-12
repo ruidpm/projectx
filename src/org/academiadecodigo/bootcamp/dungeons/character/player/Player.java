@@ -65,35 +65,40 @@ public class Player extends Character {
     public void castSpell(){}
 
 
-    public void useHealthPotion(){
+    public boolean useHealthPotion(){
         if (healthPotion > 0){
 
             if (maxHealthPoints -getHealthPoints() < ItemTypes.HEALTHPOTION.getValue()){
                 heal(maxHealthPoints -getHealthPoints());
                 healthPotion--;
-                return;
+                return true;
             }
 
             heal(ItemTypes.HEALTHPOTION.getValue());
             healthPotion--;
+            return true;
         }
 
+        System.out.println("You have no Health Potions");
+        return false;
     }
 
 
-    public void useManaPotion(){
+    public boolean useManaPotion(){
         if (manaPotion > 0){
             if (maxManaPoints < ItemTypes.MANAPOTION.getValue()){
                 manaPoints = maxManaPoints - ItemTypes.MANAPOTION.getValue();
                 manaPotion--;
-                return;
+                return true;
             }
 
             manaPoints = ItemTypes.MANAPOTION.getValue();
             manaPotion--;
-
+            return true;
         }
 
+        System.out.println("You have no Mana Potions");
+        return false;
     }
 
 
