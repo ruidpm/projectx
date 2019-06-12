@@ -118,29 +118,43 @@ public class Player extends Character {
 
     public boolean rest(){
         int prob = Randomizer.getPercentage();
+        int healPointsGained;
+
+        if( maxHealthPoints/2 < maxHealthPoints - healthPoints){
+            healPointsGained = (int)(maxHealthPoints/2);
+
+        } else {
+            healPointsGained = maxHealthPoints-healthPoints;
+        }
+
 
         if (prob < 90 && numberOfTimesRested < 1){
             numberOfTimesRested++;
+            healthPoints = healthPoints + healPointsGained;
             return true;
         }
 
         if (prob < 80 && numberOfTimesRested < 2){
             numberOfTimesRested++;
+            healthPoints = healthPoints + healPointsGained;
             return true;
         }
 
         if (prob < 70 && numberOfTimesRested < 3){
             numberOfTimesRested++;
+            healthPoints = healthPoints + healPointsGained;
             return true;
         }
 
         if (prob < 55 && numberOfTimesRested < 4){
             numberOfTimesRested++;
+            healthPoints = healthPoints + healPointsGained;
             return true;
         }
 
         if (prob < 30 && numberOfTimesRested >= 4){
             numberOfTimesRested++;
+            healthPoints = healthPoints + healPointsGained;
             return true;
         }
         return false;
