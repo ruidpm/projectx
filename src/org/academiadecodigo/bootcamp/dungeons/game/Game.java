@@ -1,23 +1,18 @@
-package org.academiadecodigo.bootcamp.dungeons;
-import org.academiadecodigo.bootcamp.dungeons.character.ReturningAttackValues;
+package org.academiadecodigo.bootcamp.dungeons.game;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyFactory;
 import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerClasses;
-import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerSkills;
 import org.academiadecodigo.bootcamp.dungeons.character.player.Player;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.Enemy;
-import org.academiadecodigo.bootcamp.dungeons.keyboard.GameKeyboardHandler;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
-
-import java.util.LinkedList;
+import org.academiadecodigo.bootcamp.dungeons.game.GameKeyboardHandler;
 
 public class Game {
 
     private Player player;
     private Enemy enemy;
 
-    private boolean characterChosen;
-    private boolean gameStarted;
-    private boolean enemyDead;
+    boolean characterChosen;
+    boolean gameStarted;
+    boolean enemyDead;
 
 
     public Game(){
@@ -26,7 +21,7 @@ public class Game {
     }
 
 
-    public void init(){
+    private void init(){
 
         enemyDead = true;
         new GameKeyboardHandler(this);
@@ -39,7 +34,7 @@ public class Game {
     }
 
 
-    public void createPlayer(PlayerClasses playerClass){
+    void createPlayer(PlayerClasses playerClass){
 
         player = new Player(playerClass);
         characterChosen = true;
@@ -49,7 +44,7 @@ public class Game {
 
 
 
-    public void enemyTurn(){
+    void enemyTurn(){
 
         System.out.println("Enemy attacking");
 
@@ -66,7 +61,7 @@ public class Game {
 
 
 
-    public void playerAttack(){
+    void playerAttack(){
 
         enemy.calculateDamageTaken(player.attack());
 
@@ -87,7 +82,7 @@ public class Game {
     }
 
 
-    public void playerRest(){
+    void playerRest(){
 
         enemyDead = false;
 
@@ -108,7 +103,7 @@ public class Game {
 
 
 
-    public void start() {
+    void start() {
 
         enemyDead = false;
 
@@ -118,7 +113,7 @@ public class Game {
     }
 
 
-    public void createEnemy(){
+    void createEnemy(){
         enemy = EnemyFactory.createEnemy();
         enemyDead = false;
     }
@@ -133,18 +128,4 @@ public class Game {
         System.exit(0);
     }
 
-
-    public boolean isCharacterChosen()
-    {
-        return characterChosen;
-    }
-
-    public boolean isGameStarted() {
-        return gameStarted;
-    }
-
-
-    public boolean isEnemyDead() {
-        return enemyDead;
-    }
 }

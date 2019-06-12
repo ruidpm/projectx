@@ -1,6 +1,5 @@
-package org.academiadecodigo.bootcamp.dungeons.keyboard;
+package org.academiadecodigo.bootcamp.dungeons.game;
 
-import org.academiadecodigo.bootcamp.dungeons.Game;
 import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerClasses;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
@@ -30,7 +29,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case KeyboardEvent.KEY_SPACE:
 
-                if (game.isCharacterChosen() && !game.isGameStarted()) {
+                if (game.characterChosen && !game.gameStarted) {
 
                     game.start();
                 }
@@ -39,7 +38,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case KeyboardEvent.KEY_1:
 
-                if (!game.isCharacterChosen()){
+                if (!game.characterChosen){
                     game.createPlayer(PlayerClasses.WARRIOR);
                 }
 
@@ -47,7 +46,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case KeyboardEvent.KEY_2:
 
-                if (!game.isCharacterChosen()){
+                if (!game.characterChosen){
                     game.createPlayer(PlayerClasses.NINJA);
                 }
 
@@ -55,7 +54,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case  KeyboardEvent.KEY_3:
 
-                if (!game.isCharacterChosen()){
+                if (!game.characterChosen){
                     game.createPlayer(PlayerClasses.WIZARD);
                 }
                 break;
@@ -63,7 +62,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case  KeyboardEvent.KEY_A:
 
-                if (!game.isEnemyDead()){
+                if (!game.enemyDead){
 
                     game.playerAttack();
                 }
@@ -73,7 +72,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
              case  KeyboardEvent.KEY_0:
 
-                if (game.isEnemyDead() && game.isGameStarted()){
+                if (game.enemyDead && game.gameStarted){
                     game.createEnemy();
                 }
 
@@ -81,7 +80,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case  KeyboardEvent.KEY_R:
 
-                if (game.isEnemyDead()){
+                if (game.enemyDead){
                     game.playerRest();
                 }
 
