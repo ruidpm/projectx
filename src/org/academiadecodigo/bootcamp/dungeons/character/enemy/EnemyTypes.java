@@ -6,8 +6,11 @@ public enum EnemyTypes {
     GOBLIN(50,25,6,6,35,0,0,6),
     ORC(70,25,7,4,35,0,0,7),
     SKELETON(65,45,7,5,43,0,0,7),
+    ELITE_SKELETON(97, 68, 10, 8, 65, 0, 10, 10),
     MINOTAUR(185,160,9,15,100,0,0,9),
-    HUNTER(100,150,10,8,120,0,0,10);
+    ELITE_MINOTAUR(285, 240, 13, 22, 150, 0, 14,14),
+    HUNTER(100,150,10,8,120,0,0,10),
+    ELITE_HUNTER(150,270,15,12,190,0,15,15);
 
     private int healthPoints;
     private int experience;
@@ -33,64 +36,33 @@ public enum EnemyTypes {
         return healthPoints;
     }
 
-    public void setHealthPoints(int healthPoints) {
-        this.healthPoints = healthPoints;
-    }
-
     public int getExperience() {
         return experience;
-    }
-
-    public void setExperience(int experience) {
-        this.experience = experience;
     }
 
     public int getEvasionChance() {
         return evasionChance;
     }
 
-    public void setEvasionChance(int evasionChance) {
-        this.evasionChance = evasionChance;
-    }
-
     public int getPhysicalResistance() {
         return physicalResistance;
-    }
-
-    public void setPhysicalResistance(int physicalResistance) {
-        this.physicalResistance = physicalResistance;
     }
 
     public int getStrength() {
         return strength;
     }
 
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
-
     public int getIntelligence() {
         return intelligence;
-    }
-
-    public void setIntelligence(int intelligence) {
-        this.intelligence = intelligence;
     }
 
     public int getMagicalResistance() {
         return magicalResistance;
     }
 
-    public void setMagicalResistance(int magicalResistance) {
-        this.magicalResistance = magicalResistance;
-    }
 
     public int getCriticalChance() {
         return criticalChance;
-    }
-
-    public void setCriticalChance(int criticalChance) {
-        this.criticalChance = criticalChance;
     }
 }
 
