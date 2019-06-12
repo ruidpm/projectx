@@ -60,10 +60,10 @@ public enum EnemyTypes {
         return magicalResistance;
     }
 
+
     public int getCriticalChance() {
         return criticalChance;
     }
-
 }
 
 
