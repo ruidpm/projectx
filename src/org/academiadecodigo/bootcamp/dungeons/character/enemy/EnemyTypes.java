@@ -6,8 +6,11 @@ public enum EnemyTypes {
     GOBLIN(50,25,6,6,35,0,0,6),
     ORC(70,25,7,4,35,0,0,7),
     SKELETON(65,45,7,5,43,0,0,7),
+    ELITE_SKELETON(97, 68, 10, 8, 65, 0, 10, 10),
     MINOTAUR(185,160,9,15,100,0,0,9),
-    HUNTER(100,150,10,8,120,0,0,10);
+    ELITE_MINOTAUR(285, 240, 13, 22, 150, 0, 14,14),
+    HUNTER(100,150,10,8,120,0,0,10),
+    ELITE_HUNTER(150,270,15,12,190,0,15,15);
 
     private int healthPoints;
     private int experience;

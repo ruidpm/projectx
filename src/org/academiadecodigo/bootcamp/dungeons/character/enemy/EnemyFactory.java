@@ -1,45 +1,62 @@
 package org.academiadecodigo.bootcamp.dungeons.character.enemy;
 
 import org.academiadecodigo.bootcamp.dungeons.Randomizer;
-import org.academiadecodigo.bootcamp.dungeons.character.enemy.enemies.Hunter;
+import org.academiadecodigo.bootcamp.dungeons.character.enemy.enemies.*;
+import org.academiadecodigo.bootcamp.dungeons.character.enemy.enemies.eliteEnemies.EliteHunter;
+import org.academiadecodigo.bootcamp.dungeons.character.enemy.enemies.eliteEnemies.EliteMinotaur;
+import org.academiadecodigo.bootcamp.dungeons.character.enemy.enemies.eliteEnemies.EliteSkeleton;
 
 public class EnemyFactory {
 
     public static Enemy createEnemy() {
         Enemy enemy;
-
-
+        
         if (Randomizer.getPercentage() >= 98) {
             enemy = new Hunter();
             return enemy;
         }
 
         if (Randomizer.getPercentage() >= 95) {
-            enemy = new Enemy(EnemyTypes.MINOTAUR);
+            enemy = new Minotaur();
             return enemy;
         }
         if (Randomizer.getPercentage() >= 75) {
-            enemy = new Enemy(EnemyTypes.SKELETON);
+            enemy = new Skeleton();
             return enemy;
         }
         if (Randomizer.getPercentage() >= 60) {
-            enemy = new Enemy(EnemyTypes.ORC);
+            enemy = new Orc();
             return enemy;
         }
         if (Randomizer.getPercentage() >= 40) {
-            enemy = new Enemy(EnemyTypes.GOBLIN);
+            enemy = new Goblin();
             return enemy;
         }
         if (Randomizer.getPercentage() >= 20) {
-            enemy = new Enemy(EnemyTypes.TROLL);
+            enemy = new Troll();
             return enemy;
         }
 
-        return enemy = new Enemy(EnemyTypes.RAT);
+        return enemy = new Rat();
 
     }
 
+    
+
     public static Enemy createEliteEnemy() {
-        return null;
+        Enemy enemy;
+
+        if (Randomizer.getPercentage() >= 85) {
+            enemy = new EliteHunter();
+            return enemy;
+        }
+
+        if (Randomizer.getPercentage() >= 65) {
+            enemy = new EliteMinotaur();
+            return enemy;
+        }
+
+        return enemy = new EliteSkeleton();
+
     }
 }
