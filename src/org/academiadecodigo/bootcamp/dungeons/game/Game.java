@@ -3,7 +3,6 @@ import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyFactory;
 import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerClasses;
 import org.academiadecodigo.bootcamp.dungeons.character.player.Player;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.Enemy;
-import org.academiadecodigo.bootcamp.dungeons.game.GameKeyboardHandler;
 
 public class Game {
 
@@ -12,7 +11,7 @@ public class Game {
 
     boolean characterChosen;
     boolean gameStarted;
-    boolean enemyDead;
+    boolean outOfCombat;
 
 
     public Game(){
@@ -23,14 +22,13 @@ public class Game {
 
     private void init(){
 
-        enemyDead = true;
+        outOfCombat = true;
         new GameKeyboardHandler(this);
 
         System.out.println("1 for Warrior");
         System.out.println("2 for Ninja");
         System.out.println("3 for Wizard");
         System.out.println("SPACEBAR to start");
-
     }
 
 
@@ -38,7 +36,6 @@ public class Game {
 
         player = new Player(playerClass);
         characterChosen = true;
-
     }
 
 
@@ -54,11 +51,8 @@ public class Game {
             gameOver();
         }
 
-
         System.out.println("Press A to attack, M for Mana Potion, H for Health Potion, F to flee");
     }
-
-
 
 
     void playerAttack(){
@@ -72,19 +66,17 @@ public class Game {
 
             System.out.println("Press 0 to new enemy or R to rest");
 
-            enemyDead = true;
+            outOfCombat = true;
             return;
-
         }
 
         enemyTurn();
-
     }
 
 
     void playerRest(){
 
-        enemyDead = false;
+        outOfCombat = false;
 
         if (!player.rest()){
 
@@ -96,7 +88,6 @@ public class Game {
 
         System.out.println("You rest successfully");
         enemy = EnemyFactory.createEnemy();
-
     }
 
 
@@ -121,7 +112,7 @@ public class Game {
 
         System.out.println("You attempt to flee");
         if (player.flee()){
-            enemyDead = true;
+            outOfCombat = true;
             System.out.println("Rest or keep going?");
             return;
         }
@@ -133,7 +124,7 @@ public class Game {
 
     void start() {
 
-        enemyDead = false;
+        outOfCombat = false;
 
         gameStarted = true;
 
@@ -143,10 +134,8 @@ public class Game {
 
     void createEnemy(){
         enemy = EnemyFactory.createEnemy();
-        enemyDead = false;
+        outOfCombat = false;
     }
-
-
 
     private void generateLoot(int experience){
         player.gainExperience(experience);

@@ -62,7 +62,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case  KeyboardEvent.KEY_A:
 
-                if (!game.enemyDead){
+                if (!game.outOfCombat){
 
                     game.playerAttack();
                 }
@@ -71,7 +71,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
              case  KeyboardEvent.KEY_0:
 
-                if (game.enemyDead && game.gameStarted){
+                if (game.outOfCombat && game.gameStarted){
                     game.createEnemy();
                 }
 
@@ -79,7 +79,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case  KeyboardEvent.KEY_F:
 
-                if (!game.enemyDead){
+                if (!game.outOfCombat){
                     game.playerFlee();
                 }
 
@@ -87,7 +87,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case  KeyboardEvent.KEY_H:
 
-                if (!game.enemyDead){
+                if (!game.outOfCombat){
                     game.playerUseHealthPotion();
                 }
 
@@ -95,7 +95,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case  KeyboardEvent.KEY_M:
 
-                if (!game.enemyDead){
+                if (!game.outOfCombat){
                     game.playerUseManaPotion();
                 }
 
@@ -103,7 +103,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case  KeyboardEvent.KEY_R:
 
-                if (game.enemyDead && game.gameStarted){
+                if (game.outOfCombat && game.gameStarted){
                     game.playerRest();
                 }
 
