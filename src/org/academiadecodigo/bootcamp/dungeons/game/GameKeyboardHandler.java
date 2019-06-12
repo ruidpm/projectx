@@ -67,7 +67,6 @@ public class GameKeyboardHandler implements KeyboardHandler {
                     game.playerAttack();
                 }
 
-                //aaaaaaSystem.out.println("not waiting battle input");
                 break;
 
              case  KeyboardEvent.KEY_0:
@@ -78,9 +77,33 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
                 break;
 
+            case  KeyboardEvent.KEY_F:
+
+                if (!game.enemyDead){
+                    game.playerFlee();
+                }
+
+                break;
+
+            case  KeyboardEvent.KEY_H:
+
+                if (!game.enemyDead){
+                    game.playerUseHealthPotion();
+                }
+
+                break;
+
+            case  KeyboardEvent.KEY_M:
+
+                if (!game.enemyDead){
+                    game.playerUseManaPotion();
+                }
+
+                break;
+
             case  KeyboardEvent.KEY_R:
 
-                if (game.enemyDead){
+                if (game.enemyDead && game.gameStarted){
                     game.playerRest();
                 }
 
@@ -117,6 +140,13 @@ public class GameKeyboardHandler implements KeyboardHandler {
         setKeyAndEvent(KeyboardEvent.KEY_A, KeyboardEventType.KEY_PRESSED);
 
         setKeyAndEvent(KeyboardEvent.KEY_R, KeyboardEventType.KEY_PRESSED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_F, KeyboardEventType.KEY_PRESSED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_M, KeyboardEventType.KEY_PRESSED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_H, KeyboardEventType.KEY_PRESSED);
+
     }
 
 }

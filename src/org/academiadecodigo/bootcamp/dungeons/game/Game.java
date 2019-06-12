@@ -55,7 +55,7 @@ public class Game {
         }
 
 
-        System.out.println("Press A to attack");
+        System.out.println("Press A to attack, M for Mana Potion, H for Health Potion, F to flee");
     }
 
 
@@ -100,6 +100,34 @@ public class Game {
     }
 
 
+    void playerUseHealthPotion(){
+
+        if (player.useHealthPotion()){
+            System.out.println("Used Health Potion");
+            enemyTurn();
+        }
+    }
+
+
+    void playerUseManaPotion(){
+
+        if (player.useManaPotion()){
+            System.out.println("Used Mana Potion");
+            enemyTurn();
+        }
+    }
+
+    void playerFlee(){
+
+        System.out.println("You attempt to flee");
+        if (player.flee()){
+            enemyDead = true;
+            System.out.println("Rest or keep going?");
+            return;
+        }
+
+        enemyTurn();
+    }
 
 
 
