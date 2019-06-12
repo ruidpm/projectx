@@ -19,7 +19,7 @@ public enum PlayerSkills {
     INFINITELOOP (35, DamageTypes.MAGICAL),
     CRUMBLEFIST (35, DamageTypes.PHYSICAL);
 
-    
+
     int skillDamage;
     DamageTypes damageTypes;
 
