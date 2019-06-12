@@ -94,7 +94,7 @@ public class Game {
         if (!player.rest()){
 
             System.out.println("You are ambushed while resting");
-            enemy = EnemyFactory.createEnemy();
+            enemy = EnemyFactory.createEliteEnemy();
             enemyTurn();
             return;
         }
