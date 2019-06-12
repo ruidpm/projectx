@@ -13,7 +13,6 @@ import java.util.LinkedList;
 public class Game {
 
     private Player player;
-    private GameKeyboardHandler gameKeyboardHandler;
     private Enemy enemy;
 
     private boolean characterChosen;
@@ -30,7 +29,7 @@ public class Game {
     public void init(){
 
         enemyDead = true;
-        gameKeyboardHandler = new GameKeyboardHandler(this);
+        new GameKeyboardHandler(this);
 
         System.out.println("1 for Warrior");
         System.out.println("2 for Ninja");
@@ -97,11 +96,12 @@ public class Game {
             System.out.println("You are ambushed while resting");
             enemy = EnemyFactory.createEnemy();
             enemyTurn();
-        }else {
-
-            System.out.println("You rest successfully");
-            enemy = EnemyFactory.createEnemy();
+            return;
         }
+
+        System.out.println("You rest successfully");
+        enemy = EnemyFactory.createEnemy();
+
     }
 
 
