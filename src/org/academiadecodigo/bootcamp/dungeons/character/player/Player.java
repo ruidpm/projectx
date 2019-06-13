@@ -20,7 +20,7 @@ public class Player extends Character {
     private int manaPotion;
     private int healthPotion;
     private int numberOfTimesRested;
-    private PlayerSkills[] skills;
+    private PlayerSkills[] skills ;
     private LinkedList<PlayerSkills> playerPossibleSpellsList;
 
     public Player(PlayerClasses player_classes) {
@@ -35,6 +35,9 @@ public class Player extends Character {
         this.manaPotion = 1;
         this.healthPotion = 1;
         this.experience = 0;
+        this.skills=new PlayerSkills[3];
+        skills[0] = PlayerSkills.values()[Randomizer.randomizeBetween(0,PlayerSkills.values().length-1)];
+
 
         playerPossibleSpellsList = new LinkedList<PlayerSkills>();
 
@@ -62,7 +65,24 @@ public class Player extends Character {
         }
     }
 
-    public void castSpell(){}
+    public ReturningAttackValues castSpell(int skillIndex){
+
+        if (skills[skillIndex] == null){
+            System.out.println("No skill in that index");
+            return null;
+        }
+        if (skills[skillIndex].manaNeeded > manaPoints){
+            System.out.println("You don't have sufficient manaPoints");
+            return null;
+        }
+
+        ReturningAttackValues returningAttackValues =
+                new ReturningAttackValues(skills[skillIndex].skillDamage, skills[skillIndex].damageTypes);
+
+        manaPoints = manaPoints - skills[skillIndex].manaNeeded;
+
+        return returningAttackValues;
+    }
 
 
     public boolean useHealthPotion(){
