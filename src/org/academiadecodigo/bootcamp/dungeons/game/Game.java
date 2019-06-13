@@ -1,4 +1,5 @@
 package org.academiadecodigo.bootcamp.dungeons.game;
+import org.academiadecodigo.bootcamp.dungeons.character.ReturningAttackValues;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyFactory;
 import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerClasses;
 import org.academiadecodigo.bootcamp.dungeons.character.player.Player;
@@ -23,7 +24,6 @@ public class Game {
     private void init(){
 
         outOfCombat = true;
-        new GameKeyboardHandler(this);
 
         System.out.println("1 for Warrior");
         System.out.println("2 for Ninja");
@@ -41,7 +41,7 @@ public class Game {
 
 
 
-    void enemyTurn(){
+    private void enemyTurn(){
 
         System.out.println("Enemy attacking");
 
@@ -64,7 +64,7 @@ public class Game {
             generateLoot(enemy.getExperience());
             System.out.println("Enemy dead\nGained " + enemy.getExperience() + " experience");
 
-            System.out.println("Press 0 to new enemy or R to rest");
+            System.out.println("Press N for new enemy or R to rest");
 
             outOfCombat = true;
             return;
@@ -118,6 +118,18 @@ public class Game {
         }
 
         enemyTurn();
+    }
+
+
+    void playerUseSkill(int skillNumber) {
+
+        //ReturningAttackValues damage = player.castSpell(skillNumber);
+
+        //if (damage != null){
+
+            //enemy.calculateDamageTaken(damage);
+            //enemyTurn();
+        //}
     }
 
 

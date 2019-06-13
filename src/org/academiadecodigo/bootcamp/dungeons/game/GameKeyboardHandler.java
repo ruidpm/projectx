@@ -69,7 +69,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
                 break;
 
-             case  KeyboardEvent.KEY_0:
+             case  KeyboardEvent.KEY_N:
 
                 if (game.outOfCombat && game.gameStarted){
                     game.createEnemy();
@@ -108,6 +108,38 @@ public class GameKeyboardHandler implements KeyboardHandler {
                 }
 
                 break;
+
+            case  KeyboardEvent.KEY_Z:
+
+                if (!game.outOfCombat && game.gameStarted){
+                    game.playerUseSkill(0);
+                }
+
+                break;
+
+            case  KeyboardEvent.KEY_X:
+
+                if (!game.outOfCombat && game.gameStarted){
+                    game.playerUseSkill(1);
+                }
+
+                break;
+
+            case  KeyboardEvent.KEY_C:
+
+                if (!game.outOfCombat && game.gameStarted){
+                    game.playerUseSkill(2);
+                }
+
+                break;
+
+            case  KeyboardEvent.KEY_V:
+
+                if (!game.outOfCombat && game.gameStarted){
+                    game.playerUseSkill(3);
+                }
+
+                break;
         }
 
     }
@@ -135,7 +167,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
         setKeyAndEvent(KeyboardEvent.KEY_3, KeyboardEventType.KEY_PRESSED);
 
-        setKeyAndEvent(KeyboardEvent.KEY_0, KeyboardEventType.KEY_PRESSED);
+        setKeyAndEvent(KeyboardEvent.KEY_N, KeyboardEventType.KEY_PRESSED);
 
         setKeyAndEvent(KeyboardEvent.KEY_A, KeyboardEventType.KEY_PRESSED);
 
@@ -146,6 +178,14 @@ public class GameKeyboardHandler implements KeyboardHandler {
         setKeyAndEvent(KeyboardEvent.KEY_M, KeyboardEventType.KEY_PRESSED);
 
         setKeyAndEvent(KeyboardEvent.KEY_H, KeyboardEventType.KEY_PRESSED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_Z, KeyboardEventType.KEY_PRESSED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_X, KeyboardEventType.KEY_PRESSED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_C, KeyboardEventType.KEY_PRESSED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_V, KeyboardEventType.KEY_PRESSED);
 
     }
 
