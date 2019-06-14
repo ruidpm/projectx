@@ -5,6 +5,8 @@ import org.academiadecodigo.bootcamp.dungeons.character.Character;
 import org.academiadecodigo.bootcamp.dungeons.character.DamageTypes;
 import org.academiadecodigo.bootcamp.dungeons.character.ReturningAttackValues;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Enemy extends Character {
     private String enemyName;
     private int experience;
@@ -25,17 +27,25 @@ public class Enemy extends Character {
 
     @Override
     public ReturningAttackValues attack() {
-        if (Randomizer.getPercentage() < super.getCriticalChance()){
-            ReturningAttackValues attackDamage;
-            attackDamage = new ReturningAttackValues((int )(super.getStrength() * 1.5), DamageTypes.PHYSICAL);
-            System.out.println(ANSI_RED + getEnemyName() + " did a Critical hit! Damage: "+ attackDamage.getDamage() + ANSI_RESET);
-            return attackDamage;
-        }
 
+        if(Randomizer.getPercentage() < super.getCriticalChance()){
+            return criticalHit();
+        }
+        double random = ThreadLocalRandom.current().nextDouble(0.7, 1.3);
         ReturningAttackValues attackDamage;
-        attackDamage = new ReturningAttackValues(super.getStrength(), DamageTypes.PHYSICAL);
+        attackDamage = new ReturningAttackValues((int)(super.getStrength() * random), DamageTypes.PHYSICAL);
         System.out.println(getEnemyName() + " did a damage: " + attackDamage.getDamage());
         return attackDamage;
+    }
+
+
+    public ReturningAttackValues criticalHit() {
+        double random = ThreadLocalRandom.current().nextDouble(1.3, 1.7);
+            ReturningAttackValues attackDamage;
+            attackDamage = new ReturningAttackValues((int) (super.getStrength() * random), DamageTypes.PHYSICAL);
+            System.out.println(ANSI_RED + getEnemyName() + " did a Critical hit! Damage: " + attackDamage.getDamage() + ANSI_RESET);
+            return attackDamage;
+
     }
 
     public String getEnemyName() {
