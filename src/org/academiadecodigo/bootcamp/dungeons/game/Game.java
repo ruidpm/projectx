@@ -1,23 +1,18 @@
-package org.academiadecodigo.bootcamp.dungeons;
+package org.academiadecodigo.bootcamp.dungeons.game;
 import org.academiadecodigo.bootcamp.dungeons.character.ReturningAttackValues;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyFactory;
 import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerClasses;
-import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerSkills;
 import org.academiadecodigo.bootcamp.dungeons.character.player.Player;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.Enemy;
-import org.academiadecodigo.bootcamp.dungeons.keyboard.GameKeyboardHandler;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
-
-import java.util.LinkedList;
 
 public class Game {
 
     private Player player;
     private Enemy enemy;
 
-    private boolean characterChosen;
-    private boolean gameStarted;
-    private boolean enemyDead;
+    boolean characterChosen;
+    boolean gameStarted;
+    boolean outOfCombat;
 
 
     public Game(){
@@ -26,30 +21,27 @@ public class Game {
     }
 
 
-    public void init(){
+    private void init(){
 
-        enemyDead = true;
-        new GameKeyboardHandler(this);
+        outOfCombat = true;
 
         System.out.println("1 for Warrior");
         System.out.println("2 for Ninja");
         System.out.println("3 for Wizard");
         System.out.println("SPACEBAR to start");
-
     }
 
 
-    public void createPlayer(PlayerClasses playerClass){
+    void createPlayer(PlayerClasses playerClass){
 
         player = new Player(playerClass);
         characterChosen = true;
-
     }
 
 
 
 
-    public void enemyTurn(){
+    private void enemyTurn(){
 
         System.out.println("Enemy attacking");
 
@@ -59,14 +51,11 @@ public class Game {
             gameOver();
         }
 
-
-        System.out.println("Press A to attack");
+        System.out.println("Press A to attack, M for Mana Potion, H for Health Potion, F to flee");
     }
 
 
-
-
-    public void playerAttack(){
+    void playerAttack(){
 
         enemy.calculateDamageTaken(player.attack());
 
@@ -75,21 +64,19 @@ public class Game {
             generateLoot(enemy.getExperience());
             System.out.println("Enemy dead\nGained " + enemy.getExperience() + " experience");
 
-            System.out.println("Press 0 to new enemy or R to rest");
+            System.out.println("Press N for new enemy or R to rest");
 
-            enemyDead = true;
+            outOfCombat = true;
             return;
-
         }
 
         enemyTurn();
-
     }
 
 
-    public void playerRest(){
+    void playerRest(){
 
-        enemyDead = false;
+        outOfCombat = false;
 
         if (!player.rest()){
 
@@ -101,16 +88,55 @@ public class Game {
 
         System.out.println("You rest successfully");
         enemy = EnemyFactory.createEnemy();
+    }
 
+
+    void playerUseHealthPotion(){
+
+        if (player.useHealthPotion()){
+            System.out.println("Used Health Potion");
+            enemyTurn();
+        }
+    }
+
+
+    void playerUseManaPotion(){
+
+        if (player.useManaPotion()){
+            System.out.println("Used Mana Potion");
+            enemyTurn();
+        }
+    }
+
+    void playerFlee(){
+
+        System.out.println("You attempt to flee");
+        if (player.flee()){
+            outOfCombat = true;
+            System.out.println("Rest or keep going?");
+            return;
+        }
+
+        enemyTurn();
+    }
+
+
+    void playerUseSkill(int skillNumber) {
+
+        ReturningAttackValues damage = player.castSpell(skillNumber);
+
+        if (damage != null){
+
+            enemy.calculateDamageTaken(damage);
+            enemyTurn();
+        }
     }
 
 
 
+    void start() {
 
-
-    public void start() {
-
-        enemyDead = false;
+        outOfCombat = false;
 
         gameStarted = true;
 
@@ -118,12 +144,10 @@ public class Game {
     }
 
 
-    public void createEnemy(){
+    void createEnemy(){
         enemy = EnemyFactory.createEnemy();
-        enemyDead = false;
+        outOfCombat = false;
     }
-
-
 
     private void generateLoot(int experience){
         player.gainExperience(experience);
@@ -133,18 +157,4 @@ public class Game {
         System.exit(0);
     }
 
-
-    public boolean isCharacterChosen()
-    {
-        return characterChosen;
-    }
-
-    public boolean isGameStarted() {
-        return gameStarted;
-    }
-
-
-    public boolean isEnemyDead() {
-        return enemyDead;
-    }
 }

@@ -1,6 +1,5 @@
-package org.academiadecodigo.bootcamp.dungeons.keyboard;
+package org.academiadecodigo.bootcamp.dungeons.game;
 
-import org.academiadecodigo.bootcamp.dungeons.Game;
 import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerClasses;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
@@ -30,7 +29,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case KeyboardEvent.KEY_SPACE:
 
-                if (game.isCharacterChosen() && !game.isGameStarted()) {
+                if (game.characterChosen && !game.gameStarted) {
 
                     game.start();
                 }
@@ -39,7 +38,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case KeyboardEvent.KEY_1:
 
-                if (!game.isCharacterChosen()){
+                if (!game.characterChosen){
                     game.createPlayer(PlayerClasses.WARRIOR);
                 }
 
@@ -47,7 +46,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case KeyboardEvent.KEY_2:
 
-                if (!game.isCharacterChosen()){
+                if (!game.characterChosen){
                     game.createPlayer(PlayerClasses.NINJA);
                 }
 
@@ -55,7 +54,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case  KeyboardEvent.KEY_3:
 
-                if (!game.isCharacterChosen()){
+                if (!game.characterChosen){
                     game.createPlayer(PlayerClasses.WIZARD);
                 }
                 break;
@@ -63,26 +62,81 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case  KeyboardEvent.KEY_A:
 
-                if (!game.isEnemyDead()){
+                if (!game.outOfCombat){
 
                     game.playerAttack();
                 }
 
-                //aaaaaaSystem.out.println("not waiting battle input");
                 break;
 
-             case  KeyboardEvent.KEY_0:
+             case  KeyboardEvent.KEY_N:
 
-                if (game.isEnemyDead() && game.isGameStarted()){
+                if (game.outOfCombat && game.gameStarted){
                     game.createEnemy();
+                }
+
+                break;
+
+            case  KeyboardEvent.KEY_F:
+
+                if (!game.outOfCombat){
+                    game.playerFlee();
+                }
+
+                break;
+
+            case  KeyboardEvent.KEY_H:
+
+                if (!game.outOfCombat){
+                    game.playerUseHealthPotion();
+                }
+
+                break;
+
+            case  KeyboardEvent.KEY_M:
+
+                if (!game.outOfCombat){
+                    game.playerUseManaPotion();
                 }
 
                 break;
 
             case  KeyboardEvent.KEY_R:
 
-                if (game.isEnemyDead()){
+                if (game.outOfCombat && game.gameStarted){
                     game.playerRest();
+                }
+
+                break;
+
+            case  KeyboardEvent.KEY_Z:
+
+                if (!game.outOfCombat && game.gameStarted){
+                    game.playerUseSkill(0);
+                }
+
+                break;
+
+            case  KeyboardEvent.KEY_X:
+
+                if (!game.outOfCombat && game.gameStarted){
+                    game.playerUseSkill(1);
+                }
+
+                break;
+
+            case  KeyboardEvent.KEY_C:
+
+                if (!game.outOfCombat && game.gameStarted){
+                    game.playerUseSkill(2);
+                }
+
+                break;
+
+            case  KeyboardEvent.KEY_V:
+
+                if (!game.outOfCombat && game.gameStarted){
+                    game.playerUseSkill(3);
                 }
 
                 break;
@@ -113,11 +167,26 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
         setKeyAndEvent(KeyboardEvent.KEY_3, KeyboardEventType.KEY_PRESSED);
 
-        setKeyAndEvent(KeyboardEvent.KEY_0, KeyboardEventType.KEY_PRESSED);
+        setKeyAndEvent(KeyboardEvent.KEY_N, KeyboardEventType.KEY_PRESSED);
 
         setKeyAndEvent(KeyboardEvent.KEY_A, KeyboardEventType.KEY_PRESSED);
 
         setKeyAndEvent(KeyboardEvent.KEY_R, KeyboardEventType.KEY_PRESSED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_F, KeyboardEventType.KEY_PRESSED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_M, KeyboardEventType.KEY_PRESSED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_H, KeyboardEventType.KEY_PRESSED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_Z, KeyboardEventType.KEY_PRESSED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_X, KeyboardEventType.KEY_PRESSED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_C, KeyboardEventType.KEY_PRESSED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_V, KeyboardEventType.KEY_PRESSED);
+
     }
 
 }

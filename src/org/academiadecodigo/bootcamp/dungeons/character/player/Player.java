@@ -20,7 +20,7 @@ public class Player extends Character {
     private int manaPotion;
     private int healthPotion;
     private int numberOfTimesRested;
-    private PlayerSkills[] skills;
+    private PlayerSkills[] skills ;
     private LinkedList<PlayerSkills> playerPossibleSpellsList;
 
     public Player(PlayerClasses player_classes) {
@@ -35,6 +35,9 @@ public class Player extends Character {
         this.manaPotion = 1;
         this.healthPotion = 1;
         this.experience = 0;
+        this.skills=new PlayerSkills[4];
+        skills[0] = PlayerSkills.values()[Randomizer.randomizeBetween(0,PlayerSkills.values().length-1)];
+
 
         playerPossibleSpellsList = new LinkedList<PlayerSkills>();
 
@@ -62,38 +65,60 @@ public class Player extends Character {
         }
     }
 
-    public void castSpell(){}
+    public ReturningAttackValues castSpell(int skillIndex){
+
+        if (skills[skillIndex] == null){
+            System.out.println("No skill in that index");
+            return null;
+        }
+        if (skills[skillIndex].manaNeeded > manaPoints){
+            System.out.println("You don't have sufficient manaPoints");
+            return null;
+        }
+
+        ReturningAttackValues returningAttackValues =
+                new ReturningAttackValues(skills[skillIndex].skillDamage, skills[skillIndex].damageTypes);
+
+        manaPoints = manaPoints - skills[skillIndex].manaNeeded;
+
+        return returningAttackValues;
+    }
 
 
-    public void useHealthPotion(){
+    public boolean useHealthPotion(){
         if (healthPotion > 0){
 
             if (maxHealthPoints -getHealthPoints() < ItemTypes.HEALTHPOTION.getValue()){
                 heal(maxHealthPoints -getHealthPoints());
                 healthPotion--;
-                return;
+                return true;
             }
 
             heal(ItemTypes.HEALTHPOTION.getValue());
             healthPotion--;
+            return true;
         }
 
+        System.out.println("You have no Health Potions");
+        return false;
     }
 
 
-    public void useManaPotion(){
+    public boolean useManaPotion(){
         if (manaPotion > 0){
             if (maxManaPoints < ItemTypes.MANAPOTION.getValue()){
                 manaPoints = maxManaPoints - ItemTypes.MANAPOTION.getValue();
                 manaPotion--;
-                return;
+                return true;
             }
 
             manaPoints = ItemTypes.MANAPOTION.getValue();
             manaPotion--;
-
+            return true;
         }
 
+        System.out.println("You have no Mana Potions");
+        return false;
     }
 
 
@@ -118,29 +143,43 @@ public class Player extends Character {
 
     public boolean rest(){
         int prob = Randomizer.getPercentage();
+        int healPointsGained;
+
+        if( maxHealthPoints/2 < maxHealthPoints - healthPoints){
+            healPointsGained = (int)(maxHealthPoints/2);
+
+        } else {
+            healPointsGained = maxHealthPoints-healthPoints;
+        }
+
 
         if (prob < 90 && numberOfTimesRested < 1){
             numberOfTimesRested++;
+            healthPoints = healthPoints + healPointsGained;
             return true;
         }
 
         if (prob < 80 && numberOfTimesRested < 2){
             numberOfTimesRested++;
+            healthPoints = healthPoints + healPointsGained;
             return true;
         }
 
         if (prob < 70 && numberOfTimesRested < 3){
             numberOfTimesRested++;
+            healthPoints = healthPoints + healPointsGained;
             return true;
         }
 
         if (prob < 55 && numberOfTimesRested < 4){
             numberOfTimesRested++;
+            healthPoints = healthPoints + healPointsGained;
             return true;
         }
 
         if (prob < 30 && numberOfTimesRested >= 4){
             numberOfTimesRested++;
+            healthPoints = healthPoints + healPointsGained;
             return true;
         }
         return false;
