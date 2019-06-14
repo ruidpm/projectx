@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.dungeons.character.enemy.enemies;
 
+import org.academiadecodigo.bootcamp.dungeons.Randomizer;
 import org.academiadecodigo.bootcamp.dungeons.character.DamageTypes;
 import org.academiadecodigo.bootcamp.dungeons.character.ReturningAttackValues;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.Enemy;
@@ -26,5 +27,17 @@ public class Minotaur extends Enemy {
         System.out.println(ANSI_BLUE + getEnemyName() + " Pierce you and did " + attackDamage.getDamage() + " Physical Damage."  + ANSI_RESET);
 
         return attackDamage;
+    }
+
+
+
+    @Override
+    public ReturningAttackValues attack() {
+
+        if (Randomizer.getPercentage() < 30){
+            return minoHorn();
+        }
+
+        return super.attack();
     }
 }
