@@ -35,7 +35,7 @@ public class Player extends Character {
         this.manaPotion = 1;
         this.healthPotion = 1;
         this.experience = 0;
-        this.skills=new PlayerSkills[3];
+        this.skills=new PlayerSkills[4];
         skills[0] = PlayerSkills.values()[Randomizer.randomizeBetween(0,PlayerSkills.values().length-1)];
 
 

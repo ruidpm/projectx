@@ -123,13 +123,13 @@ public class Game {
 
     void playerUseSkill(int skillNumber) {
 
-        //ReturningAttackValues damage = player.castSpell(skillNumber);
+        ReturningAttackValues damage = player.castSpell(skillNumber);
 
-        //if (damage != null){
+        if (damage != null){
 
-            //enemy.calculateDamageTaken(damage);
-            //enemyTurn();
-        //}
+            enemy.calculateDamageTaken(damage);
+            enemyTurn();
+        }
     }
 
 

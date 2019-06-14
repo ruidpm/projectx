@@ -4,11 +4,11 @@ import org.academiadecodigo.bootcamp.dungeons.character.player.items.WeaponTypes
 
 public enum PlayerClasses {
     WIZARD ("Izadarian",250,5,20,1,10,
-            5,10, 50, WeaponTypes.STAFF, PlayerSkills.UNHOLYHEAL),
+            5,10, 150, WeaponTypes.STAFF, PlayerSkills.UNHOLYHEAL),
     WARRIOR("Edoqor",300,15,5,10,1,
-            5,5, 20, WeaponTypes.IRONAXE, PlayerSkills.SPINNINGRAGE),
+            5,5, 70, WeaponTypes.IRONAXE, PlayerSkills.SPINNINGRAGE),
     NINJA("Ogorim",250,10,15,5,5,
-            15,15, 30, WeaponTypes.SHURIKEN, PlayerSkills.SPEARSTEB);
+            15,15, 70, WeaponTypes.SHURIKEN, PlayerSkills.SPEARSTEB);
 
     private String name;
     private int healthPoints;
