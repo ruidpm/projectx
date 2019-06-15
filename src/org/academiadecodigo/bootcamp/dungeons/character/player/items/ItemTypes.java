@@ -1,8 +1,8 @@
 package org.academiadecodigo.bootcamp.dungeons.character.player.items;
 
 public enum ItemTypes {
-    HEALTHPOTION(60),
-    MANAPOTION(30);
+    HEALTHPOTION(150),
+    MANAPOTION(70);
 
     private int value;
 

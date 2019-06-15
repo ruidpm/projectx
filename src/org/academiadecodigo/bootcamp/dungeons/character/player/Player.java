@@ -56,6 +56,14 @@ public class Player extends Character {
     }
 
 
+    public void addManaPotion(){
+        manaPotion++;
+    }
+
+    public void addHealthPotion(){
+        healthPotion++;
+    }
+
     public LinkedList<PlayerSkills> getPlayerPossibleSpellsList(){
         return playerPossibleSpellsList;
     }
@@ -247,5 +255,12 @@ public class Player extends Character {
         playerLevel++;
     }
 
+    public WeaponTypes getWeapon() {
+        return weapon;
+    }
 
+    public void setWeapon(int index) {
+        this.weapon = WeaponTypes.values()[index];
+        System.out.println("Switched weapon");
+    }
 }

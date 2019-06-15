@@ -157,6 +157,13 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
                 break;
 
+            case  KeyboardEvent.KEY_Y:
+
+                if (game.choosingWeapon){
+                    game.playerSwitchWeapon();
+                }
+
+                break;
         }
 
     }
@@ -207,6 +214,9 @@ public class GameKeyboardHandler implements KeyboardHandler {
         setKeyAndEvent(KeyboardEvent.KEY_K, KeyboardEventType.KEY_PRESSED);
 
         setKeyAndEvent(KeyboardEvent.KEY_L, KeyboardEventType.KEY_PRESSED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_Y, KeyboardEventType.KEY_PRESSED);
+
     }
 
 }
