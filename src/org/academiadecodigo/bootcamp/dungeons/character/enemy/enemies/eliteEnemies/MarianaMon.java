@@ -1,4 +1,4 @@
-package org.academiadecodigo.bootcamp.dungeons.character.enemy.enemies;
+package org.academiadecodigo.bootcamp.dungeons.character.enemy.enemies.eliteEnemies;
 
 import org.academiadecodigo.bootcamp.dungeons.Randomizer;
 import org.academiadecodigo.bootcamp.dungeons.character.DamageTypes;
@@ -8,23 +8,23 @@ import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyTypes;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Minotaur extends Enemy {
+public class MarianaMon extends Enemy {
 
-    public Minotaur() {
-        super(EnemyTypes.MINOTAUR);
-    }
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_RESET = "\u001B[0m";
 
+    public MarianaMon(){
+        super(EnemyTypes.MARIANAMON);
+    }
 
-    public ReturningAttackValues minoHorn(){
+    public ReturningAttackValues fireBreath(){
         ReturningAttackValues attackDamage;
 
-        double random = ThreadLocalRandom.current().nextDouble(1.1, 1.4);
+        double random = ThreadLocalRandom.current().nextDouble(1.4, 1.7);
 
-        attackDamage = new ReturningAttackValues((int )(super.getStrength() * random), DamageTypes.PHYSICAL);
+        attackDamage = new ReturningAttackValues((int )(super.getIntelligence() * random), DamageTypes.MAGICAL);
 
-        System.out.println(ANSI_BLUE + getEnemyName() + " Minotaur Pierce you. " + attackDamage.getDamage() + " Physical Damage."  + ANSI_RESET);
+        System.out.println(ANSI_BLUE + getEnemyName() + " Marianamon burn you. " + attackDamage.getDamage() + " Magical Damage."  + ANSI_RESET);
 
         return attackDamage;
     }
@@ -35,7 +35,7 @@ public class Minotaur extends Enemy {
     public ReturningAttackValues attack() {
 
         if (Randomizer.getPercentage() < 30){
-            return minoHorn();
+            return fireBreath();
         }
 
         return super.attack();

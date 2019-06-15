@@ -71,7 +71,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
              case  KeyboardEvent.KEY_N:
 
-                if (game.outOfCombat && game.gameStarted){
+                if (game.outOfCombat && game.gameStarted && !game.choosingSkill){
                     game.createEnemy();
                 }
 
@@ -103,7 +103,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case  KeyboardEvent.KEY_R:
 
-                if (game.outOfCombat && game.gameStarted){
+                if (game.outOfCombat && game.gameStarted && !game.choosingSkill){
                     game.playerRest();
                 }
 
@@ -137,6 +137,30 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
                 if (!game.outOfCombat && game.gameStarted){
                     game.playerUseSkill(3);
+                }
+
+                break;
+
+            case  KeyboardEvent.KEY_K:
+
+                if (game.choosingSkill){
+                    game.playerChooseSkill(1);
+                }
+
+                break;
+
+            case  KeyboardEvent.KEY_L:
+
+                if (game.choosingSkill){
+                    game.playerChooseSkill(2);
+                }
+
+                break;
+
+            case  KeyboardEvent.KEY_Y:
+
+                if (game.choosingWeapon){
+                    game.playerSwitchWeapon();
                 }
 
                 break;
@@ -186,6 +210,12 @@ public class GameKeyboardHandler implements KeyboardHandler {
         setKeyAndEvent(KeyboardEvent.KEY_C, KeyboardEventType.KEY_PRESSED);
 
         setKeyAndEvent(KeyboardEvent.KEY_V, KeyboardEventType.KEY_PRESSED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_K, KeyboardEventType.KEY_PRESSED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_L, KeyboardEventType.KEY_PRESSED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_Y, KeyboardEventType.KEY_PRESSED);
 
     }
 
