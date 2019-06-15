@@ -21,7 +21,7 @@ public class SkillTest {
         }*/
 
         for (int i = 0; i < 10; i++) {
-            ((EliteHunter) eHunter).attack();
+            ((EliteSkeleton) eSkel).attack();
         }
 
 /*        for (int i = 0; i < 10; i++) {

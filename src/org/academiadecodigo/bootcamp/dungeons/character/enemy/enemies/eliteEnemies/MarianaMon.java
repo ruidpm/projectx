@@ -8,23 +8,23 @@ import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyTypes;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Faustinomon extends Enemy {
+public class MarianaMon extends Enemy {
 
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_RESET = "\u001B[0m";
 
-    public Faustinomon(){
-        super(EnemyTypes.FAUSTINOMON);
+    public MarianaMon(){
+        super(EnemyTypes.MARIANAMON);
     }
 
-    public ReturningAttackValues ifreet(){
+    public ReturningAttackValues fireBreath(){
         ReturningAttackValues attackDamage;
 
         double random = ThreadLocalRandom.current().nextDouble(1.4, 1.7);
 
         attackDamage = new ReturningAttackValues((int )(super.getIntelligence() * random), DamageTypes.MAGICAL);
 
-        System.out.println(ANSI_BLUE + getEnemyName() + " Minotaur Pierce you. " + attackDamage.getDamage() + " Magical Damage."  + ANSI_RESET);
+        System.out.println(ANSI_BLUE + getEnemyName() + " Marianamon burn you. " + attackDamage.getDamage() + " Magical Damage."  + ANSI_RESET);
 
         return attackDamage;
     }
@@ -35,7 +35,7 @@ public class Faustinomon extends Enemy {
     public ReturningAttackValues attack() {
 
         if (Randomizer.getPercentage() < 30){
-            return ifreet();
+            return fireBreath();
         }
 
         return super.attack();
