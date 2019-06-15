@@ -7,6 +7,7 @@ import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerClasses;
 import org.academiadecodigo.bootcamp.dungeons.character.player.Player;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.Enemy;
 import org.academiadecodigo.bootcamp.dungeons.character.player.items.WeaponTypes;
+import org.academiadecodigo.bootcamp.dungeons.game.sounds.GameSounds;
 
 public class Game {
 
@@ -31,6 +32,7 @@ public class Game {
 
     public Game(Images images){
 
+        GameSounds.gameMusic.play(true);        // TODO: 15/06/2019 change to loop
         this.images = images;
         init();
     }
@@ -61,6 +63,13 @@ public class Game {
 
     private void enemyTurn(){
 
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        GameSounds.enemyAttack.play(true);
         choosingWeapon = false;
         System.out.println("Enemy attacking");
 
@@ -127,11 +136,13 @@ public class Game {
     void playerRest(){
 
         outOfCombat = false;
+        GameSounds.restSound.play(true);
 
         if (!player.rest()){
 
             System.out.println("You are ambushed while resting");
             enemy = EnemyFactory.createEliteEnemy();
+            GameSounds.enemyAppears.play(true);     // TODO: 15/06/2019 change to unique sound
             images.enemy(EnemyTypes.ELITE_HUNTER);         // TODO: 15/06/2019 change this
             images.battleMenu();
 
@@ -213,6 +224,7 @@ public class Game {
 
     void createEnemy(){
         enemy = EnemyFactory.createEnemy();
+        GameSounds.enemyAppears.play(true);
 
         images.enemy(EnemyTypes.ELITE_HUNTER);      // TODO: 15/06/2019 change this
         outOfCombat = false;
@@ -224,6 +236,7 @@ public class Game {
         images.deleteBattleMenu();
         images.deleteEnemy();
         images.afterBattleMenu();
+        GameSounds.victorySound.play(true);
 
 
         outOfCombat = true;
