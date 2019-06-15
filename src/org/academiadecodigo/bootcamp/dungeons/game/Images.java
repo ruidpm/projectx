@@ -64,14 +64,14 @@ public class Images {
                 return;
 
             case WIZARD:
-                Picture wizard = new Picture(135,360 );
+                Picture wizard = new Picture(135,360, "wizard" );
                 wizard.load("pics/wizard.png");
                 wizard.draw();
                 this.player = wizard;
                 return;
 
             case WARRIOR:
-                Picture warrior = new Picture(135,360 );
+                Picture warrior = new Picture(135,360, "warrior" );
                 warrior.load("pics/warrior.png");
                 warrior.draw();
                 this.player = warrior;
@@ -96,63 +96,63 @@ public class Images {
                 return;
 
             case TROLL:
-                Picture troll = new Picture(435,0 );
+                Picture troll = new Picture(380,50, "troll" );
                 troll.load("pics/troll.png");
                 troll.draw();
                 this.enemy = troll;
                 return;
 
             case GOBLIN:
-                Picture goblin = new Picture(435,135 );
+                Picture goblin = new Picture(380,50, "goblin");
                 goblin.load("pics/goblin.png");
                 goblin.draw();
                 this.enemy = goblin;
                 return;
 
             case ORC:
-                Picture orc = new Picture(435,135 );
+                Picture orc = new Picture(380,50, "orc");
                 orc.load("pics/orc.png");
                 orc.draw();
                 this.enemy = orc;
                 return;
 
             case SKELETON:
-                Picture skeleton = new Picture(435,135 );
+                Picture skeleton = new Picture(380,50, "skeleton");
                 skeleton.load("pics/skeleton.png");
                 skeleton.draw();
                 this.enemy = skeleton;
                 return;
 
             case MINOTAUR:
-                Picture minotaur = new Picture(435,135 );
+                Picture minotaur = new Picture(380,50, "minotaur" );
                 minotaur.load("pics/minotaur.png");
                 minotaur.draw();
                 this.enemy = minotaur;
                 return;
 
             case HUNTER:
-                Picture hunter = new Picture(435,135 );
+                Picture hunter = new Picture(380,50, "hunter" );
                 hunter.load("pics/hunter.png");
                 hunter.draw();
                 this.enemy = hunter;
                 return;
 
             case ELITE_HUNTER:
-                Picture eliteHunter = new Picture(435,135 );
+                Picture eliteHunter = new Picture(380,50, "elite hunter" );
                 eliteHunter.load("pics/eliteHunter.png");
                 eliteHunter.draw();
                 this.enemy = eliteHunter;
                 return;
 
             case ELITE_MINOTAUR:
-                Picture eliteMinotaur = new Picture(435,135 );
+                Picture eliteMinotaur = new Picture(380,50, "elite minotaur" );
                 eliteMinotaur.load("pics/eliteMinotaur.png");
                 eliteMinotaur.draw();
                 this.enemy = eliteMinotaur;
                 return;
 
             case ELITE_SKELETON:
-                Picture eliteSkeleton = new Picture(435,135 );
+                Picture eliteSkeleton = new Picture(380,50, "elite skeleton" );
                 eliteSkeleton.load("pics/eliteSkeleton.png");
                 eliteSkeleton.draw();
                 this.enemy = eliteSkeleton;

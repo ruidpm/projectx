@@ -13,12 +13,12 @@ public class ImagesTest {
         Images images = new Images();
 
         images.backgound();
-        //images.enemy(EnemyTypes.RAT);
+        images.enemy(EnemyTypes.MINOTAUR);
 
        // images.battleMenu();
        // images.player(PlayerClasses.NINJA);
 
-        images.choosePlayer();
+       // images.choosePlayer();
 
     }
 }
