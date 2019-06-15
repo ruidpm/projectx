@@ -138,6 +138,12 @@ public class Game {
         outOfCombat = false;
         GameSounds.restSound.play(true);
 
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         if (!player.rest()){
 
             System.out.println("You are ambushed while resting");
@@ -178,6 +184,8 @@ public class Game {
         System.out.println("You attempt to flee");
         if (player.flee()){
             outOfCombat = true;
+
+            images.deleteEnemy();
             images.deleteBattleMenu();
             images.afterBattleMenu();
             System.out.println("Rest or keep going?");
@@ -216,6 +224,8 @@ public class Game {
 
         gameStarted = true;
 
+        images.afterBattleMenu();
+
         createEnemy();
         images.battleMenu();
         images.player(player.getPlayerClass());
@@ -223,8 +233,11 @@ public class Game {
 
 
     void createEnemy(){
+
         enemy = EnemyFactory.createEnemy();
         GameSounds.enemyAppears.play(true);
+        images.deleteAfterBattleMenu();
+        images.battleMenu();
 
         images.enemy(EnemyTypes.ELITE_HUNTER);      // TODO: 15/06/2019 change this
         outOfCombat = false;
@@ -235,7 +248,7 @@ public class Game {
 
         images.deleteBattleMenu();
         images.deleteEnemy();
-        images.afterBattleMenu();
+        //images.afterBattleMenu();
         GameSounds.victorySound.play(true);
 
 
