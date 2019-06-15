@@ -23,6 +23,7 @@ public class Player extends Character {
     private PlayerSkills[] skills ;
     private LinkedList<PlayerSkills> playerPossibleSpellsList;
     private int playerLevel;
+    private PlayerClasses playerClass;
 
     public Player(PlayerClasses player_classes) {
         super(player_classes.getHealthPoints(), player_classes.getStrength(), player_classes.getIntelligence(),
@@ -38,6 +39,7 @@ public class Player extends Character {
         this.experience = 0;
         this.skills=new PlayerSkills[4];
         this.playerLevel = 1;
+        this.playerClass = player_classes;
 
         this.skills[0]=player_classes.getPlayerSkills();
 
@@ -48,8 +50,9 @@ public class Player extends Character {
     }
 
 
-
-
+    public PlayerClasses getPlayerClass() {
+        return playerClass;
+    }
 
     public int getPlayerLevel() {
         return playerLevel;
@@ -91,6 +94,7 @@ public class Player extends Character {
             playerPossibleSpellsList.add(skill);
         }
     }
+
 
     public ReturningAttackValues castSpell(int skillIndex){
 

@@ -19,6 +19,7 @@ public class Game {
     private int skillIndex1;
     private int skillIndex2;
     private int weaponIndex;
+    Images images;
 
     boolean characterChosen;
     boolean gameStarted;
@@ -27,8 +28,9 @@ public class Game {
     boolean choosingWeapon;
 
 
-    public Game(){
+    public Game(Images images){
 
+        this.images = images;
         init();
     }
 
@@ -37,6 +39,8 @@ public class Game {
 
         outOfCombat = true;
         currentLevel = 1;
+        images.backgound();
+        images.choosePlayer();
 
         System.out.println("1 for Warrior");
         System.out.println("2 for Ninja");
@@ -127,10 +131,13 @@ public class Game {
 
             System.out.println("You are ambushed while resting");
             enemy = EnemyFactory.createEliteEnemy();
+            images.battleMenu();
+
             enemyTurn();
             return;
         }
 
+        images.battleMenu();
         System.out.println("You rest successfully");
         enemy = EnemyFactory.createEnemy();
     }
@@ -158,6 +165,8 @@ public class Game {
         System.out.println("You attempt to flee");
         if (player.flee()){
             outOfCombat = true;
+            images.deleteBattleMenu();
+            images.afterBattleMenu();
             System.out.println("Rest or keep going?");
             return;
         }
@@ -197,6 +206,9 @@ public class Game {
         gameStarted = true;
 
         enemy = EnemyFactory.createEnemy();
+
+        images.battleMenu();
+        images.player(player.getPlayerClass());
     }
 
 
@@ -207,6 +219,9 @@ public class Game {
 
 
     private void generateLoot(int experience){
+
+        images.deleteBattleMenu();
+        images.afterBattleMenu();
 
         outOfCombat = true;
         player.gainExperience(experience);
@@ -239,6 +254,7 @@ public class Game {
 
     private void gameOver(){
         System.out.println("You died on level " + player.getPlayerLevel());
+        images.deletePlayer();
         System.exit(0);
     }
 
