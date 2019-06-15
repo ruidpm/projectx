@@ -13,6 +13,8 @@ import java.util.LinkedList;
 
 public class Player extends Character {
 
+    private static final int CHANCE_TO_FLEE = 40;
+
     private int manaPoints;
     private int maxManaPoints;
     private int maxHealthPoints;
@@ -76,7 +78,7 @@ public class Player extends Character {
     public boolean flee(){
         int prob = Randomizer.getPercentage();
 
-        if (prob < 15){
+        if (prob < CHANCE_TO_FLEE){
             return true;
         }
         return false;
