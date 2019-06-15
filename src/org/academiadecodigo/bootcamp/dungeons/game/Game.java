@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp.dungeons.game;
 import org.academiadecodigo.bootcamp.dungeons.Randomizer;
 import org.academiadecodigo.bootcamp.dungeons.character.ReturningAttackValues;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyFactory;
+import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyTypes;
 import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerClasses;
 import org.academiadecodigo.bootcamp.dungeons.character.player.Player;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.Enemy;
@@ -90,7 +91,7 @@ public class Game {
     }
 
 
-    public void playerChooseSkill(int choice){
+    void playerChooseSkill(int choice){
 
         if (choice == 1){
             System.out.println("You choose " + player.getPlayerPossibleSpellsList().get(skillIndex1).toString());
@@ -131,6 +132,7 @@ public class Game {
 
             System.out.println("You are ambushed while resting");
             enemy = EnemyFactory.createEliteEnemy();
+            images.enemy(EnemyTypes.ELITE_HUNTER);         // TODO: 15/06/2019 change this
             images.battleMenu();
 
             enemyTurn();
@@ -139,7 +141,7 @@ public class Game {
 
         images.battleMenu();
         System.out.println("You rest successfully");
-        enemy = EnemyFactory.createEnemy();
+        createEnemy();
     }
 
 
@@ -201,12 +203,9 @@ public class Game {
 
     void start() {
 
-        outOfCombat = false;
-
         gameStarted = true;
 
-        enemy = EnemyFactory.createEnemy();
-
+        createEnemy();
         images.battleMenu();
         images.player(player.getPlayerClass());
     }
@@ -214,6 +213,8 @@ public class Game {
 
     void createEnemy(){
         enemy = EnemyFactory.createEnemy();
+
+        images.enemy(EnemyTypes.ELITE_HUNTER);      // TODO: 15/06/2019 change this
         outOfCombat = false;
     }
 
@@ -221,7 +222,9 @@ public class Game {
     private void generateLoot(int experience){
 
         images.deleteBattleMenu();
+        images.deleteEnemy();
         images.afterBattleMenu();
+
 
         outOfCombat = true;
         player.gainExperience(experience);
@@ -268,7 +271,7 @@ public class Game {
         System.out.println("Press Y to switch from " + player.getWeapon().toString());
     }
 
-    public void playerSwitchWeapon(){
+    void playerSwitchWeapon(){
 
         player.setWeapon(weaponIndex);
         choosingWeapon = false;
