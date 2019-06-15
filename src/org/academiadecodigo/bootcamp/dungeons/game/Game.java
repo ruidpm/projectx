@@ -68,20 +68,8 @@ public class Game {
         if (enemy.getHealthPoints() <= 0){
 
             generateLoot(enemy.getExperience());
-            outOfCombat = true;
-            System.out.println("Enemy dead\nGained " + enemy.getExperience() + " experience");
-
-            if (currentLevel < player.getPlayerLevel() && player.getPlayerLevel() <= 4){
-
-                choosingSkill = true;
-                currentLevel++;
-                getTwoRandomSkills();
-                return;
-
-            }
 
             System.out.println("Press N for new enemy or R to rest");
-
 
             return;
         }
@@ -104,7 +92,7 @@ public class Game {
         player.chooseSkill(skillIndex2, skillIndex1);
 
         choosingSkill = false;
-        createEnemy();
+        //createEnemy();
     }
 
 
@@ -114,7 +102,6 @@ public class Game {
         skillIndex2 = skillIndex1;
 
         while (skillIndex1 == skillIndex2){
-            System.out.println("here");
             skillIndex2 = Randomizer.randomizeBetween(0, player.getPlayerPossibleSpellsList().size() -1);
         }
 
@@ -179,9 +166,17 @@ public class Game {
         if (damage != null){
 
             enemy.calculateDamageTaken(damage);
-            enemyTurn();
 
-            // TODO: 15/06/2019 check if enemy dies
+            if (enemy.getHealthPoints() <= 0){
+
+                generateLoot(enemy.getExperience());
+
+                System.out.println("Press N for new enemy or R to rest");
+
+                return;
+            }
+
+            enemyTurn();
 
         }
     }
@@ -204,8 +199,21 @@ public class Game {
     }
 
     private void generateLoot(int experience){
+
+        outOfCombat = true;
         player.gainExperience(experience);
+
+        System.out.println("Enemy dead\nGained " + enemy.getExperience() + " experience");
+
+        if (currentLevel < player.getPlayerLevel() && player.getPlayerLevel() <= 4){
+
+            choosingSkill = true;
+            currentLevel++;
+            getTwoRandomSkills();
+
+        }
     }
+
 
     private void gameOver(){
         System.out.println("You died on level " + player.getPlayerLevel());

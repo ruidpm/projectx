@@ -40,4 +40,7 @@ public enum PlayerSkills {
         return name + ": " + skillDamage + " " + damageTypes + ", " + manaNeeded + " mana cost";
     }
 
+    public String getName() {
+        return name;
+    }
 }

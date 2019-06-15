@@ -100,7 +100,7 @@ public class Player extends Character {
 
         manaPoints = manaPoints - skills[skillIndex].manaNeeded;
 
-        System.out.println("You use " + skills[skillIndex].name());
+        System.out.println("You use " + skills[skillIndex].getName());
         return returningAttackValues;
     }
 

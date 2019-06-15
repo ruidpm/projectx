@@ -71,7 +71,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
              case  KeyboardEvent.KEY_N:
 
-                if (game.outOfCombat && game.gameStarted){
+                if (game.outOfCombat && game.gameStarted && !game.choosingSkill){
                     game.createEnemy();
                 }
 
@@ -103,7 +103,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case  KeyboardEvent.KEY_R:
 
-                if (game.outOfCombat && game.gameStarted){
+                if (game.outOfCombat && game.gameStarted && !game.choosingSkill){
                     game.playerRest();
                 }
 
