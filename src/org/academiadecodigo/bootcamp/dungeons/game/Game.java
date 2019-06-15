@@ -93,14 +93,14 @@ public class Game {
     public void playerChooseSkill(int choice){
 
         if (choice == 1){
-            System.out.println("You choose " + player.getPlayerPossibleSpellsList().get(skillIndex1).name());
+            System.out.println("You choose " + player.getPlayerPossibleSpellsList().get(skillIndex1).toString());
             player.chooseSkill(skillIndex1, skillIndex2);
             choosingSkill = false;
             createEnemy();
             return;
         }
 
-        System.out.println("You choose " + player.getPlayerPossibleSpellsList().get(skillIndex2).name());
+        System.out.println("You choose " + player.getPlayerPossibleSpellsList().get(skillIndex2).toString());
         player.chooseSkill(skillIndex2, skillIndex1);
 
         choosingSkill = false;
@@ -113,18 +113,14 @@ public class Game {
         skillIndex1 = Randomizer.randomizeBetween(0, player.getPlayerPossibleSpellsList().size() -1);
         skillIndex2 = skillIndex1;
 
-        System.out.println("index 1: " + skillIndex1);
-
         while (skillIndex1 == skillIndex2){
             System.out.println("here");
             skillIndex2 = Randomizer.randomizeBetween(0, player.getPlayerPossibleSpellsList().size() -1);
         }
 
-        System.out.println("index 2: " + skillIndex2);
-
         System.out.println("You found two scrolls with ancient techniques but can only take one");
-        System.out.println("Press K to take " + player.getPlayerPossibleSpellsList().get(skillIndex1).name());
-        System.out.println("Press L to take " + player.getPlayerPossibleSpellsList().get(skillIndex2).name());
+        System.out.println("Press K to take " + player.getPlayerPossibleSpellsList().get(skillIndex1).toString());
+        System.out.println("Press L to take " + player.getPlayerPossibleSpellsList().get(skillIndex2).toString());
     }
 
 
@@ -212,6 +208,7 @@ public class Game {
     }
 
     private void gameOver(){
+        System.out.println("You died on level " + player.getPlayerLevel());
         System.exit(0);
     }
 
