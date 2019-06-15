@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp.dungeons;
 
 import org.academiadecodigo.bootcamp.dungeons.game.Game;
 import org.academiadecodigo.bootcamp.dungeons.game.GameKeyboardHandler;
+import org.academiadecodigo.bootcamp.dungeons.game.sounds.GameSounds;
 
 public class Main {
 
@@ -10,6 +11,7 @@ public class Main {
 
         Game game = new Game();
         new GameKeyboardHandler(game);
+        
     }
 
 

@@ -4,6 +4,7 @@ import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyFactory;
 import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerClasses;
 import org.academiadecodigo.bootcamp.dungeons.character.player.Player;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.Enemy;
+import org.academiadecodigo.bootcamp.dungeons.game.sounds.Sound;
 
 public class Game {
 
@@ -22,6 +23,8 @@ public class Game {
 
 
     private void init(){
+
+
 
         outOfCombat = true;
 
