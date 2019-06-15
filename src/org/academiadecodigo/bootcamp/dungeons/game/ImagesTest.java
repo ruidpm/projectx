@@ -19,6 +19,8 @@ public class ImagesTest {
         images.player(PlayerClasses.WARRIOR);
 
         //images.choosePlayer();
+        images.afterBattleMenu();
+        images.battleMenu();
 
     }
 }

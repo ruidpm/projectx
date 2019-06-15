@@ -15,6 +15,10 @@ public class Images {
     private Picture enemy;
     private Picture battleMenu;
     private Picture afterBattleMenu;
+    private Picture press1;
+    private Picture press2;
+    private Picture press3;
+    private Picture selectPlayer;
 
 
     public void backgound (){
@@ -33,19 +37,39 @@ public class Images {
         choosePlayer1.draw();
         this.player1 = choosePlayer1;
 
-        Picture choosePlayer2 = new Picture(235,280, "pics/wizard.png");
+        Picture choosePlayer2 = new Picture(425,280, "pics/wizard.png");
         choosePlayer2.draw();
         this.player2 = choosePlayer2;
 
-        Picture choosePlayer3 = new Picture(425,280, "pics/ninja.png");
+        Picture choosePlayer3 = new Picture(235,280, "pics/ninja.png");
         choosePlayer3.draw();
         this.player3 = choosePlayer3;
+
+        Picture press1 = new Picture(80, 180, "pics/press1.png");
+        press1.draw();
+        this.press1 = press1;
+
+        Picture press2 = new Picture(270,180, "pics/press2.png");
+        press2.draw();
+        this.press2 = press2;
+
+        Picture press3 = new Picture(460, 180, "pics/press3.png");
+        press3.draw();
+        this.press3 = press3;
+
+        Picture selectPlayer = new Picture(90,70, "pics/selectPlayer.png");
+        selectPlayer.draw();
+        this.selectPlayer = selectPlayer;
     }
 
     public void deleteChoosePlayer(){
         player1.delete();
         player2.delete();
         player3.delete();
+        press1.delete();
+        press2.delete();
+        press3.delete();
+        selectPlayer.delete();
     }
 
     public void player(PlayerClasses playerClasses){
@@ -158,8 +182,7 @@ public class Images {
     }
 
     public void afterBattleMenu(){
-        Picture afterBattleMenu = new Picture(PADDING, PADDING);
-        afterBattleMenu.load("");
+        Picture afterBattleMenu = new Picture(260, 350, "pics/restMenu.png");
         afterBattleMenu.draw();
         this.afterBattleMenu = afterBattleMenu;
     }
