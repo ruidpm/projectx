@@ -55,6 +55,21 @@ public class EnemyFactory {
         }
 
         return enemy = new EliteSkeleton();
+    }
 
+    public static Enemy createBoss() {
+        Enemy enemy;
+
+        if (Randomizer.getPercentage() >= 66) {
+            enemy = new MarianaMon();
+            return enemy;
+        }
+
+        if (Randomizer.getPercentage() >= 33) {
+            enemy = new Faustinomon();
+            return enemy;
+        }
+
+        return enemy = new SeringasMon();
     }
 }
