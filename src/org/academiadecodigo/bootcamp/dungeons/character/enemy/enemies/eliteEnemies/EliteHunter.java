@@ -1,12 +1,37 @@
 package org.academiadecodigo.bootcamp.dungeons.character.enemy.enemies.eliteEnemies;
 
+import org.academiadecodigo.bootcamp.dungeons.Randomizer;
+import org.academiadecodigo.bootcamp.dungeons.character.DamageTypes;
+import org.academiadecodigo.bootcamp.dungeons.character.ReturningAttackValues;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.Enemy;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyTypes;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class EliteHunter extends Enemy {
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_RESET = "\u001B[0m";
 
     public EliteHunter(){
 
         super(EnemyTypes.ELITE_HUNTER);
+    }
+
+    public ReturningAttackValues sniperArrowII(){
+        ReturningAttackValues attackDamage;
+        double random = ThreadLocalRandom.current().nextDouble(0.8, 1.6);
+        attackDamage = new ReturningAttackValues((int )(super.getStrength() * random), DamageTypes.PHYSICAL);
+        System.out.println(ANSI_BLUE + getEnemyName() + " Shoot a Sniper Arrow on you. " + attackDamage.getDamage() + " Physical Damage."  + ANSI_RESET);
+        return attackDamage;
+    }
+
+    @Override
+    public ReturningAttackValues attack() {
+
+        if (Randomizer.getPercentage() < 30){
+            return sniperArrowII();
+        }
+
+        return super.attack();
     }
 }

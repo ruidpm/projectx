@@ -21,7 +21,7 @@ public class Hunter extends Enemy {
         ReturningAttackValues attackDamage;
         double random = ThreadLocalRandom.current().nextDouble(0.8, 1.6);
         attackDamage = new ReturningAttackValues((int )(super.getStrength() * random), DamageTypes.PHYSICAL);
-        System.out.println(ANSI_BLUE + getEnemyName() + " Shoot a Sniper Arrow and did " + attackDamage.getDamage() + " Physical Damage."  + ANSI_RESET);
+        System.out.println(ANSI_BLUE + getEnemyName() + " Shoot a Sniper Arrow on you. " + attackDamage.getDamage() + " Physical Damage."  + ANSI_RESET);
         return attackDamage;
     }
 

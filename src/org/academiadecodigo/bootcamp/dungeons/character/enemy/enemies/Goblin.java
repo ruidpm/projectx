@@ -22,7 +22,7 @@ public class Goblin extends Enemy {
         ReturningAttackValues attackDamage;
         double random = ThreadLocalRandom.current().nextDouble(0.7, 1.3);
         attackDamage = new ReturningAttackValues((int )(super.getStrength() * random), DamageTypes.PHYSICAL);
-        System.out.println(ANSI_BLUE + getEnemyName() + " Throw a rock and did: "+ attackDamage.getDamage() + " Physical Damage." + ANSI_RESET);
+        System.out.println(ANSI_BLUE + getEnemyName() + " Throw a rock on you. "+ attackDamage.getDamage() + " Physical Damage." + ANSI_RESET);
         return attackDamage;
     }
 
