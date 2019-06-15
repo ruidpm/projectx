@@ -6,6 +6,8 @@ import org.academiadecodigo.bootcamp.dungeons.character.DamageTypes;
 import org.academiadecodigo.bootcamp.dungeons.character.ReturningAttackValues;
 import org.academiadecodigo.bootcamp.dungeons.character.player.items.ItemTypes;
 import org.academiadecodigo.bootcamp.dungeons.character.player.items.WeaponTypes;
+import org.academiadecodigo.bootcamp.dungeons.game.Game;
+import org.academiadecodigo.bootcamp.dungeons.game.sounds.GameSounds;
 
 import java.util.LinkedList;
 
@@ -120,6 +122,8 @@ public class Player extends Character {
     public boolean useHealthPotion(){
         if (healthPotion > 0){
 
+            GameSounds.drinkPotion.play(true);
+
             if (maxHealthPoints -getHealthPoints() < ItemTypes.HEALTHPOTION.getValue()){
                 heal(maxHealthPoints -getHealthPoints());
                 healthPotion--;
@@ -138,6 +142,9 @@ public class Player extends Character {
 
     public boolean useManaPotion(){
         if (manaPotion > 0){
+
+            GameSounds.drinkPotion.play(true);
+
             if (maxManaPoints < ItemTypes.MANAPOTION.getValue()){
                 manaPoints = maxManaPoints - ItemTypes.MANAPOTION.getValue();
                 manaPotion--;
@@ -248,6 +255,13 @@ public class Player extends Character {
 
 
     private void levelUp(){
+        GameSounds.levelUp.play(true);
+
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         strength = (int) (strength * 1.3);
         intelligence = (int) (intelligence * 1.3);
         physicalResistance = (int) (physicalResistance * 1.3);
