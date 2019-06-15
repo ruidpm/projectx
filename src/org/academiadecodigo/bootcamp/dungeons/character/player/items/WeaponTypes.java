@@ -4,7 +4,7 @@ public enum WeaponTypes {
     IRONAXE (25),
     METALSWORD(15),
     FIRESWORD(40),
-    SLIPPER(1),
+    SHOE(1),
     CANNON(50),
     STAFF (30),
     SHURIKEN (10);
@@ -17,5 +17,10 @@ public enum WeaponTypes {
 
     public int getDamage() {
         return damage;
+    }
+
+    @Override
+    public String toString(){
+        return this.name() + ", " + this.damage + " damage";
     }
 }

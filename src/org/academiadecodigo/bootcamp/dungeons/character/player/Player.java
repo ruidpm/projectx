@@ -22,6 +22,8 @@ public class Player extends Character {
     private int numberOfTimesRested;
     private PlayerSkills[] skills ;
     private LinkedList<PlayerSkills> playerPossibleSpellsList;
+    private int playerLevel;
+    private PlayerClasses playerClass;
 
     public Player(PlayerClasses player_classes) {
         super(player_classes.getHealthPoints(), player_classes.getStrength(), player_classes.getIntelligence(),
@@ -36,18 +38,38 @@ public class Player extends Character {
         this.healthPotion = 1;
         this.experience = 0;
         this.skills=new PlayerSkills[4];
-        skills[0] = PlayerSkills.values()[Randomizer.randomizeBetween(0,PlayerSkills.values().length-1)];
+        this.playerLevel = 1;
+        this.playerClass = player_classes;
 
+        this.skills[0]=player_classes.getPlayerSkills();
 
         playerPossibleSpellsList = new LinkedList<PlayerSkills>();
 
         createPlayerPossibleSkillsList();
+
     }
 
-    public int getExperience() {
-        return experience;
+
+    public PlayerClasses getPlayerClass() {
+        return playerClass;
     }
 
+    public int getPlayerLevel() {
+        return playerLevel;
+    }
+
+
+    public void addManaPotion(){
+        manaPotion++;
+    }
+
+    public void addHealthPotion(){
+        healthPotion++;
+    }
+
+    public LinkedList<PlayerSkills> getPlayerPossibleSpellsList(){
+        return playerPossibleSpellsList;
+    }
 
     public boolean flee(){
         int prob = Randomizer.getPercentage();
@@ -58,12 +80,21 @@ public class Player extends Character {
         return false;
     }
 
+
+    public void chooseSkill(int skillIndex, int discardIndex){
+
+        skills[playerLevel - 1] = playerPossibleSpellsList.get(skillIndex);
+        playerPossibleSpellsList.remove(skillIndex);
+        playerPossibleSpellsList.remove(discardIndex);
+    }
+
     private void createPlayerPossibleSkillsList(){
 
         for (PlayerSkills skill : PlayerSkills.values()) {
             playerPossibleSpellsList.add(skill);
         }
     }
+
 
     public ReturningAttackValues castSpell(int skillIndex){
 
@@ -81,6 +112,7 @@ public class Player extends Character {
 
         manaPoints = manaPoints - skills[skillIndex].manaNeeded;
 
+        System.out.println("You use " + skills[skillIndex].getName());
         return returningAttackValues;
     }
 
@@ -144,6 +176,7 @@ public class Player extends Character {
     public boolean rest(){
         int prob = Randomizer.getPercentage();
         int healPointsGained;
+        int manaPointsGained;
 
         if( maxHealthPoints/2 < maxHealthPoints - healthPoints){
             healPointsGained = (int)(maxHealthPoints/2);
@@ -152,34 +185,46 @@ public class Player extends Character {
             healPointsGained = maxHealthPoints-healthPoints;
         }
 
+        if( maxManaPoints/2 < maxManaPoints - manaPoints){
+            manaPointsGained = (int)(maxManaPoints/2);
+
+        } else {
+            manaPointsGained = maxManaPoints-manaPoints;
+        }
+
 
         if (prob < 90 && numberOfTimesRested < 1){
             numberOfTimesRested++;
             healthPoints = healthPoints + healPointsGained;
+            manaPoints = manaPoints + manaPointsGained;
             return true;
         }
 
         if (prob < 80 && numberOfTimesRested < 2){
             numberOfTimesRested++;
             healthPoints = healthPoints + healPointsGained;
+            manaPoints = manaPoints + manaPointsGained;
             return true;
         }
 
         if (prob < 70 && numberOfTimesRested < 3){
             numberOfTimesRested++;
             healthPoints = healthPoints + healPointsGained;
+            manaPoints = manaPoints + manaPointsGained;
             return true;
         }
 
         if (prob < 55 && numberOfTimesRested < 4){
             numberOfTimesRested++;
             healthPoints = healthPoints + healPointsGained;
+            manaPoints = manaPoints + manaPointsGained;
             return true;
         }
 
         if (prob < 30 && numberOfTimesRested >= 4){
             numberOfTimesRested++;
             healthPoints = healthPoints + healPointsGained;
+            manaPoints = manaPoints + manaPointsGained;
             return true;
         }
         return false;
@@ -189,11 +234,11 @@ public class Player extends Character {
     public void gainExperience(int experience){
         this.experience += experience;
 
-        if (this.experience >= 100){
-            this.experience = this.experience -100;
+        if (this.experience >= 100 * playerLevel){
+            this.experience = this.experience - 100 * playerLevel;
             levelUp();
 
-            System.out.println("LevelUp");
+            System.out.println("LevelUp! You are now on Level " + playerLevel);
         }
     }
 
@@ -203,17 +248,23 @@ public class Player extends Character {
 
 
     private void levelUp(){
-        strength = (int) (strength * 1.5);
-        intelligence = (int) (intelligence * 1.5);
-        physicalResistance = (int) (physicalResistance * 1.5);
-        magicalResistance = (int) (magicalResistance * 1.5);
-        evasionChance = (int) (evasionChance * 1.5);
-        criticalChance = (int) (criticalChance * 1.5);
-        maxManaPoints = (int) (maxManaPoints * 1.5);
-        maxHealthPoints = (int) (maxHealthPoints * 1.5);
+        strength = (int) (strength * 1.3);
+        intelligence = (int) (intelligence * 1.3);
+        physicalResistance = (int) (physicalResistance * 1.3);
+        magicalResistance = (int) (magicalResistance * 1.3);
+        evasionChance = (int) (evasionChance * 1.3);
+        criticalChance = (int) (criticalChance * 1.3);
+        maxManaPoints = (int) (maxManaPoints * 1.3);
+        maxHealthPoints = (int) (maxHealthPoints * 1.3);
+        playerLevel++;
     }
 
+    public WeaponTypes getWeapon() {
+        return weapon;
+    }
 
-    // TODO: 09-06-2019 create an enum for player classes
-    // TODO: 09-06-2019 create getHealthPoints or getIsDead 
+    public void setWeapon(int index) {
+        this.weapon = WeaponTypes.values()[index];
+        System.out.println("Switched weapon");
+    }
 }

@@ -1,32 +1,46 @@
 package org.academiadecodigo.bootcamp.dungeons.game;
+import org.academiadecodigo.bootcamp.dungeons.Randomizer;
 import org.academiadecodigo.bootcamp.dungeons.character.ReturningAttackValues;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyFactory;
 import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerClasses;
 import org.academiadecodigo.bootcamp.dungeons.character.player.Player;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.Enemy;
-import org.academiadecodigo.bootcamp.dungeons.game.sounds.Sound;
+import org.academiadecodigo.bootcamp.dungeons.character.player.items.WeaponTypes;
 
 public class Game {
 
+    private static final int MANA_POTION_DROP_CHANCE = 20;
+    private static final int HEALTH_POTION_DROP_CHANCE = 20;
+    private static final int WEAPON_DROP_CHANCE = 10;
+
     private Player player;
     private Enemy enemy;
+    private int currentLevel;
+    private int skillIndex1;
+    private int skillIndex2;
+    private int weaponIndex;
+    Images images;
 
     boolean characterChosen;
     boolean gameStarted;
     boolean outOfCombat;
+    boolean choosingSkill;
+    boolean choosingWeapon;
 
 
-    public Game(){
+    public Game(Images images){
 
+        this.images = images;
         init();
     }
 
 
     private void init(){
 
-
-
         outOfCombat = true;
+        currentLevel = 1;
+        images.backgound();
+        images.choosePlayer();
 
         System.out.println("1 for Warrior");
         System.out.println("2 for Ninja");
@@ -46,6 +60,7 @@ public class Game {
 
     private void enemyTurn(){
 
+        choosingWeapon = false;
         System.out.println("Enemy attacking");
 
         player.calculateDamageTaken(enemy.attack());
@@ -65,16 +80,47 @@ public class Game {
         if (enemy.getHealthPoints() <= 0){
 
             generateLoot(enemy.getExperience());
-            System.out.println("Enemy dead\nGained " + enemy.getExperience() + " experience");
 
             System.out.println("Press N for new enemy or R to rest");
 
-            outOfCombat = true;
             return;
         }
 
         enemyTurn();
     }
+
+
+    public void playerChooseSkill(int choice){
+
+        if (choice == 1){
+            System.out.println("You choose " + player.getPlayerPossibleSpellsList().get(skillIndex1).toString());
+            player.chooseSkill(skillIndex1, skillIndex2);
+            choosingSkill = false;
+            createEnemy();
+            return;
+        }
+
+        System.out.println("You choose " + player.getPlayerPossibleSpellsList().get(skillIndex2).toString());
+        player.chooseSkill(skillIndex2, skillIndex1);
+
+        choosingSkill = false;
+    }
+
+
+    private void getTwoRandomSkills(){
+
+        skillIndex1 = Randomizer.randomizeBetween(0, player.getPlayerPossibleSpellsList().size() -1);
+        skillIndex2 = skillIndex1;
+
+        while (skillIndex1 == skillIndex2){
+            skillIndex2 = Randomizer.randomizeBetween(0, player.getPlayerPossibleSpellsList().size() -1);
+        }
+
+        System.out.println("You found two scrolls with ancient techniques but can only take one");
+        System.out.println("Press K to take " + player.getPlayerPossibleSpellsList().get(skillIndex1).toString());
+        System.out.println("Press L to take " + player.getPlayerPossibleSpellsList().get(skillIndex2).toString());
+    }
+
 
 
     void playerRest(){
@@ -85,10 +131,13 @@ public class Game {
 
             System.out.println("You are ambushed while resting");
             enemy = EnemyFactory.createEliteEnemy();
+            images.battleMenu();
+
             enemyTurn();
             return;
         }
 
+        images.battleMenu();
         System.out.println("You rest successfully");
         enemy = EnemyFactory.createEnemy();
     }
@@ -116,6 +165,8 @@ public class Game {
         System.out.println("You attempt to flee");
         if (player.flee()){
             outOfCombat = true;
+            images.deleteBattleMenu();
+            images.afterBattleMenu();
             System.out.println("Rest or keep going?");
             return;
         }
@@ -131,7 +182,18 @@ public class Game {
         if (damage != null){
 
             enemy.calculateDamageTaken(damage);
+
+            if (enemy.getHealthPoints() <= 0){
+
+                generateLoot(enemy.getExperience());
+
+                System.out.println("Press N for new enemy or R to rest");
+
+                return;
+            }
+
             enemyTurn();
+
         }
     }
 
@@ -144,6 +206,9 @@ public class Game {
         gameStarted = true;
 
         enemy = EnemyFactory.createEnemy();
+
+        images.battleMenu();
+        images.player(player.getPlayerClass());
     }
 
 
@@ -152,12 +217,61 @@ public class Game {
         outOfCombat = false;
     }
 
+
     private void generateLoot(int experience){
+
+        images.deleteBattleMenu();
+        images.afterBattleMenu();
+
+        outOfCombat = true;
         player.gainExperience(experience);
+
+        System.out.println("Enemy dead\nGained " + enemy.getExperience() + " experience");
+
+        if (Randomizer.getPercentage() <= MANA_POTION_DROP_CHANCE){
+            System.out.println("You got a Mana Potion");
+            player.addManaPotion();
+        }
+
+        if (Randomizer.getPercentage() <= HEALTH_POTION_DROP_CHANCE){
+            System.out.println("You got a Health Potion");
+            player.addHealthPotion();
+        }
+
+        if (Randomizer.getPercentage() <= WEAPON_DROP_CHANCE){
+            generateWeapon();
+        }
+
+
+        if (currentLevel < player.getPlayerLevel() && player.getPlayerLevel() <= 4){
+
+            choosingSkill = true;
+            currentLevel++;
+            getTwoRandomSkills();
+        }
     }
 
+
     private void gameOver(){
+        System.out.println("You died on level " + player.getPlayerLevel());
+        images.deletePlayer();
         System.exit(0);
+    }
+
+
+    private void generateWeapon(){
+
+        choosingWeapon = true;
+        weaponIndex = Randomizer.randomizeBetween(0, WeaponTypes.values().length -1);
+
+        System.out.println("The enemy dropped a " + WeaponTypes.values()[weaponIndex].toString());
+        System.out.println("Press Y to switch from " + player.getWeapon().toString());
+    }
+
+    public void playerSwitchWeapon(){
+
+        player.setWeapon(weaponIndex);
+        choosingWeapon = false;
     }
 
 }

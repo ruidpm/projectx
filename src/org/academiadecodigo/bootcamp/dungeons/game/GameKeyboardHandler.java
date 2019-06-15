@@ -25,6 +25,13 @@ public class GameKeyboardHandler implements KeyboardHandler {
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
+
+
+    }
+
+    @Override
+    public void keyReleased(KeyboardEvent keyboardEvent) {
+
         switch (keyboardEvent.getKey()){
 
             case KeyboardEvent.KEY_SPACE:
@@ -40,6 +47,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
                 if (!game.characterChosen){
                     game.createPlayer(PlayerClasses.WARRIOR);
+                    game.images.deleteChoosePlayer();
                 }
 
                 break;
@@ -48,6 +56,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
                 if (!game.characterChosen){
                     game.createPlayer(PlayerClasses.NINJA);
+                    game.images.deleteChoosePlayer();
                 }
 
                 break;
@@ -56,6 +65,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
                 if (!game.characterChosen){
                     game.createPlayer(PlayerClasses.WIZARD);
+                    game.images.deleteChoosePlayer();
                 }
                 break;
 
@@ -69,9 +79,9 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
                 break;
 
-             case  KeyboardEvent.KEY_N:
+            case  KeyboardEvent.KEY_N:
 
-                if (game.outOfCombat && game.gameStarted){
+                if (game.outOfCombat && game.gameStarted && !game.choosingSkill){
                     game.createEnemy();
                 }
 
@@ -103,7 +113,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case  KeyboardEvent.KEY_R:
 
-                if (game.outOfCombat && game.gameStarted){
+                if (game.outOfCombat && game.gameStarted && !game.choosingSkill){
                     game.playerRest();
                 }
 
@@ -140,12 +150,31 @@ public class GameKeyboardHandler implements KeyboardHandler {
                 }
 
                 break;
+
+            case  KeyboardEvent.KEY_K:
+
+                if (game.choosingSkill){
+                    game.playerChooseSkill(1);
+                }
+
+                break;
+
+            case  KeyboardEvent.KEY_L:
+
+                if (game.choosingSkill){
+                    game.playerChooseSkill(2);
+                }
+
+                break;
+
+            case  KeyboardEvent.KEY_Y:
+
+                if (game.choosingWeapon){
+                    game.playerSwitchWeapon();
+                }
+
+                break;
         }
-
-    }
-
-    @Override
-    public void keyReleased(KeyboardEvent keyboardEvent) {
     }
 
 
@@ -159,33 +188,39 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
 
     private void addKeysAndEvents(){
-        setKeyAndEvent(KeyboardEvent.KEY_SPACE, KeyboardEventType.KEY_PRESSED);
+        setKeyAndEvent(KeyboardEvent.KEY_SPACE, KeyboardEventType.KEY_RELEASED);
 
-        setKeyAndEvent(KeyboardEvent.KEY_1, KeyboardEventType.KEY_PRESSED);
+        setKeyAndEvent(KeyboardEvent.KEY_1, KeyboardEventType.KEY_RELEASED);
 
-        setKeyAndEvent(KeyboardEvent.KEY_2, KeyboardEventType.KEY_PRESSED);
+        setKeyAndEvent(KeyboardEvent.KEY_2, KeyboardEventType.KEY_RELEASED);
 
-        setKeyAndEvent(KeyboardEvent.KEY_3, KeyboardEventType.KEY_PRESSED);
+        setKeyAndEvent(KeyboardEvent.KEY_3, KeyboardEventType.KEY_RELEASED);
 
-        setKeyAndEvent(KeyboardEvent.KEY_N, KeyboardEventType.KEY_PRESSED);
+        setKeyAndEvent(KeyboardEvent.KEY_N, KeyboardEventType.KEY_RELEASED);
 
-        setKeyAndEvent(KeyboardEvent.KEY_A, KeyboardEventType.KEY_PRESSED);
+        setKeyAndEvent(KeyboardEvent.KEY_A, KeyboardEventType.KEY_RELEASED);
 
-        setKeyAndEvent(KeyboardEvent.KEY_R, KeyboardEventType.KEY_PRESSED);
+        setKeyAndEvent(KeyboardEvent.KEY_R, KeyboardEventType.KEY_RELEASED);
 
-        setKeyAndEvent(KeyboardEvent.KEY_F, KeyboardEventType.KEY_PRESSED);
+        setKeyAndEvent(KeyboardEvent.KEY_F, KeyboardEventType.KEY_RELEASED);
 
-        setKeyAndEvent(KeyboardEvent.KEY_M, KeyboardEventType.KEY_PRESSED);
+        setKeyAndEvent(KeyboardEvent.KEY_M, KeyboardEventType.KEY_RELEASED);
 
-        setKeyAndEvent(KeyboardEvent.KEY_H, KeyboardEventType.KEY_PRESSED);
+        setKeyAndEvent(KeyboardEvent.KEY_H, KeyboardEventType.KEY_RELEASED);
 
-        setKeyAndEvent(KeyboardEvent.KEY_Z, KeyboardEventType.KEY_PRESSED);
+        setKeyAndEvent(KeyboardEvent.KEY_Z, KeyboardEventType.KEY_RELEASED);
 
-        setKeyAndEvent(KeyboardEvent.KEY_X, KeyboardEventType.KEY_PRESSED);
+        setKeyAndEvent(KeyboardEvent.KEY_X, KeyboardEventType.KEY_RELEASED);
 
-        setKeyAndEvent(KeyboardEvent.KEY_C, KeyboardEventType.KEY_PRESSED);
+        setKeyAndEvent(KeyboardEvent.KEY_C, KeyboardEventType.KEY_RELEASED);
 
-        setKeyAndEvent(KeyboardEvent.KEY_V, KeyboardEventType.KEY_PRESSED);
+        setKeyAndEvent(KeyboardEvent.KEY_V, KeyboardEventType.KEY_RELEASED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_K, KeyboardEventType.KEY_RELEASED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_L, KeyboardEventType.KEY_RELEASED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_Y, KeyboardEventType.KEY_RELEASED);
 
     }
 

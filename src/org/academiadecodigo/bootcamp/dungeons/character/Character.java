@@ -38,6 +38,9 @@ public abstract class Character {
         return criticalChance;
     }
 
+    public int getIntelligence(){
+        return intelligence;
+    }
 
     // Magical types impact intelligence; Physical impact strength;
     // Magical resistance decrements damage made with Magical type;
