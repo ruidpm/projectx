@@ -1,9 +1,6 @@
 package org.academiadecodigo.bootcamp.dungeons.game;
 
-import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyTypes;
 import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerClasses;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class ImagesTest {
 
