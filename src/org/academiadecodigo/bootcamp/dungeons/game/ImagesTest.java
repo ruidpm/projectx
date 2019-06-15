@@ -1,5 +1,10 @@
 package org.academiadecodigo.bootcamp.dungeons.game;
 
+import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyTypes;
+import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerClasses;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+
 public class ImagesTest {
 
 
@@ -8,5 +13,12 @@ public class ImagesTest {
         Images images = new Images();
 
         images.backgound();
+        //images.enemy(EnemyTypes.RAT);
+
+       // images.battleMenu();
+       // images.player(PlayerClasses.NINJA);
+
+        images.choosePlayer();
+
     }
 }
