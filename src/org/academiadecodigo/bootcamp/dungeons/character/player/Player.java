@@ -258,7 +258,7 @@ public class Player extends Character {
         GameSounds.levelUp.play(true);
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

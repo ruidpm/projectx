@@ -2,7 +2,6 @@ package org.academiadecodigo.bootcamp.dungeons.game;
 import org.academiadecodigo.bootcamp.dungeons.Randomizer;
 import org.academiadecodigo.bootcamp.dungeons.character.ReturningAttackValues;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyFactory;
-import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyTypes;
 import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerClasses;
 import org.academiadecodigo.bootcamp.dungeons.character.player.Player;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.Enemy;
@@ -62,7 +61,6 @@ public class Game {
 
 
     private void enemyTurn(){
-
         try {
             Thread.sleep(1500);
         } catch (InterruptedException e) {
@@ -89,6 +87,7 @@ public class Game {
 
         if (enemy.getHealthPoints() <= 0){
 
+            images.afterBattleMenu();         // TODO: 15/06/2019 check this
             generateLoot(enemy.getExperience());
 
             System.out.println("Press N for new enemy or R to rest");
@@ -149,7 +148,7 @@ public class Game {
             System.out.println("You are ambushed while resting");
             enemy = EnemyFactory.createEliteEnemy();
             GameSounds.enemyAppears.play(true);     // TODO: 15/06/2019 change to unique sound
-            images.enemy(EnemyTypes.ELITE_HUNTER);         // TODO: 15/06/2019 change this
+            images.enemy(enemy.getEnemyTypes());
             images.battleMenu();
 
             enemyTurn();
@@ -239,7 +238,7 @@ public class Game {
         images.deleteAfterBattleMenu();
         images.battleMenu();
 
-        images.enemy(EnemyTypes.ELITE_HUNTER);      // TODO: 15/06/2019 change this
+        images.enemy(enemy.getEnemyTypes());
         outOfCombat = false;
     }
 
@@ -248,7 +247,7 @@ public class Game {
 
         images.deleteBattleMenu();
         images.deleteEnemy();
-        //images.afterBattleMenu();
+        images.afterBattleMenu();
         GameSounds.victorySound.play(true);
 
 
