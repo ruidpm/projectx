@@ -311,13 +311,33 @@ public class Images {
     }
 
     public void changeWeaponMenu(){
-        Picture changeWeaponMenu = new Picture(260,350, "");
+        Picture changeWeaponMenu = new Picture(260,360, "pics/changeWeapon.png");
         changeWeaponMenu.draw();
         this.changeWeaponMenu = changeWeaponMenu;
     }
 
     public void deleteChangeWeaponMenu(){
         changeWeaponMenu.delete();
+    }
+
+    public void chooseSkillMenu(){
+        Picture chooseSkillMenu = new Picture(260,330, "pics/chooseSkill.png");
+        chooseSkillMenu.draw();
+        this.chooseSkillMenu = chooseSkillMenu;
+    }
+
+    public void deleteChooseSkillMenu(){
+        chooseSkillMenu.delete();
+    }
+
+    public void storyMenu (){
+        Picture storyMenu = new Picture(45,50, "");
+        storyMenu.draw();
+        this.storyMenu = storyMenu;
+    }
+
+    public void deleteStoryMenu(){
+        storyMenu.delete();
     }
 
 

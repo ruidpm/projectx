@@ -11,9 +11,9 @@ public class ImagesTest {
         Images images = new Images();
 
         images.backgound();
-        images.enemy(EnemyTypes.MINOTAUR);
+       // images.enemy(EnemyTypes.MINOTAUR);
 
-        images.battleMenu();
+        //images.battleMenu();
         images.player(PlayerClasses.WARRIOR);
 
         //images.choosePlayer();
@@ -22,6 +22,9 @@ public class ImagesTest {
        // images.initialImage();
         //images.gameOver();
         //images.credits();
+
+       // images.chooseSkillMenu();
+        images.changeWeaponMenu();
 
     }
 }
