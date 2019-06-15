@@ -22,6 +22,29 @@ public class Images {
     private Picture press3;
     private Picture selectPlayer;
     private Picture lootGenerated;
+    private Picture initialImage;
+    private Picture gameOver;
+    private Picture credits;
+    private Picture group;
+    private Picture changeWeaponMenu;
+    private Picture chooseSkillMenu;
+    private Picture storyMenu;
+
+    public void initialImage(){
+
+        Picture background = new Picture(PADDING, PADDING, "pics/Background.png");
+        background.draw();
+        this.background = background;
+
+        Picture initialImage = new Picture(90,90, "pics/initialImage.png");
+        initialImage.draw();
+        this.initialImage = initialImage;
+    }
+
+    public void deleteInitialImage(){
+        initialImage.delete();
+        background.delete();
+    }
 
 
     public void backgound (){
@@ -260,6 +283,41 @@ public class Images {
 
     public void deleteGeneratedLoot(){
         lootGenerated.delete();
+    }
+
+    public void gameOver(){
+        Picture gameOver = new Picture(120,160,"pics/gameOver.png");
+        gameOver.draw();
+        this.gameOver = gameOver;
+    }
+
+    public void deleteGameOver(){
+        gameOver.delete();
+    }
+
+    public void credits(){
+        Picture credits = new Picture(200, 100, "pics/credits.png");
+        credits.draw();
+        this.credits = credits;
+
+        Picture group = new Picture(140, 180, "pics/grupo.jpg");
+        group.draw();
+        this.group = group;
+    }
+
+    public void deleteCredits(){
+        credits.delete();
+        group.delete();
+    }
+
+    public void changeWeaponMenu(){
+        Picture changeWeaponMenu = new Picture(260,350, "");
+        changeWeaponMenu.draw();
+        this.changeWeaponMenu = changeWeaponMenu;
+    }
+
+    public void deleteChangeWeaponMenu(){
+        changeWeaponMenu.delete();
     }
 
 
