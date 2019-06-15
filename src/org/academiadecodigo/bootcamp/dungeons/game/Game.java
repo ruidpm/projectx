@@ -245,6 +245,7 @@ public class Game {
 
     private void generateWeapon(){
 
+        choosingWeapon = true;
         weaponIndex = Randomizer.randomizeBetween(0, WeaponTypes.values().length -1);
 
         System.out.println("The enemy dropped a " + WeaponTypes.values()[weaponIndex].toString());

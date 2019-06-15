@@ -21,6 +21,6 @@ public enum WeaponTypes {
 
     @Override
     public String toString(){
-        return this.name() + ", " + this.damage;
+        return this.name() + ", " + this.damage + " damage";
     }
 }
