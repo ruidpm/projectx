@@ -6,6 +6,8 @@ public class GameSounds {
 
     public static Sound gameMusic = new Sound("/resources/Background/Forward-Assault.wav");
 
+    public static Sound wrongMenuChoice = new Sound("/resources/Creepy.wav");
+
     //public static Sound gameStart = new Sound("/resources/Background/.wav");
 
     public static Sound enemyAppears = new Sound("/resources/black.wav");
