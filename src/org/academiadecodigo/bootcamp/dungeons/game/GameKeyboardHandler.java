@@ -140,6 +140,23 @@ public class GameKeyboardHandler implements KeyboardHandler {
                 }
 
                 break;
+
+            case  KeyboardEvent.KEY_K:
+
+                if (game.choosingSkill){
+                    game.playerChooseSkill(1);
+                }
+
+                break;
+
+            case  KeyboardEvent.KEY_L:
+
+                if (game.choosingSkill){
+                    game.playerChooseSkill(2);
+                }
+
+                break;
+
         }
 
     }
@@ -187,6 +204,9 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
         setKeyAndEvent(KeyboardEvent.KEY_V, KeyboardEventType.KEY_PRESSED);
 
+        setKeyAndEvent(KeyboardEvent.KEY_K, KeyboardEventType.KEY_PRESSED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_L, KeyboardEventType.KEY_PRESSED);
     }
 
 }

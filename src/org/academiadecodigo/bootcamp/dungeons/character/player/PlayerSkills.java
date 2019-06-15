@@ -3,21 +3,21 @@ package org.academiadecodigo.bootcamp.dungeons.character.player;
 import org.academiadecodigo.bootcamp.dungeons.character.DamageTypes;
 
 public enum PlayerSkills {
-    DOUBLEATTACK (35 ,DamageTypes.PHYSICAL, 20),
+    DOUBLE_ATTACK (35 ,DamageTypes.PHYSICAL, 20),
     YELL (40, DamageTypes.PHYSICAL, 30),
-    SPEARSTEB (35, DamageTypes.PHYSICAL, 30),
+    SPEAR_STAB (35, DamageTypes.PHYSICAL, 30),
     DARKSOUL (45, DamageTypes.MAGICAL, 40),
-    INNERDEAMON (50, DamageTypes.MAGICAL, 40),
-    DRAGONRAGE (40, DamageTypes.PHYSICAL, 30),
-    HYPNOSE (30, DamageTypes.MAGICAL, 25),
-    UNHOLYHEAL (45, DamageTypes.MAGICAL, 35),
-    SPINNINGRAGE (45, DamageTypes.PHYSICAL, 40),
-    SIDESMASH (40, DamageTypes.PHYSICAL, 30),
-    PSYCHODRAIN (45, DamageTypes.MAGICAL, 40),
-    ACIDNEBULA (35, DamageTypes.PHYSICAL, 30),
-    TRAPSOUL (30, DamageTypes.MAGICAL, 20),
-    INFINITELOOP (45, DamageTypes.MAGICAL, 35),
-    CRUMBLEFIST (45, DamageTypes.PHYSICAL, 35);
+    INNER_DEAMON (50, DamageTypes.MAGICAL, 40),
+    DRAGON_RAGE (40, DamageTypes.PHYSICAL, 30),
+    HYPNOSIS (30, DamageTypes.MAGICAL, 25),
+    UNHOLY_SPEAR (65, DamageTypes.MAGICAL, 45),
+    SPINNING_RAGE (45, DamageTypes.PHYSICAL, 40),
+    SIDE_SMASH (40, DamageTypes.PHYSICAL, 30),
+    PSYCHO_DRAIN (45, DamageTypes.MAGICAL, 40),
+    ACID_NEBULA (35, DamageTypes.PHYSICAL, 30),
+    TRAP_SOUL (30, DamageTypes.MAGICAL, 20),
+    INFINITE_LOOP (45, DamageTypes.MAGICAL, 35),
+    CRUMBLE_FIST (45, DamageTypes.PHYSICAL, 35);
 
 
     int skillDamage;

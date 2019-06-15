@@ -1,4 +1,5 @@
 package org.academiadecodigo.bootcamp.dungeons.game;
+import org.academiadecodigo.bootcamp.dungeons.Randomizer;
 import org.academiadecodigo.bootcamp.dungeons.character.ReturningAttackValues;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyFactory;
 import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerClasses;
@@ -9,10 +10,14 @@ public class Game {
 
     private Player player;
     private Enemy enemy;
+    private int currentLevel;
+    private int skillIndex1;
+    private int skillIndex2;
 
     boolean characterChosen;
     boolean gameStarted;
     boolean outOfCombat;
+    boolean choosingSkill;
 
 
     public Game(){
@@ -24,6 +29,7 @@ public class Game {
     private void init(){
 
         outOfCombat = true;
+        currentLevel = 1;
 
         System.out.println("1 for Warrior");
         System.out.println("2 for Ninja");
@@ -62,16 +68,65 @@ public class Game {
         if (enemy.getHealthPoints() <= 0){
 
             generateLoot(enemy.getExperience());
+            outOfCombat = true;
             System.out.println("Enemy dead\nGained " + enemy.getExperience() + " experience");
+
+            if (currentLevel < player.getPlayerLevel() && player.getPlayerLevel() <= 4){
+
+                choosingSkill = true;
+                currentLevel++;
+                getTwoRandomSkills();
+                return;
+
+            }
 
             System.out.println("Press N for new enemy or R to rest");
 
-            outOfCombat = true;
+
             return;
         }
 
         enemyTurn();
     }
+
+
+    public void playerChooseSkill(int choice){
+
+        if (choice == 1){
+            System.out.println("You choose " + player.getPlayerPossibleSpellsList().get(skillIndex1).name());
+            player.chooseSkill(skillIndex1, skillIndex2);
+            choosingSkill = false;
+            createEnemy();
+            return;
+        }
+
+        System.out.println("You choose " + player.getPlayerPossibleSpellsList().get(skillIndex2).name());
+        player.chooseSkill(skillIndex2, skillIndex1);
+
+        choosingSkill = false;
+        createEnemy();
+    }
+
+
+    private void getTwoRandomSkills(){
+
+        skillIndex1 = Randomizer.randomizeBetween(0, player.getPlayerPossibleSpellsList().size() -1);
+        skillIndex2 = skillIndex1;
+
+        System.out.println("index 1: " + skillIndex1);
+
+        while (skillIndex1 == skillIndex2){
+            System.out.println("here");
+            skillIndex2 = Randomizer.randomizeBetween(0, player.getPlayerPossibleSpellsList().size() -1);
+        }
+
+        System.out.println("index 2: " + skillIndex2);
+
+        System.out.println("You found two scrolls with ancient techniques but can only take one");
+        System.out.println("Press K to take " + player.getPlayerPossibleSpellsList().get(skillIndex1).name());
+        System.out.println("Press L to take " + player.getPlayerPossibleSpellsList().get(skillIndex2).name());
+    }
+
 
 
     void playerRest(){
@@ -129,6 +184,9 @@ public class Game {
 
             enemy.calculateDamageTaken(damage);
             enemyTurn();
+
+            // TODO: 15/06/2019 check if enemy dies
+
         }
     }
 
