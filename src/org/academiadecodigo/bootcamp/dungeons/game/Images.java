@@ -2,6 +2,8 @@ package org.academiadecodigo.bootcamp.dungeons.game;
 
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyTypes;
 import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerClasses;
+import org.academiadecodigo.bootcamp.dungeons.character.player.items.ItemTypes;
+import org.academiadecodigo.bootcamp.dungeons.character.player.items.WeaponTypes;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Images {
@@ -19,6 +21,7 @@ public class Images {
     private Picture press2;
     private Picture press3;
     private Picture selectPlayer;
+    private Picture lootGenerated;
 
 
     public void backgound (){
@@ -189,6 +192,74 @@ public class Images {
 
     public void deleteAfterBattleMenu(){
         afterBattleMenu.delete();
+    }
+
+    public void lootGenerated(ItemTypes itemTypes){
+        switch (itemTypes){
+
+            case MANAPOTION:
+                Picture lootGenerated = new Picture(380,50, "pics/manaPotion.png" );
+                lootGenerated.draw();
+                this.lootGenerated = lootGenerated;
+                return;
+
+            case HEALTHPOTION:
+                Picture lootGenerated2 = new Picture(380,50, "pics/healthPotion.png" );
+                lootGenerated2.draw();
+                this.lootGenerated = lootGenerated2;
+                return;
+        }
+    }
+
+    public void lootGenerated(WeaponTypes weaponTypes){
+        switch (weaponTypes){
+
+            case STAFF:
+                Picture lootGenerated3 = new Picture(380,50, "pics/staff.png" );
+                lootGenerated3.draw();
+                this.lootGenerated = lootGenerated3;
+                return;
+
+            case IRONAXE:
+                Picture lootGenerated4 = new Picture(380,50, "pics/axe.png" );
+                lootGenerated4.draw();
+                this.lootGenerated = lootGenerated4;
+                return;
+
+            case SHURIKEN:
+                Picture lootGenerated5 = new Picture(380,50, "pics/shuriken.png" );
+                lootGenerated5.draw();
+                this.lootGenerated = lootGenerated5;
+                return;
+
+            case SHOE:
+                Picture lootGenerated6 = new Picture(380,50, "pics/shoe.png" );
+                lootGenerated6.draw();
+                this.lootGenerated = lootGenerated6;
+                return;
+
+            case CANNON:
+                Picture lootGenerated7 = new Picture(380,50, "pics/cannon.png" );
+                lootGenerated7.draw();
+                this.lootGenerated = lootGenerated7;
+                return;
+
+            case FIRESWORD:
+                Picture lootGenerated8 = new Picture(380,50, "pics/fireSword.png" );
+                lootGenerated8.draw();
+                this.lootGenerated = lootGenerated8;
+                return;
+
+            case METALSWORD:
+                Picture lootGenerated9 = new Picture(380,50, "pics/sword.png" );
+                lootGenerated9.draw();
+                this.lootGenerated = lootGenerated9;
+                return;
+        }
+    }
+
+    public void deleteGeneratedLoot(){
+        lootGenerated.delete();
     }
 
 
