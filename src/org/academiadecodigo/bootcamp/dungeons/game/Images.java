@@ -59,13 +59,13 @@ public class Images {
                 return;
 
             case WIZARD:
-                Picture wizard = new Picture(135,360, "pics/wizard.png" );
+                Picture wizard = new Picture(70,300, "pics/wizard.png" );
                 wizard.draw();
                 this.player = wizard;
                 return;
 
             case WARRIOR:
-                Picture warrior = new Picture(135,360, "pics/warrior.png" );
+                Picture warrior = new Picture(70,300, "pics/warrior.png" );
                 warrior.draw();
                 this.player = warrior;
                 return;
