@@ -546,11 +546,11 @@ public class Images {
     }
 
     public void enemyHealth(){
-        Picture enemyHealth = new Picture(410, 240, "pics/health.gif");
+        Picture enemyHealth = new Picture(538, 70, "pics/health.gif");
         enemyHealth.draw();
         this.enemyHealth = enemyHealth;
 
-        Text textEnemyHealth = new Text(435, 242," ");
+        Text textEnemyHealth = new Text(565, 70," ");
         textEnemyHealth.setColor(Color.WHITE);
         textEnemyHealth.draw();
         this.textEnemyHealth = textEnemyHealth;
@@ -562,7 +562,7 @@ public class Images {
     public void enemyHealtText(int enemyHealthText){
         textEnemyHealth.delete();
         this.enemyHealthText = String.valueOf(enemyHealthText);
-        Text textEnemyHealth = new Text(435, 242,this.enemyHealthText);
+        Text textEnemyHealth = new Text(561, 71,this.enemyHealthText);
         textEnemyHealth.setColor(Color.WHITE);
         textEnemyHealth.draw();
         this.textEnemyHealth = textEnemyHealth;
