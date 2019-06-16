@@ -5,7 +5,7 @@ public enum WeaponTypes {
     METALSWORD(15),
     FIRESWORD(40),
     SHOE(1),
-    CANNON(50),
+    CROSSBOW(50),
     STAFF (30),
     SHURIKEN (10);
 

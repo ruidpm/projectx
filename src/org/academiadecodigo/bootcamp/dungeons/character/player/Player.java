@@ -127,8 +127,6 @@ public class Player extends Character {
     public boolean useHealthPotion(){
         if (healthPotion > 0){
 
-            GameSounds.drinkPotion.play(true);
-
             if (maxHealthPoints -getHealthPoints() < ItemTypes.HEALTHPOTION.getValue()){
                 heal(maxHealthPoints -getHealthPoints());
                 healthPotion--;
@@ -147,8 +145,6 @@ public class Player extends Character {
 
     public boolean useManaPotion(){
         if (manaPotion > 0){
-
-            GameSounds.drinkPotion.play(true);
 
             if (maxManaPoints < ItemTypes.MANAPOTION.getValue()){
                 manaPoints = maxManaPoints - ItemTypes.MANAPOTION.getValue();
