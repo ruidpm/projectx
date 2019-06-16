@@ -373,7 +373,7 @@ public class Images {
     }
 
     public void storyMenu (){
-        Picture storyMenu = new Picture(45,50, "pics/storyMenu.png");
+        Picture storyMenu = new Picture(45,50, "pics/storyMenu6.png");
         storyMenu.draw();
         this.storyMenu = storyMenu;
 
@@ -399,6 +399,9 @@ public class Images {
 
     public  void textStory(String story){
         textstory.delete();
+        textstory1.delete();
+        textstory2.delete();
+        textstory3.delete();
         this.story = story;
         Text textStory = new Text(55,60,story);
         textStory.draw();
@@ -495,6 +498,13 @@ public class Images {
         health.delete();
     }
 
+    public void deleteHealthManaText(){
+        textHealth.delete();
+        textMaxHealth.delete();
+        textMana.delete();
+        textMaxMana.delete();
+    }
+
     public void enemyHealth(){
         Picture enemyHealth = new Picture(410, 240, "pics/health.gif");
         enemyHealth.draw();
@@ -516,6 +526,9 @@ public class Images {
         textEnemyHealth.setColor(Color.WHITE);
         textEnemyHealth.draw();
         this.textEnemyHealth = textEnemyHealth;
+    }
+    public void deleteEnemyHealtText(){
+        textEnemyHealth.delete();
     }
 
 
