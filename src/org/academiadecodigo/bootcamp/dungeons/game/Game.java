@@ -27,18 +27,22 @@ public class Game {
     boolean outOfCombat;
     boolean choosingSkill;
     boolean choosingWeapon;
+    boolean gameInit;
 
 
     public Game(Images images){
 
         GameSounds.gameMusic.play(true);        // TODO: 15/06/2019 change to loop
         this.images = images;
-        init();
+
+        images.initialImage();
     }
 
 
-    private void init(){
+    void init(){
 
+        gameStarted = true;
+        images.deleteInitialImage();
         outOfCombat = true;
         currentLevel = 1;
         images.backgound();
@@ -83,11 +87,12 @@ public class Game {
 
     void playerAttack(){
 
+        GameSounds.playerWeaponAttack.play(true);
+
         enemy.calculateDamageTaken(player.attack());
 
         if (enemy.getHealthPoints() <= 0){
 
-            images.afterBattleMenu();         // TODO: 15/06/2019 check this
             generateLoot(enemy.getExperience());
 
             System.out.println("Press N for new enemy or R to rest");
@@ -167,6 +172,8 @@ public class Game {
             System.out.println("Used Health Potion");
             enemyTurn();
         }
+
+        GameSounds.wrongMenuChoice.play(true);
     }
 
 
@@ -176,6 +183,8 @@ public class Game {
             System.out.println("Used Mana Potion");
             enemyTurn();
         }
+
+        GameSounds.wrongMenuChoice.play(true);
     }
 
     void playerFlee(){
@@ -213,20 +222,22 @@ public class Game {
             }
 
             enemyTurn();
+            return;
 
         }
+
+        GameSounds.wrongMenuChoice.play(true);
     }
 
 
 
     void start() {
 
-        gameStarted = true;
+
 
         images.afterBattleMenu();
 
         createEnemy();
-        images.battleMenu();
         images.player(player.getPlayerClass());
     }
 
@@ -234,6 +245,12 @@ public class Game {
     void createEnemy(){
 
         enemy = EnemyFactory.createEnemy();
+
+        if (player.getPlayerLevel() >= 5){
+
+            enemy = EnemyFactory.createBoss();
+        }
+
         GameSounds.enemyAppears.play(true);
         images.deleteAfterBattleMenu();
         images.battleMenu();
@@ -248,7 +265,7 @@ public class Game {
         images.deleteBattleMenu();
         images.deleteEnemy();
         images.afterBattleMenu();
-        GameSounds.victorySound.play(true);
+        GameSounds.levelUp.play(true);
 
 
         outOfCombat = true;
@@ -283,6 +300,14 @@ public class Game {
     private void gameOver(){
         System.out.println("You died on level " + player.getPlayerLevel());
         images.deletePlayer();
+        images.gameOver();
+
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         System.exit(0);
     }
 
