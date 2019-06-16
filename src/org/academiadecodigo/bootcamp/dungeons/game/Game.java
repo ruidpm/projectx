@@ -66,6 +66,10 @@ public class Game {
 
         player = new Player(playerClass);
         characterChosen = true;
+
+        images.healthMana();
+      //  images.healthManaText(player.getHealthPoints(),player.getMaxHealthPoints(),
+             //   player.getManaPoints(), player.getMaxManaPoints());
     }
 
 

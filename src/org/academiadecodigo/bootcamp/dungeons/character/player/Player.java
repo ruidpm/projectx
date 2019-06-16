@@ -287,4 +287,8 @@ public class Player extends Character {
     public int getMaxManaPoints() {
         return maxManaPoints;
     }
+
+    public int getHealthPoints() {
+        return healthPoints;
+    }
 }
