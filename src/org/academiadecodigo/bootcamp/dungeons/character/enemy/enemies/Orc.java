@@ -23,7 +23,7 @@ public class Orc extends Enemy {
 
         attackDamage = new ReturningAttackValues((int )(super.getStrength() * random), DamageTypes.PHYSICAL);
 
-        System.out.println(ANSI_BLUE + getEnemyName() + " Orc did a double attack on you. " + attackDamage.getDamage() + " Physical Damage."  + ANSI_RESET);
+        System.out.println(ANSI_BLUE + getEnemyName() + " did a double attack on you. " + attackDamage.getDamage() + " Physical Damage."  + ANSI_RESET);
 
         return attackDamage;
     }

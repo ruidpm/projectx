@@ -24,7 +24,7 @@ public class Minotaur extends Enemy {
 
         attackDamage = new ReturningAttackValues((int )(super.getStrength() * random), DamageTypes.PHYSICAL);
 
-        System.out.println(ANSI_BLUE + getEnemyName() + " Minotaur Pierce you. " + attackDamage.getDamage() + " Physical Damage."  + ANSI_RESET);
+        System.out.println(ANSI_BLUE + getEnemyName() + " Pierce you. " + attackDamage.getDamage() + " Physical Damage."  + ANSI_RESET);
 
         return attackDamage;
     }

@@ -23,7 +23,7 @@ public class Troll extends Enemy {
 
         attackDamage = new ReturningAttackValues((int )(super.getStrength() * random), DamageTypes.PHYSICAL);
 
-        System.out.println(ANSI_BLUE + getEnemyName() + " Troll kicks you. " + attackDamage.getDamage() + " Physical Damage."  + ANSI_RESET);
+        System.out.println(ANSI_BLUE + getEnemyName() + " kicks you. " + attackDamage.getDamage() + " Physical Damage."  + ANSI_RESET);
 
         return attackDamage;
     }
