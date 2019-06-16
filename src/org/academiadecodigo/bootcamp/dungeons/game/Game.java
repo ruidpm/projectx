@@ -27,7 +27,6 @@ public class Game {
     boolean outOfCombat;
     boolean choosingSkill;
     boolean choosingWeapon;
-    boolean gameInit;
 
 
     public Game(Images images){
@@ -138,9 +137,10 @@ public class Game {
 
 
     void playerRest(){
-
         outOfCombat = false;
         GameSounds.restSound.play(true);
+        images.deleteAfterBattleMenu();
+        images.deleteBattleMenu();
 
         try {
             Thread.sleep(1000);
@@ -150,17 +150,19 @@ public class Game {
 
         if (!player.rest()){
 
+            GameSounds.ambushSound.play(true);
             System.out.println("You are ambushed while resting");
             enemy = EnemyFactory.createEliteEnemy();
             GameSounds.enemyAppears.play(true);     // TODO: 15/06/2019 change to unique sound
             images.enemy(enemy.getEnemyTypes());
+
+            //images.deleteAfterBattleMenu();//todo check this
             images.battleMenu();
 
             enemyTurn();
             return;
         }
 
-        images.battleMenu();
         System.out.println("You rest successfully");
         createEnemy();
     }
@@ -252,6 +254,7 @@ public class Game {
         }
 
         GameSounds.enemyAppears.play(true);
+
         images.deleteAfterBattleMenu();
         images.battleMenu();
 
@@ -300,13 +303,17 @@ public class Game {
     private void gameOver(){
         System.out.println("You died on level " + player.getPlayerLevel());
         images.deletePlayer();
+        images.deleteBattleMenu();
+        images.deleteEnemy();
+        images.backgound();
+
         images.gameOver();
 
-        try {
+      /*  try {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
 
         System.exit(0);
     }
