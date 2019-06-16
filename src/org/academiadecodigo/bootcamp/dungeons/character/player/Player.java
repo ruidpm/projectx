@@ -120,7 +120,8 @@ public class Player extends Character {
 
         manaPoints = manaPoints - skills[skillIndex].manaNeeded;
 
-        images.textStory("You use " + skills[skillIndex].getName());
+        images.textStory("You use " + skills[skillIndex].getName(), "for " +
+                returningAttackValues.getDamage() + " damage");
         return returningAttackValues;
     }
 
@@ -287,5 +288,9 @@ public class Player extends Character {
 
     public int getHealthPoints() {
         return healthPoints;
+    }
+
+    public String getName() {
+        return name;
     }
 }

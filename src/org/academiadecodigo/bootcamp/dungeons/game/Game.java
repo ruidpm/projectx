@@ -84,11 +84,13 @@ public class Game {
             e.printStackTrace();
         }
 
+        ReturningAttackValues attack = enemy.attack();
+
         GameSounds.enemyAttack.play(true);
         choosingWeapon = false;
-        System.out.println("Enemy attacking");
+        images.textEnemyStory("Enemy attacked for ", + attack.getDamage() + " damage");
 
-        player.calculateDamageTaken(enemy.attack());
+        player.calculateDamageTaken(attack);
 
         if (player.getHealthPoints() <= 0){
             gameOver();
@@ -102,9 +104,14 @@ public class Game {
 
     void playerAttack(){
 
+        ReturningAttackValues attack = player.attack();
+
         GameSounds.playerWeaponAttack.play(true);
 
-        enemy.calculateDamageTaken(player.attack());
+        enemy.calculateDamageTaken(attack);
+
+        images.textStory(player.getName() + " attacks with ", player.getWeapon().name() +
+                " for " + attack.getDamage() + " damage");
         images.enemyHealtText(enemy.getHealthPoints());
 
         if (enemy.getHealthPoints() <= 0){
