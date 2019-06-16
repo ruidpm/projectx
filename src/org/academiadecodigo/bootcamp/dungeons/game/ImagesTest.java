@@ -11,9 +11,9 @@ public class ImagesTest {
         Images images = new Images();
 
         images.backgound();
-       // images.enemy(EnemyTypes.MINOTAUR);
+        images.enemy(EnemyTypes.MINOTAUR);
 
-        //images.battleMenu();
+      //  images.battleMenu();
         images.player(PlayerClasses.WARRIOR);
 
         //images.choosePlayer();
@@ -21,10 +21,16 @@ public class ImagesTest {
         //images.battleMenu();
        // images.initialImage();
         //images.gameOver();
-        //images.credits();
-
+       // images.credits();
+//images.changeWeaponMenu();
        // images.chooseSkillMenu();
-        images.changeWeaponMenu();
+        images.storyMenu();
+       // images.textStory("Onde upon a time....");
+        images.textStory("eu","estou", "aqui", "agora");
+        images.healthMana();
+        images.healthManaText("80 /","100", "05 /", "100");
+     // images.enemyHealth();
+      // images.enemyHealtText("50 / 100");
 
     }
 }

@@ -4,6 +4,8 @@ import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyTypes;
 import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerClasses;
 import org.academiadecodigo.bootcamp.dungeons.character.player.items.ItemTypes;
 import org.academiadecodigo.bootcamp.dungeons.character.player.items.WeaponTypes;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Images {
@@ -29,6 +31,28 @@ public class Images {
     private Picture changeWeaponMenu;
     private Picture chooseSkillMenu;
     private Picture storyMenu;
+    private String story;
+    private String story1;
+    private String story2;
+    private String story3;
+    private Text textstory;
+    private Text textstory1;
+    private Text textstory2;
+    private Text textstory3;
+    private Picture health;
+    private Picture mana;
+    private Picture enemyHealth;
+    private String healthText;
+    private String maxHealthText;
+    private String manaText;
+    private String maxManaText;
+    private Text textHealth;
+    private Text textMaxHealth;
+    private Text textMana;
+    private Text textMaxMana;
+    private String enemyHealthText;
+    private Text textEnemyHealth;
+
 
     public void initialImage(){
 
@@ -190,6 +214,24 @@ public class Images {
                 eliteSkeleton.draw();
                 this.enemy = eliteSkeleton;
                 return;
+
+            case FAUSTINOMON:
+                Picture faustino = new Picture(380, 50, "pics/Faustino.png");
+                faustino.draw();
+                this.enemy = faustino;
+                return;
+
+            case SERINGASMON:
+                Picture seringas = new Picture(380,50, "pics/Seringas.png");
+                seringas.draw();
+                this.enemy = seringas;
+                return;
+
+            case MARIANAMON:
+                Picture mariana = new Picture(380,50, "pics/Mariana.png");
+                mariana.draw();
+                this.enemy = mariana;
+                return;
         }
     }
 
@@ -311,7 +353,7 @@ public class Images {
     }
 
     public void changeWeaponMenu(){
-        Picture changeWeaponMenu = new Picture(260,360, "pics/changeWeapon.png");
+        Picture changeWeaponMenu = new Picture(440,360, "pics/changeWeapon.png");
         changeWeaponMenu.draw();
         this.changeWeaponMenu = changeWeaponMenu;
     }
@@ -331,13 +373,129 @@ public class Images {
     }
 
     public void storyMenu (){
-        Picture storyMenu = new Picture(45,50, "");
+        Picture storyMenu = new Picture(45,50, "pics/storyMenu.png");
         storyMenu.draw();
         this.storyMenu = storyMenu;
+
+        Text textStory = new Text(55,60," ");
+        textStory.draw();
+        this.textstory = textStory;
+        Text textStory1 = new Text(55, 80, " ");
+        textStory.draw();
+        this.textstory1 = textStory1;
+        Text textStory2 = new Text(55, 100, " ");
+        textStory.draw();
+        this.textstory2 = textStory2;
+        Text textStory3 = new Text(55, 120, " ");
+        textStory.draw();
+        this.textstory3 = textStory3;
+
     }
 
     public void deleteStoryMenu(){
         storyMenu.delete();
+
+    }
+
+    public  void textStory(String story){
+        textstory.delete();
+        this.story = story;
+        Text textStory = new Text(55,60,story);
+        textStory.draw();
+        this.textstory = textStory;
+    }
+
+    public  void textStory(String story, String story1, String story2, String story3) {
+        textstory.delete();
+        textstory1.delete();
+        textstory2.delete();
+        textstory3.delete();
+        this.story = story;
+        this.story1 = story1;
+        this.story2 = story2;
+        this.story3 = story3;
+        Text textStory = new Text(55, 60, story);
+        textStory.draw();
+        Text textStory1 = new Text(55, 80, story1);
+        textStory1.draw();
+        Text textStory2 = new Text(55, 100, story2);
+        textStory2.draw();
+        Text textStory3 = new Text(55, 120, story3);
+        textStory3.draw();
+        this.textstory = textStory;
+        this.textstory1 = textStory1;
+        this.textstory2 = textStory2;
+        this.textstory3 = textStory3;
+    }
+
+
+    public void healthMana(){
+        Picture mana = new Picture(85,280,"pics/mana.gif");
+        mana.draw();
+        this.mana = mana;
+
+        Picture health = new Picture(85, 260, "pics/health.gif");
+        health.draw();
+        this.health = health;
+    }
+
+    public void healthManaText(String healthText, String maxHealthText, String manaText, String maxManaText){
+        this.healthText = healthText;
+        Text textHealth = new Text(110, 262,healthText);
+        textHealth.setColor(Color.WHITE);
+        textHealth.draw();
+        this.textHealth = textHealth;
+
+        this.maxHealthText = maxHealthText;
+        Text textMaxHealth = new Text(130, 262,maxHealthText);
+        textMaxHealth.setColor(Color.WHITE);
+        textMaxHealth.draw();
+        this.textMaxHealth = textMaxHealth;
+
+        this.manaText = manaText;
+        Text textMana = new Text(110, 282,manaText);
+        textMana.setColor(Color.WHITE);
+        textMana.draw();
+        this.textMana = textMana;
+
+        this.maxManaText = maxManaText;
+        Text textMaxMana = new Text(130, 282,maxManaText);
+        textMaxMana.setColor(Color.WHITE);
+        textMaxMana.draw();
+        this.textMaxMana = textMaxMana;
+
+    }
+
+    public void deleteHealthMana(){
+        mana.delete();
+        health.delete();
+    }
+
+    public void deleteHealthText(){
+        textHealth.delete();
+        textMaxHealth.delete();
+
+    }
+
+    public void enemyHealth(){
+        Picture enemyHealth = new Picture(410, 240, "pics/health.gif");
+        enemyHealth.draw();
+        this.enemyHealth = enemyHealth;
+    }
+    public void deleteEnemyHealth(){
+        enemyHealth.delete();
+    }
+
+    public void enemyHealtText(String enemyHealthText){
+        this.enemyHealthText = enemyHealthText;
+        Text textEnemyHealth = new Text(435, 242,enemyHealthText);
+        textEnemyHealth.setColor(Color.WHITE);
+        textEnemyHealth.draw();
+        this.textEnemyHealth = textEnemyHealth;
+    }
+
+    public void deleteEnemyHealthText(){
+        textEnemyHealth.delete();
     }
 
 
