@@ -29,8 +29,10 @@ public class Game {
     boolean choosingSkill;
     boolean choosingWeapon;
 
+
     private boolean gotLoot;
     private boolean gotWeapon;
+    private boolean choseSkill;
 
     private boolean bossAppeared;
 
@@ -150,6 +152,9 @@ public class Game {
         System.out.println("You found two scrolls with ancient techniques but can only take one");
         System.out.println("Press K to take " + player.getPlayerPossibleSpellsList().get(skillIndex1).toString());
         System.out.println("Press L to take " + player.getPlayerPossibleSpellsList().get(skillIndex2).toString());
+
+        choseSkill = true;
+        images.deleteBattleMenu();
     }
 
 
@@ -181,6 +186,11 @@ public class Game {
             images.battleMenu();
 
             images.enemyHealth();
+
+            if (choseSkill){
+                choseSkill = false;
+                images.deleteChooseSkillMenu();
+            }
 
             enemyTurn();
             return;
@@ -309,6 +319,11 @@ public class Game {
             enemy = EnemyFactory.createBoss();
         }
 
+        if (choseSkill){
+            choseSkill = false;
+            images.deleteChooseSkillMenu();
+        }
+
         GameSounds.enemyAppears.play(true);
 
         images.deleteAfterBattleMenu();
@@ -325,7 +340,7 @@ public class Game {
     private void generateLoot(int experience){
 
         images.deleteEnemyHealth();
-        images.deleteEnemyHealthText();
+       // images.deleteEnemyHealthText();
 
         gotLoot = false;
         gotWeapon = false;
