@@ -24,7 +24,7 @@ public class SeringasMon extends Enemy {
 
         attackDamage = new ReturningAttackValues((int )(super.getIntelligence() * random), DamageTypes.MAGICAL);
 
-        System.out.println(ANSI_BLUE + getEnemyName() + " Seringamon did a Seringada on you. " + attackDamage.getDamage() + " Magical Damage."  + ANSI_RESET);
+        System.out.println(ANSI_BLUE + getEnemyName() + " did a Seringada on you. " + attackDamage.getDamage() + " Magical Damage."  + ANSI_RESET);
 
         return attackDamage;
     }
