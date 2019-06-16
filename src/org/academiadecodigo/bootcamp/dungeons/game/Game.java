@@ -13,7 +13,7 @@ public class Game {
 
     private static final int MANA_POTION_DROP_CHANCE = 20;
     private static final int HEALTH_POTION_DROP_CHANCE = 20;
-    private static final int WEAPON_DROP_CHANCE = 80;
+    private static final int WEAPON_DROP_CHANCE = 10;
 
     private Player player;
     private Enemy enemy;
@@ -31,6 +31,8 @@ public class Game {
 
     private boolean gotLoot;
     private boolean gotWeapon;
+
+    private boolean bossAppeared;
 
 
     public Game(Images images){
@@ -155,7 +157,7 @@ public class Game {
         }
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -266,7 +268,6 @@ public class Game {
     void start() {
 
 
-
         images.afterBattleMenu();
 
         createEnemy();
@@ -287,7 +288,7 @@ public class Game {
         enemy = EnemyFactory.createEnemy();
 
         if (player.getPlayerLevel() >= 5){
-
+            bossAppeared = true;
             enemy = EnemyFactory.createBoss();
         }
 
@@ -313,6 +314,14 @@ public class Game {
         GameSounds.victorySound.play(true);
 
         outOfCombat = true;
+
+
+        if (bossAppeared){
+
+            win();
+            return;
+        }
+
         player.gainExperience(experience);
 
         System.out.println("Enemy dead\nGained " + enemy.getExperience() + " experience");
@@ -391,4 +400,21 @@ public class Game {
         choosingWeapon = false;
     }
 
+
+    private void win(){
+
+        images.deletePlayer();
+        images.credits();
+        gameStarted = false;
+        characterChosen = false;
+        outOfCombat = true;
+
+        /*try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }*/
+
+       // images.initialImage();
+    }
 }
