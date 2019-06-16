@@ -439,27 +439,27 @@ public class Images {
         this.health = health;
     }
 
-    public void healthManaText(String healthText, String maxHealthText, String manaText, String maxManaText){
-        this.healthText = healthText;
-        Text textHealth = new Text(110, 262,healthText);
+    public void healthManaText(int healthText, int maxHealthText, int manaText, int maxManaText){
+        this.healthText = String.valueOf(healthText);
+        Text textHealth = new Text(110, 262,this.healthText + " / ");
         textHealth.setColor(Color.WHITE);
         textHealth.draw();
         this.textHealth = textHealth;
 
-        this.maxHealthText = maxHealthText;
-        Text textMaxHealth = new Text(130, 262,maxHealthText);
+        this.maxHealthText = String.valueOf(maxHealthText);
+        Text textMaxHealth = new Text(130, 262,this.maxHealthText);
         textMaxHealth.setColor(Color.WHITE);
         textMaxHealth.draw();
         this.textMaxHealth = textMaxHealth;
 
-        this.manaText = manaText;
-        Text textMana = new Text(110, 282,manaText);
+        this.manaText = String.valueOf(manaText);
+        Text textMana = new Text(110, 282,this.manaText+ " / ");
         textMana.setColor(Color.WHITE);
         textMana.draw();
         this.textMana = textMana;
 
-        this.maxManaText = maxManaText;
-        Text textMaxMana = new Text(130, 282,maxManaText);
+        this.maxManaText = String.valueOf(maxManaText);
+        Text textMaxMana = new Text(130, 282,this.maxManaText);
         textMaxMana.setColor(Color.WHITE);
         textMaxMana.draw();
         this.textMaxMana = textMaxMana;
@@ -486,9 +486,9 @@ public class Images {
         enemyHealth.delete();
     }
 
-    public void enemyHealtText(String enemyHealthText){
-        this.enemyHealthText = enemyHealthText;
-        Text textEnemyHealth = new Text(435, 242,enemyHealthText);
+    public void enemyHealtText(int enemyHealthText){
+        this.enemyHealthText = String.valueOf(enemyHealthText);
+        Text textEnemyHealth = new Text(435, 242,this.enemyHealthText);
         textEnemyHealth.setColor(Color.WHITE);
         textEnemyHealth.draw();
         this.textEnemyHealth = textEnemyHealth;
