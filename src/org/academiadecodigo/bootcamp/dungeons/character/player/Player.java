@@ -185,13 +185,13 @@ public class Player extends Character {
         int healPointsGained = maxHealthPoints - healthPoints;
         int manaPointsGained = maxManaPoints - manaPoints;
 
-        if( (maxHealthPoints/2) > (maxHealthPoints - healthPoints)){
-            healPointsGained = (maxHealthPoints - healthPoints);
+        if( (maxHealthPoints/2) < (maxHealthPoints - healthPoints)){
+            healPointsGained = maxHealthPoints / 2;
 
         }
 
-        if( (maxManaPoints/2) > (maxManaPoints - manaPoints)){
-            manaPointsGained = (maxManaPoints - manaPoints);
+        if( (maxManaPoints/2) < (maxManaPoints - manaPoints)){
+            manaPointsGained = maxManaPoints / 2;
 
         }
 
@@ -242,8 +242,6 @@ public class Player extends Character {
         if (this.experience >= 100 * playerLevel){
             this.experience = this.experience - 100 * playerLevel;
             levelUp();
-
-            System.out.println("LevelUp! You are now on Level " + playerLevel);
         }
     }
 

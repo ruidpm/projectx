@@ -10,7 +10,7 @@ public enum PlayerSkills {
     INNER_DEAMON (50, DamageTypes.MAGICAL, 40, "Inner Deamon"),
     DRAGON_RAGE (40, DamageTypes.PHYSICAL, 30, "Dragon Rage"),
     HYPNOSIS (30, DamageTypes.MAGICAL, 25, "Hypnosis"),
-    UNHOLY_SPEAR (65, DamageTypes.MAGICAL, 45, "Unholy Spear"),
+    UNHOLY_SPEAR (80, DamageTypes.MAGICAL, 45, "Unholy Spear"),
     SPINNING_RAGE (45, DamageTypes.PHYSICAL, 40, "Spinning Rage"),
     SIDE_SMASH (40, DamageTypes.PHYSICAL, 30, "Side Smash"),
     PSYCHO_DRAIN (45, DamageTypes.MAGICAL, 40, "Psycho Drain"),

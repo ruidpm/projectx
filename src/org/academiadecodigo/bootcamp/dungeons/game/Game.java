@@ -14,7 +14,7 @@ public class Game {
     private static final int MANA_POTION_DROP_CHANCE = 15;
     private static final int HEALTH_POTION_DROP_CHANCE = 15;
     private static final int WEAPON_DROP_CHANCE = 10;
-    private static final int LEVEL_TO_BOSS = 1;
+    private static final int LEVEL_TO_BOSS = 5;
 
     private Player player;
     private Enemy enemy;
@@ -50,7 +50,7 @@ public class Game {
 
 
     void init(){
-        
+
         gameStarted = true;
         images.deleteInitialImage();
         outOfCombat = true;
@@ -355,6 +355,8 @@ public class Game {
 
         images.deleteEnemyHealth();
         images.deleteEnemyHealtText();
+        images.textEnemyStory("You gained " + enemy.getExperience() + " experience"
+                , "from " + enemy.getEnemyName());
 
         gotLoot = false;
         gotWeapon = false;
@@ -417,7 +419,6 @@ public class Game {
 
 
     private void gameOver(){
-        System.out.println("You died on level " + player.getPlayerLevel());
 
         GameSounds.enemyWins.play(true);
 
@@ -434,6 +435,8 @@ public class Game {
         images.deleteEnemyHealth();
 
         images.gameOver();
+        images.deleteTextEnemyStory();
+        images.deleteTextStory();
 
     }
 
@@ -469,6 +472,7 @@ public class Game {
         images.deleteHealthMana();
         images.deleteHealthManaText();
         GameSounds.gameMusic.stop();
+        images.deleteTextStory();
 
     }
 }
