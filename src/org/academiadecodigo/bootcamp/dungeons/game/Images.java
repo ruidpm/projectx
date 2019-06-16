@@ -228,7 +228,7 @@ public class Images {
                 return;
 
             case MARIANAMON:
-                Picture mariana = new Picture(380,50, "pics/Mariana.png");
+                Picture mariana = new Picture(380,50, "pics/mariana3.png");
                 mariana.draw();
                 this.enemy = mariana;
                 return;
@@ -444,7 +444,11 @@ public class Images {
         textStory1.draw();
         this.textstory = textStory;
         this.textstory1 = textStory1;
+    }
 
+    public void deleteTextStory(){
+        textstory.delete();
+        textstory1.delete();
     }
 
     public  void textEnemyStory(String story2, String story3) {
@@ -459,6 +463,11 @@ public class Images {
         textStory3.draw();
         this.textstory2 = textStory2;
         this.textstory3 = textStory3;
+    }
+
+    public void deleteTextEnemyStory(){
+        textstory2.delete();
+        textstory3.delete();
     }
 
 
