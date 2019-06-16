@@ -31,6 +31,8 @@ public class SoundTests {
 
        //GameSounds.enemyWins.play(true);
 
+        GameSounds.finalVictory.play(true);
+
 
         while(true){
 
