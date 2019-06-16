@@ -495,6 +495,13 @@ public class Images {
         health.delete();
     }
 
+    public void deleteHealthManaText(){
+        textHealth.delete();
+        textMaxHealth.delete();
+        textMana.delete();
+        textMaxMana.delete();
+    }
+
     public void enemyHealth(){
         Picture enemyHealth = new Picture(410, 240, "pics/health.gif");
         enemyHealth.draw();
@@ -516,6 +523,9 @@ public class Images {
         textEnemyHealth.setColor(Color.WHITE);
         textEnemyHealth.draw();
         this.textEnemyHealth = textEnemyHealth;
+    }
+    public void deleteEnemyHealtText(){
+        textEnemyHealth.delete();
     }
 
 
