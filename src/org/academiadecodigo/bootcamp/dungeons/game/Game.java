@@ -39,7 +39,9 @@ public class Game {
 
     public Game(Images images){
 
-        GameSounds.gameMusic.play(true);        // TODO: 15/06/2019 change to loop
+        GameSounds.gameMusic.play(true);
+        GameSounds.gameMusic.setLoop(1000);
+
         this.images = images;
 
         images.initialImage();
@@ -172,7 +174,6 @@ public class Game {
         if (!player.rest()){
 
             GameSounds.ambushSound.play(true);
-            images.textStory("You are ambushed while resting");
             enemy = EnemyFactory.createEliteEnemy();
             GameSounds.enemyAppears.play(true);     // TODO: 15/06/2019 change to unique sound
             images.enemy(enemy.getEnemyTypes());
@@ -190,7 +191,6 @@ public class Game {
             return;
         }
 
-        images.textStory("You rest successfully");
         createEnemy();
         images.healthManaText(player.getHealthPoints(),player.getMaxHealthPoints(),
                 player.getManaPoints(), player.getMaxManaPoints());
@@ -212,6 +212,7 @@ public class Game {
             images.healthManaText(player.getHealthPoints(),player.getMaxHealthPoints(),
                     player.getManaPoints(), player.getMaxManaPoints());
             enemyTurn();
+            return;
         }
 
         images.textStory("You don't have any");
@@ -235,6 +236,7 @@ public class Game {
             images.healthManaText(player.getHealthPoints(),player.getMaxHealthPoints(),
                     player.getManaPoints(), player.getMaxManaPoints());
             enemyTurn();
+            return;
         }
 
         images.textStory("You don't have any");
@@ -249,6 +251,8 @@ public class Game {
             images.deleteEnemy();
             images.deleteBattleMenu();
             images.afterBattleMenu();
+            images.deleteEnemyHealtText();
+            images.deleteEnemyHealth();
 
             images.textStory("You flee successfully");
             return;
@@ -329,6 +333,8 @@ public class Game {
 
         images.enemyHealth();
         images.enemyHealtText(enemy.getHealthPoints());
+
+        images.textStory("A " + enemy.getEnemyName() + " appears");
     }
 
 
