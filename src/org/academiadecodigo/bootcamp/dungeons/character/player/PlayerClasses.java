@@ -8,7 +8,7 @@ public enum PlayerClasses {
     WARRIOR("Edoqor",300,15,5,10,1,
             5,5, 80, WeaponTypes.IRONAXE, PlayerSkills.SPINNING_RAGE),
     NINJA("Ogorim",250,25,15,5,5,
-            15,15, 80, WeaponTypes.SHURIKEN, PlayerSkills.SPEAR_STAB);
+            25,25, 80, WeaponTypes.SHURIKEN, PlayerSkills.SPEAR_STAB);
 
     private String name;
     private int healthPoints;

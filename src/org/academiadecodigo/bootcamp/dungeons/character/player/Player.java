@@ -98,6 +98,8 @@ public class Player extends Character {
 
     private void createPlayerPossibleSkillsList(){
 
+        playerPossibleSpellsList.remove(skills[0]);
+
         for (PlayerSkills skill : PlayerSkills.values()) {
             playerPossibleSpellsList.add(skill);
         }

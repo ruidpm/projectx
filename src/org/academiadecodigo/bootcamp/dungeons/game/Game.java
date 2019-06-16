@@ -89,7 +89,7 @@ public class Game {
 
         GameSounds.enemyAttack.play(true);
         choosingWeapon = false;
-        images.textEnemyStory("Enemy attacked for ", + attack.getDamage() + " damage");
+        images.textEnemyStory(enemy.getEnemyName() + " attacked for ", + attack.getDamage() + " damage");
 
         player.calculateDamageTaken(attack);
 
@@ -194,6 +194,7 @@ public class Game {
             images.battleMenu();
 
             images.enemyHealth();
+            images.enemyHealtText(enemy.getHealthPoints());
 
             if (choseSkill){
                 choseSkill = false;
@@ -289,11 +290,15 @@ public class Game {
 
             if (enemy.getHealthPoints() <= 0){
 
+                images.healthManaText(player.getHealthPoints(),player.getMaxHealthPoints(),
+                        player.getManaPoints(), player.getMaxManaPoints());
                 generateLoot(enemy.getExperience());
 
                 return;
             }
 
+            images.healthManaText(player.getHealthPoints(),player.getMaxHealthPoints(),
+                    player.getManaPoints(), player.getMaxManaPoints());
             enemyTurn();
             return;
 
@@ -347,7 +352,7 @@ public class Game {
         images.enemyHealth();
         images.enemyHealtText(enemy.getHealthPoints());
 
-        images.textStory("A " + enemy.getEnemyName() + " appears");
+        images.textStory(enemy.getEnemyName() + " appears");
     }
 
 
@@ -377,8 +382,6 @@ public class Game {
         }
 
         player.gainExperience(experience);
-
-        System.out.println("Enemy dead\nGained " + enemy.getExperience() + " experience");
 
         if (Randomizer.getPercentage() <= MANA_POTION_DROP_CHANCE){
             images.textStory("You got a Mana Potion");
