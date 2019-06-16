@@ -19,13 +19,18 @@ public class SoundTests {
 
        //GameSounds.playerWeaponAttack.play(true);
 
+       //GameSounds.playerSkillAttack.play(true);
+
        //GameSounds.levelUp.play(true);
 
        //GameSounds.restSound.play(true);
 
        //GameSounds.ambushSound.play(true);
 
+       //GameSounds.victorySound.play(true);
+
        //GameSounds.enemyWins.play(true);
+
 
         while(true){
 
