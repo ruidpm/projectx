@@ -448,8 +448,7 @@ public class Images {
     }
 
     public  void textEnemyStory(String story2, String story3) {
-        textstory.delete();
-        textstory1.delete();
+
         textstory2.delete();
         textstory3.delete();
         this.story2 = story2;
