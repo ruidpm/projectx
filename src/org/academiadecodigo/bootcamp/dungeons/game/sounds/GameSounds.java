@@ -16,17 +16,17 @@ public class GameSounds {
 
     public static Sound drinkPotion = new Sound("/resources/slurp.wav");
 
-    //public static Sound playerSkillAttack = new Sound("/resources/.wav");
+    public static Sound playerSkillAttack = new Sound("/resources/attack-skill.wav");
 
     public static Sound playerWeaponAttack = new Sound("/resources/attack-weapon.wav");
 
-    public static Sound levelUp = new Sound("/resources/cheering.wav");
+    public static Sound levelUp = new Sound("/resources/level-up.wav");
 
     public static Sound restSound = new Sound("/resources/rest.wav");
 
     public static Sound ambushSound = new Sound("/resources/enemy-wins.wav");
 
-    //public static Sound victorySound = new Sound("/resources/Ta-Da.wav");
+    public static Sound victorySound = new Sound("/resources/cheering.wav");
 
     public static Sound enemyWins = new Sound("/resources/enemy-wins.wav");
 

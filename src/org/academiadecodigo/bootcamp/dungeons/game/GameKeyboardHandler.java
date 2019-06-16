@@ -45,7 +45,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case KeyboardEvent.KEY_1:
 
-                if (!game.characterChosen){
+                if (!game.characterChosen && game.gameStarted){
                     game.createPlayer(PlayerClasses.WARRIOR);
                     game.images.deleteChoosePlayer();
                     game.start();
@@ -55,7 +55,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case KeyboardEvent.KEY_2:
 
-                if (!game.characterChosen){
+                if (!game.characterChosen && game.gameStarted){
                     game.createPlayer(PlayerClasses.NINJA);
                     game.images.deleteChoosePlayer();
                     game.start();
@@ -65,7 +65,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case  KeyboardEvent.KEY_3:
 
-                if (!game.characterChosen){
+                if (!game.characterChosen && game.gameStarted){
                     game.createPlayer(PlayerClasses.WIZARD);
                     game.images.deleteChoosePlayer();
                     game.start();
@@ -75,7 +75,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case  KeyboardEvent.KEY_A:
 
-                if (!game.outOfCombat){
+                if (!game.outOfCombat && game.characterChosen){
 
                     game.playerAttack();
                 }
@@ -84,7 +84,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case  KeyboardEvent.KEY_N:
 
-                if (game.outOfCombat && game.gameStarted && !game.choosingSkill){
+                if (game.outOfCombat && game.gameStarted && !game.choosingSkill && game.characterChosen){
                     game.createEnemy();
                 }
 
@@ -92,7 +92,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case  KeyboardEvent.KEY_F:
 
-                if (!game.outOfCombat){
+                if (!game.outOfCombat && game.characterChosen){
                     game.playerFlee();
                 }
 
@@ -100,7 +100,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case  KeyboardEvent.KEY_H:
 
-                if (!game.outOfCombat){
+                if (!game.outOfCombat && game.characterChosen){
                     game.playerUseHealthPotion();
                 }
 
@@ -108,7 +108,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case  KeyboardEvent.KEY_M:
 
-                if (!game.outOfCombat){
+                if (!game.outOfCombat && game.characterChosen){
                     game.playerUseManaPotion();
                 }
 
@@ -116,7 +116,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case  KeyboardEvent.KEY_R:
 
-                if (game.outOfCombat && game.gameStarted && !game.choosingSkill){
+                if (game.outOfCombat && game.gameStarted && !game.choosingSkill && game.characterChosen){
                     game.playerRest();
                 }
 

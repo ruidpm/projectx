@@ -303,7 +303,7 @@ public class Images {
                 this.lootGenerated = lootGenerated6;
                 return;
 
-            case CANNON:
+            case CROSSBOW:
                 Picture lootGenerated7 = new Picture(380,50, "pics/cannon.png" );
                 lootGenerated7.draw();
                 this.lootGenerated = lootGenerated7;
