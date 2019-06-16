@@ -29,8 +29,8 @@ public class ImagesTest {
         images.textStory("eu","estou", "aqui", "agora");
         images.healthMana();
         images.healthManaText(1258, 2000, 50, 100);
-     // images.enemyHealth();
-      // images.enemyHealtText("50 / 100");
+      images.enemyHealth();
+       images.enemyHealtText(100);
 
     }
 }
