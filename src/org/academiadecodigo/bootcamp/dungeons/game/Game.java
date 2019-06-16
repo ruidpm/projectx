@@ -68,8 +68,9 @@ public class Game {
         characterChosen = true;
 
         images.healthMana();
-      //  images.healthManaText(player.getHealthPoints(),player.getMaxHealthPoints(),
-             //   player.getManaPoints(), player.getMaxManaPoints());
+         images.healthManaText(player.getHealthPoints(),player.getMaxHealthPoints(),
+                player.getManaPoints(), player.getMaxManaPoints());
+
     }
 
 
@@ -93,6 +94,8 @@ public class Game {
             return;
         }
 
+        images.healthManaText(player.getHealthPoints(),player.getMaxHealthPoints(),
+                player.getManaPoints(), player.getMaxManaPoints());
         System.out.println("Press A to attack, M for Mana Potion, H for Health Potion, F to flee");
     }
 
@@ -102,6 +105,7 @@ public class Game {
         GameSounds.playerWeaponAttack.play(true);
 
         enemy.calculateDamageTaken(player.attack());
+        images.enemyHealtText(enemy.getHealthPoints());
 
         if (enemy.getHealthPoints() <= 0){
 
@@ -176,12 +180,16 @@ public class Game {
 
             images.battleMenu();
 
+            images.enemyHealth();
+
             enemyTurn();
             return;
         }
 
         System.out.println("You rest successfully");
         createEnemy();
+        images.healthManaText(player.getHealthPoints(),player.getMaxHealthPoints(),
+                player.getManaPoints(), player.getMaxManaPoints());
     }
 
 
@@ -197,6 +205,8 @@ public class Game {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            images.healthManaText(player.getHealthPoints(),player.getMaxHealthPoints(),
+                    player.getManaPoints(), player.getMaxManaPoints());
             enemyTurn();
         }
 
@@ -217,6 +227,8 @@ public class Game {
                 e.printStackTrace();
             }
 
+            images.healthManaText(player.getHealthPoints(),player.getMaxHealthPoints(),
+                    player.getManaPoints(), player.getMaxManaPoints());
             enemyTurn();
         }
 
@@ -249,6 +261,7 @@ public class Game {
             GameSounds.playerSkillAttack.play(true);
 
             enemy.calculateDamageTaken(damage);
+            images.enemyHealtText(enemy.getHealthPoints());
 
             if (enemy.getHealthPoints() <= 0){
 
@@ -303,10 +316,16 @@ public class Game {
 
         images.enemy(enemy.getEnemyTypes());
         outOfCombat = false;
+
+        images.enemyHealth();
+        images.enemyHealtText(enemy.getHealthPoints());
     }
 
 
     private void generateLoot(int experience){
+
+        images.deleteEnemyHealth();
+        images.deleteEnemyHealthText();
 
         gotLoot = false;
         gotWeapon = false;
