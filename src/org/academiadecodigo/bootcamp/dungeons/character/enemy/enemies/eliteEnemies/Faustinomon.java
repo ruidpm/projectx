@@ -17,14 +17,14 @@ public class Faustinomon extends Enemy {
         super(EnemyTypes.FAUSTINOMON);
     }
 
-    public ReturningAttackValues ifreet(){
+    public ReturningAttackValues efreet(){
         ReturningAttackValues attackDamage;
 
         double random = ThreadLocalRandom.current().nextDouble(1.4, 1.7);
 
         attackDamage = new ReturningAttackValues((int )(super.getIntelligence() * random), DamageTypes.MAGICAL);
 
-        System.out.println(ANSI_BLUE + getEnemyName() + " Minotaur Pierce you. " + attackDamage.getDamage() + " Magical Damage."  + ANSI_RESET);
+        System.out.println(ANSI_BLUE + getEnemyName() + " Pierce you. " + attackDamage.getDamage() + " Magical Damage."  + ANSI_RESET);
 
         return attackDamage;
     }
@@ -35,7 +35,7 @@ public class Faustinomon extends Enemy {
     public ReturningAttackValues attack() {
 
         if (Randomizer.getPercentage() < 30){
-            return ifreet();
+            return efreet();
         }
 
         return super.attack();

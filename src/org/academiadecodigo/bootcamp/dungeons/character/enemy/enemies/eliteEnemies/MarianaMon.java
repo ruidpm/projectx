@@ -24,7 +24,7 @@ public class MarianaMon extends Enemy {
 
         attackDamage = new ReturningAttackValues((int )(super.getIntelligence() * random), DamageTypes.MAGICAL);
 
-        System.out.println(ANSI_BLUE + getEnemyName() + " Marianamon burn you. " + attackDamage.getDamage() + " Magical Damage."  + ANSI_RESET);
+        System.out.println(ANSI_BLUE + getEnemyName() + " burn you. " + attackDamage.getDamage() + " Magical Damage."  + ANSI_RESET);
 
         return attackDamage;
     }
