@@ -10,9 +10,9 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Enemy extends Character {
     private String enemyName;
     private int experience;
-    public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_RESET = "\u001B[0m";
-
+    private static final String ANSI_RED = "\u001B[31m";
+    private static final String ANSI_RESET = "\u001B[0m";
+    private EnemyTypes enemyTypes;
 
     public Enemy(EnemyTypes enemy) {
         super(enemy.getHealthPoints(), enemy.getStrength(), enemy.getIntelligence(),
@@ -21,6 +21,7 @@ public class Enemy extends Character {
 
         this.enemyName = enemy.name();
         this.experience = enemy.getExperience();
+        this.enemyTypes = enemy;
         System.out.println("A new enemy appears: " + enemyName);
 
     }
@@ -54,5 +55,9 @@ public class Enemy extends Character {
 
     public int getExperience() {
         return experience;
+    }
+
+    public EnemyTypes getEnemyTypes(){
+        return enemyTypes;
     }
 }

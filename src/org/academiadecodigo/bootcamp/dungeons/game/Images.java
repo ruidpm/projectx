@@ -2,6 +2,8 @@ package org.academiadecodigo.bootcamp.dungeons.game;
 
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyTypes;
 import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerClasses;
+import org.academiadecodigo.bootcamp.dungeons.character.player.items.ItemTypes;
+import org.academiadecodigo.bootcamp.dungeons.character.player.items.WeaponTypes;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Images {
@@ -19,6 +21,30 @@ public class Images {
     private Picture press2;
     private Picture press3;
     private Picture selectPlayer;
+    private Picture lootGenerated;
+    private Picture initialImage;
+    private Picture gameOver;
+    private Picture credits;
+    private Picture group;
+    private Picture changeWeaponMenu;
+    private Picture chooseSkillMenu;
+    private Picture storyMenu;
+
+    public void initialImage(){
+
+        Picture background = new Picture(PADDING, PADDING, "pics/Background.png");
+        background.draw();
+        this.background = background;
+
+        Picture initialImage = new Picture(90,90, "pics/initialImage.png");
+        initialImage.draw();
+        this.initialImage = initialImage;
+    }
+
+    public void deleteInitialImage(){
+        initialImage.delete();
+        background.delete();
+    }
 
 
     public void backgound (){
@@ -189,6 +215,129 @@ public class Images {
 
     public void deleteAfterBattleMenu(){
         afterBattleMenu.delete();
+    }
+
+    public void lootGenerated(ItemTypes itemTypes){
+        switch (itemTypes){
+
+            case MANAPOTION:
+                Picture lootGenerated = new Picture(380,50, "pics/manaPotion.png" );
+                lootGenerated.draw();
+                this.lootGenerated = lootGenerated;
+                return;
+
+            case HEALTHPOTION:
+                Picture lootGenerated2 = new Picture(380,50, "pics/healthPotion.png" );
+                lootGenerated2.draw();
+                this.lootGenerated = lootGenerated2;
+                return;
+        }
+    }
+
+    public void lootGenerated(WeaponTypes weaponTypes){
+        switch (weaponTypes){
+
+            case STAFF:
+                Picture lootGenerated3 = new Picture(380,50, "pics/staff.png" );
+                lootGenerated3.draw();
+                this.lootGenerated = lootGenerated3;
+                return;
+
+            case IRONAXE:
+                Picture lootGenerated4 = new Picture(380,50, "pics/axe.png" );
+                lootGenerated4.draw();
+                this.lootGenerated = lootGenerated4;
+                return;
+
+            case SHURIKEN:
+                Picture lootGenerated5 = new Picture(380,50, "pics/shuriken.png" );
+                lootGenerated5.draw();
+                this.lootGenerated = lootGenerated5;
+                return;
+
+            case SHOE:
+                Picture lootGenerated6 = new Picture(380,50, "pics/shoe.png" );
+                lootGenerated6.draw();
+                this.lootGenerated = lootGenerated6;
+                return;
+
+            case CANNON:
+                Picture lootGenerated7 = new Picture(380,50, "pics/cannon.png" );
+                lootGenerated7.draw();
+                this.lootGenerated = lootGenerated7;
+                return;
+
+            case FIRESWORD:
+                Picture lootGenerated8 = new Picture(380,50, "pics/fireSword.png" );
+                lootGenerated8.draw();
+                this.lootGenerated = lootGenerated8;
+                return;
+
+            case METALSWORD:
+                Picture lootGenerated9 = new Picture(380,50, "pics/sword.png" );
+                lootGenerated9.draw();
+                this.lootGenerated = lootGenerated9;
+                return;
+        }
+    }
+
+    public void deleteGeneratedLoot(){
+        lootGenerated.delete();
+    }
+
+    public void gameOver(){
+        Picture gameOver = new Picture(120,160,"pics/gameOver.png");
+        gameOver.draw();
+        this.gameOver = gameOver;
+    }
+
+    public void deleteGameOver(){
+        gameOver.delete();
+    }
+
+    public void credits(){
+        Picture credits = new Picture(200, 100, "pics/credits.png");
+        credits.draw();
+        this.credits = credits;
+
+        Picture group = new Picture(140, 180, "pics/grupo.jpg");
+        group.draw();
+        this.group = group;
+    }
+
+    public void deleteCredits(){
+        credits.delete();
+        group.delete();
+    }
+
+    public void changeWeaponMenu(){
+        Picture changeWeaponMenu = new Picture(260,360, "pics/changeWeapon.png");
+        changeWeaponMenu.draw();
+        this.changeWeaponMenu = changeWeaponMenu;
+    }
+
+    public void deleteChangeWeaponMenu(){
+        changeWeaponMenu.delete();
+    }
+
+    public void chooseSkillMenu(){
+        Picture chooseSkillMenu = new Picture(260,330, "pics/chooseSkill.png");
+        chooseSkillMenu.draw();
+        this.chooseSkillMenu = chooseSkillMenu;
+    }
+
+    public void deleteChooseSkillMenu(){
+        chooseSkillMenu.delete();
+    }
+
+    public void storyMenu (){
+        Picture storyMenu = new Picture(45,50, "");
+        storyMenu.draw();
+        this.storyMenu = storyMenu;
+    }
+
+    public void deleteStoryMenu(){
+        storyMenu.delete();
     }
 
 

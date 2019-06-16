@@ -2,8 +2,6 @@ package org.academiadecodigo.bootcamp.dungeons.game;
 
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyTypes;
 import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerClasses;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class ImagesTest {
 
@@ -15,12 +13,18 @@ public class ImagesTest {
         images.backgound();
        // images.enemy(EnemyTypes.MINOTAUR);
 
-       // images.battleMenu();
+        //images.battleMenu();
         images.player(PlayerClasses.WARRIOR);
 
         //images.choosePlayer();
-        images.afterBattleMenu();
-        images.battleMenu();
+        //images.afterBattleMenu();
+        //images.battleMenu();
+       // images.initialImage();
+        //images.gameOver();
+        //images.credits();
+
+       // images.chooseSkillMenu();
+        images.changeWeaponMenu();
 
     }
 }

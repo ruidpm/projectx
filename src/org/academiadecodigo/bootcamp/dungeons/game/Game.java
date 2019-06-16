@@ -6,6 +6,7 @@ import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerClasses;
 import org.academiadecodigo.bootcamp.dungeons.character.player.Player;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.Enemy;
 import org.academiadecodigo.bootcamp.dungeons.character.player.items.WeaponTypes;
+import org.academiadecodigo.bootcamp.dungeons.game.sounds.GameSounds;
 
 public class Game {
 
@@ -30,6 +31,7 @@ public class Game {
 
     public Game(Images images){
 
+        GameSounds.gameMusic.play(true);        // TODO: 15/06/2019 change to loop
         this.images = images;
         init();
     }
@@ -59,7 +61,13 @@ public class Game {
 
 
     private void enemyTurn(){
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
+        GameSounds.enemyAttack.play(true);
         choosingWeapon = false;
         System.out.println("Enemy attacking");
 
@@ -79,6 +87,7 @@ public class Game {
 
         if (enemy.getHealthPoints() <= 0){
 
+            images.afterBattleMenu();         // TODO: 15/06/2019 check this
             generateLoot(enemy.getExperience());
 
             System.out.println("Press N for new enemy or R to rest");
@@ -90,7 +99,7 @@ public class Game {
     }
 
 
-    public void playerChooseSkill(int choice){
+    void playerChooseSkill(int choice){
 
         if (choice == 1){
             System.out.println("You choose " + player.getPlayerPossibleSpellsList().get(skillIndex1).toString());
@@ -126,11 +135,20 @@ public class Game {
     void playerRest(){
 
         outOfCombat = false;
+        GameSounds.restSound.play(true);
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         if (!player.rest()){
 
             System.out.println("You are ambushed while resting");
             enemy = EnemyFactory.createEliteEnemy();
+            GameSounds.enemyAppears.play(true);     // TODO: 15/06/2019 change to unique sound
+            images.enemy(enemy.getEnemyTypes());
             images.battleMenu();
 
             enemyTurn();
@@ -139,7 +157,7 @@ public class Game {
 
         images.battleMenu();
         System.out.println("You rest successfully");
-        enemy = EnemyFactory.createEnemy();
+        createEnemy();
     }
 
 
@@ -165,6 +183,8 @@ public class Game {
         System.out.println("You attempt to flee");
         if (player.flee()){
             outOfCombat = true;
+
+            images.deleteEnemy();
             images.deleteBattleMenu();
             images.afterBattleMenu();
             System.out.println("Rest or keep going?");
@@ -201,19 +221,24 @@ public class Game {
 
     void start() {
 
-        outOfCombat = false;
-
         gameStarted = true;
 
-        enemy = EnemyFactory.createEnemy();
+        images.afterBattleMenu();
 
+        createEnemy();
         images.battleMenu();
         images.player(player.getPlayerClass());
     }
 
 
     void createEnemy(){
+
         enemy = EnemyFactory.createEnemy();
+        GameSounds.enemyAppears.play(true);
+        images.deleteAfterBattleMenu();
+        images.battleMenu();
+
+        images.enemy(enemy.getEnemyTypes());
         outOfCombat = false;
     }
 
@@ -221,7 +246,10 @@ public class Game {
     private void generateLoot(int experience){
 
         images.deleteBattleMenu();
+        images.deleteEnemy();
         images.afterBattleMenu();
+        GameSounds.victorySound.play(true);
+
 
         outOfCombat = true;
         player.gainExperience(experience);
@@ -268,7 +296,7 @@ public class Game {
         System.out.println("Press Y to switch from " + player.getWeapon().toString());
     }
 
-    public void playerSwitchWeapon(){
+    void playerSwitchWeapon(){
 
         player.setWeapon(weaponIndex);
         choosingWeapon = false;
