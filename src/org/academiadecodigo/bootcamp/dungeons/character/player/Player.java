@@ -195,35 +195,35 @@ public class Player extends Character {
 
         }
 
-        if (prob < 90 && numberOfTimesRested < 1){
+        if (prob < 70 && numberOfTimesRested < 1){
             numberOfTimesRested++;
             healthPoints = healthPoints + healPointsGained;
             manaPoints = manaPoints + manaPointsGained;
             return true;
         }
 
-        if (prob < 80 && numberOfTimesRested < 2){
+        if (prob < 60 && numberOfTimesRested < 2){
             numberOfTimesRested++;
             healthPoints = healthPoints + healPointsGained;
             manaPoints = manaPoints + manaPointsGained;
             return true;
         }
 
-        if (prob < 70 && numberOfTimesRested < 3){
+        if (prob < 50 && numberOfTimesRested < 3){
             numberOfTimesRested++;
             healthPoints = healthPoints + healPointsGained;
             manaPoints = manaPoints + manaPointsGained;
             return true;
         }
 
-        if (prob < 55 && numberOfTimesRested < 4){
+        if (prob < 40 && numberOfTimesRested < 4){
             numberOfTimesRested++;
             healthPoints = healthPoints + healPointsGained;
             manaPoints = manaPoints + manaPointsGained;
             return true;
         }
 
-        if (prob < 30 && numberOfTimesRested >= 4){
+        if (prob < 10 && numberOfTimesRested >= 4){
             numberOfTimesRested++;
             healthPoints = healthPoints + healPointsGained;
             manaPoints = manaPoints + manaPointsGained;

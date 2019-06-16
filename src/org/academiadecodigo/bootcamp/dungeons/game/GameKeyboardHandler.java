@@ -177,6 +177,23 @@ public class GameKeyboardHandler implements KeyboardHandler {
                 }
 
                 break;
+
+            case  KeyboardEvent.KEY_Q:
+
+                if (!game.gameStarted){
+                    System.exit(1);
+                }
+
+                break;
+
+            case  KeyboardEvent.KEY_W:
+
+                if (!game.characterChosen && !game.gameStarted) {
+
+                    game.init();
+                }
+
+                break;
         }
     }
 
@@ -224,6 +241,10 @@ public class GameKeyboardHandler implements KeyboardHandler {
         setKeyAndEvent(KeyboardEvent.KEY_L, KeyboardEventType.KEY_RELEASED);
 
         setKeyAndEvent(KeyboardEvent.KEY_Y, KeyboardEventType.KEY_RELEASED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_Q, KeyboardEventType.KEY_RELEASED);
+
+        setKeyAndEvent(KeyboardEvent.KEY_W, KeyboardEventType.KEY_RELEASED);
 
     }
 

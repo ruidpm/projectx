@@ -5,7 +5,7 @@ import org.academiadecodigo.bootcamp.dungeons.character.player.items.WeaponTypes
 public enum PlayerClasses {
     WIZARD ("Izadarian",250,5,20,1,10,
             5,10, 150, WeaponTypes.STAFF, PlayerSkills.UNHOLY_SPEAR),
-    WARRIOR("Edoqor",300,15,5,10,1,
+    WARRIOR("Edoqor",3,15,5,10,1,
             5,5, 80, WeaponTypes.IRONAXE, PlayerSkills.SPINNING_RAGE),
     NINJA("Ogorim",250,10,15,5,5,
             15,15, 80, WeaponTypes.SHURIKEN, PlayerSkills.SPEAR_STAB);

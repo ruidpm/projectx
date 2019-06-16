@@ -11,9 +11,10 @@ import org.academiadecodigo.bootcamp.dungeons.game.sounds.GameSounds;
 
 public class Game {
 
-    private static final int MANA_POTION_DROP_CHANCE = 20;
-    private static final int HEALTH_POTION_DROP_CHANCE = 20;
+    private static final int MANA_POTION_DROP_CHANCE = 15;
+    private static final int HEALTH_POTION_DROP_CHANCE = 15;
     private static final int WEAPON_DROP_CHANCE = 10;
+    private static final int LEVEL_TO_BOSS = 1;
 
     private Player player;
     private Enemy enemy;
@@ -49,7 +50,7 @@ public class Game {
 
 
     void init(){
-
+        
         gameStarted = true;
         images.deleteInitialImage();
         outOfCombat = true;
@@ -128,7 +129,7 @@ public class Game {
     void playerChooseSkill(int choice){
 
         if (choice == 1){
-            images.textStory("You chose " + player.getPlayerPossibleSpellsList().get(skillIndex1).toString());
+            images.textStory("You chose ", player.getPlayerPossibleSpellsList().get(skillIndex1).toString());
             player.chooseSkill(skillIndex1, skillIndex2);
             choosingSkill = false;
 
@@ -138,7 +139,7 @@ public class Game {
             return;
         }
 
-        images.textStory("You chose " + player.getPlayerPossibleSpellsList().get(skillIndex2).toString());
+        images.textStory("You chose " ,player.getPlayerPossibleSpellsList().get(skillIndex2).toString());
         player.chooseSkill(skillIndex2, skillIndex1);
         images.deleteChooseSkillMenu();
         images.afterBattleMenu();
@@ -187,7 +188,7 @@ public class Game {
 
             GameSounds.ambushSound.play(true);
             enemy = EnemyFactory.createEliteEnemy();
-            GameSounds.enemyAppears.play(true);     // TODO: 15/06/2019 change to unique sound
+            GameSounds.enemyAppears.play(true);
             images.enemy(enemy.getEnemyTypes());
 
             images.battleMenu();
@@ -325,7 +326,7 @@ public class Game {
 
         enemy = EnemyFactory.createEnemy();
 
-        if (player.getPlayerLevel() >= 5){
+        if (player.getPlayerLevel() >= LEVEL_TO_BOSS){
             bossAppeared = true;
             enemy = EnemyFactory.createBoss();
         }
@@ -423,16 +424,17 @@ public class Game {
         images.deletePlayer();
         images.deleteBattleMenu();
         images.deleteEnemy();
+        gameStarted = false;
+        characterChosen = false;
+        outOfCombat = true;
+        images.deleteHealthManaText();
+        images.deleteEnemyHealtText();
+        images.deleteStoryMenu();
+        images.deleteHealthMana();
+        images.deleteEnemyHealth();
 
         images.gameOver();
 
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        System.exit(0);
     }
 
 
@@ -463,13 +465,10 @@ public class Game {
         gameStarted = false;
         characterChosen = false;
         outOfCombat = true;
+        images.deleteStoryMenu();
+        images.deleteHealthMana();
+        images.deleteHealthManaText();
+        GameSounds.gameMusic.stop();
 
-        /*try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/
-
-       // images.initialImage();
     }
 }
