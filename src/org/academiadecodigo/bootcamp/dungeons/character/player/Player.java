@@ -38,6 +38,7 @@ public class Player extends Character {
         this.manaPoints=player_classes.getManaPoints();
         this.weapon=player_classes.getWeapon();
         this.maxHealthPoints = player_classes.getHealthPoints();
+        this.maxManaPoints = player_classes.getManaPoints();
         this.manaPotion = 1;
         this.healthPotion = 1;
         this.experience = 0;
@@ -126,8 +127,6 @@ public class Player extends Character {
     public boolean useHealthPotion(){
         if (healthPotion > 0){
 
-            GameSounds.drinkPotion.play(true);
-
             if (maxHealthPoints -getHealthPoints() < ItemTypes.HEALTHPOTION.getValue()){
                 heal(maxHealthPoints -getHealthPoints());
                 healthPotion--;
@@ -146,8 +145,6 @@ public class Player extends Character {
 
     public boolean useManaPotion(){
         if (manaPotion > 0){
-
-            GameSounds.drinkPotion.play(true);
 
             if (maxManaPoints < ItemTypes.MANAPOTION.getValue()){
                 manaPoints = maxManaPoints - ItemTypes.MANAPOTION.getValue();
@@ -186,23 +183,18 @@ public class Player extends Character {
 
     public boolean rest(){
         int prob = Randomizer.getPercentage();
-        int healPointsGained;
-        int manaPointsGained;
+        int healPointsGained = maxHealthPoints - healthPoints;
+        int manaPointsGained = maxManaPoints - manaPoints;
 
-        if( maxHealthPoints/2 < maxHealthPoints - healthPoints){
-            healPointsGained = (int)(maxHealthPoints/2);
+        if( (maxHealthPoints/2) > (maxHealthPoints - healthPoints)){
+            healPointsGained = (maxHealthPoints - healthPoints);
 
-        } else {
-            healPointsGained = maxHealthPoints-healthPoints;
         }
 
-        if( maxManaPoints/2 < maxManaPoints - manaPoints){
-            manaPointsGained = (int)(maxManaPoints/2);
+        if( (maxManaPoints/2) > (maxManaPoints - manaPoints)){
+            manaPointsGained = (maxManaPoints - manaPoints);
 
-        } else {
-            manaPointsGained = maxManaPoints-manaPoints;
         }
-
 
         if (prob < 90 && numberOfTimesRested < 1){
             numberOfTimesRested++;
@@ -238,6 +230,9 @@ public class Player extends Character {
             manaPoints = manaPoints + manaPointsGained;
             return true;
         }
+
+        healthPoints = healthPoints + healPointsGained;
+        manaPoints = manaPoints + manaPointsGained;
         return false;
 
     }
@@ -279,5 +274,17 @@ public class Player extends Character {
     public void setWeapon(int index) {
         this.weapon = WeaponTypes.values()[index];
         System.out.println("Switched weapon");
+    }
+
+    public int getMaxHealthPoints() {
+        return maxHealthPoints;
+    }
+
+    public int getManaPoints() {
+        return manaPoints;
+    }
+
+    public int getMaxManaPoints() {
+        return maxManaPoints;
     }
 }

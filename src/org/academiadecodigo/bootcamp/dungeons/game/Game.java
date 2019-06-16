@@ -5,6 +5,7 @@ import org.academiadecodigo.bootcamp.dungeons.character.enemy.EnemyFactory;
 import org.academiadecodigo.bootcamp.dungeons.character.player.PlayerClasses;
 import org.academiadecodigo.bootcamp.dungeons.character.player.Player;
 import org.academiadecodigo.bootcamp.dungeons.character.enemy.Enemy;
+import org.academiadecodigo.bootcamp.dungeons.character.player.items.ItemTypes;
 import org.academiadecodigo.bootcamp.dungeons.character.player.items.WeaponTypes;
 import org.academiadecodigo.bootcamp.dungeons.game.sounds.GameSounds;
 
@@ -12,7 +13,7 @@ public class Game {
 
     private static final int MANA_POTION_DROP_CHANCE = 20;
     private static final int HEALTH_POTION_DROP_CHANCE = 20;
-    private static final int WEAPON_DROP_CHANCE = 10;
+    private static final int WEAPON_DROP_CHANCE = 80;
 
     private Player player;
     private Enemy enemy;
@@ -27,7 +28,9 @@ public class Game {
     boolean outOfCombat;
     boolean choosingSkill;
     boolean choosingWeapon;
-    boolean gameInit;
+
+    private boolean gotLoot;
+    private boolean gotWeapon;
 
 
     public Game(Images images){
@@ -57,6 +60,8 @@ public class Game {
 
     void createPlayer(PlayerClasses playerClass){
 
+        GameSounds.gameStart.play(true);
+
         player = new Player(playerClass);
         characterChosen = true;
     }
@@ -79,6 +84,7 @@ public class Game {
 
         if (player.getHealthPoints() <= 0){
             gameOver();
+            return;
         }
 
         System.out.println("Press A to attack, M for Mana Potion, H for Health Potion, F to flee");
@@ -130,6 +136,7 @@ public class Game {
             skillIndex2 = Randomizer.randomizeBetween(0, player.getPlayerPossibleSpellsList().size() -1);
         }
 
+        images.chooseSkillMenu();
         System.out.println("You found two scrolls with ancient techniques but can only take one");
         System.out.println("Press K to take " + player.getPlayerPossibleSpellsList().get(skillIndex1).toString());
         System.out.println("Press L to take " + player.getPlayerPossibleSpellsList().get(skillIndex2).toString());
@@ -138,9 +145,14 @@ public class Game {
 
 
     void playerRest(){
-
         outOfCombat = false;
         GameSounds.restSound.play(true);
+        images.deleteAfterBattleMenu();
+        images.deleteBattleMenu();
+
+        if (gotLoot){
+            images.deleteGeneratedLoot();
+        }
 
         try {
             Thread.sleep(1000);
@@ -150,17 +162,18 @@ public class Game {
 
         if (!player.rest()){
 
+            GameSounds.ambushSound.play(true);
             System.out.println("You are ambushed while resting");
             enemy = EnemyFactory.createEliteEnemy();
             GameSounds.enemyAppears.play(true);     // TODO: 15/06/2019 change to unique sound
             images.enemy(enemy.getEnemyTypes());
+
             images.battleMenu();
 
             enemyTurn();
             return;
         }
 
-        images.battleMenu();
         System.out.println("You rest successfully");
         createEnemy();
     }
@@ -170,6 +183,14 @@ public class Game {
 
         if (player.useHealthPotion()){
             System.out.println("Used Health Potion");
+
+            GameSounds.drinkPotion.play(true);
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             enemyTurn();
         }
 
@@ -181,6 +202,15 @@ public class Game {
 
         if (player.useManaPotion()){
             System.out.println("Used Mana Potion");
+
+            GameSounds.drinkPotion.play(true);
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             enemyTurn();
         }
 
@@ -209,6 +239,8 @@ public class Game {
         ReturningAttackValues damage = player.castSpell(skillNumber);
 
         if (damage != null){
+
+            GameSounds.playerSkillAttack.play(true);
 
             enemy.calculateDamageTaken(damage);
 
@@ -244,6 +276,14 @@ public class Game {
 
     void createEnemy(){
 
+        if (gotLoot){
+            images.deleteGeneratedLoot();
+        }
+
+        if (gotWeapon){
+            images.deleteChangeWeaponMenu();
+        }
+
         enemy = EnemyFactory.createEnemy();
 
         if (player.getPlayerLevel() >= 5){
@@ -252,6 +292,7 @@ public class Game {
         }
 
         GameSounds.enemyAppears.play(true);
+
         images.deleteAfterBattleMenu();
         images.battleMenu();
 
@@ -262,11 +303,14 @@ public class Game {
 
     private void generateLoot(int experience){
 
+        gotLoot = false;
+        gotWeapon = false;
+
         images.deleteBattleMenu();
         images.deleteEnemy();
         images.afterBattleMenu();
-        GameSounds.levelUp.play(true);
 
+        GameSounds.victorySound.play(true);
 
         outOfCombat = true;
         player.gainExperience(experience);
@@ -276,17 +320,31 @@ public class Game {
         if (Randomizer.getPercentage() <= MANA_POTION_DROP_CHANCE){
             System.out.println("You got a Mana Potion");
             player.addManaPotion();
+            gotLoot = true;
+            images.lootGenerated(ItemTypes.MANAPOTION);
         }
 
-        if (Randomizer.getPercentage() <= HEALTH_POTION_DROP_CHANCE){
+        if (Randomizer.getPercentage() <= HEALTH_POTION_DROP_CHANCE && !gotLoot){
             System.out.println("You got a Health Potion");
             player.addHealthPotion();
+            gotLoot = true;
+            images.lootGenerated(ItemTypes.HEALTHPOTION);
         }
 
-        if (Randomizer.getPercentage() <= WEAPON_DROP_CHANCE){
+        if (Randomizer.getPercentage() <= WEAPON_DROP_CHANCE && !gotLoot){
             generateWeapon();
+            images.lootGenerated(WeaponTypes.values()[weaponIndex]);
+            images.changeWeaponMenu();
+            gotLoot = true;
+            gotWeapon = true;
         }
 
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         if (currentLevel < player.getPlayerLevel() && player.getPlayerLevel() <= 4){
 
@@ -299,7 +357,13 @@ public class Game {
 
     private void gameOver(){
         System.out.println("You died on level " + player.getPlayerLevel());
+
+        GameSounds.enemyWins.play(true);
+
         images.deletePlayer();
+        images.deleteBattleMenu();
+        images.deleteEnemy();
+
         images.gameOver();
 
         try {
