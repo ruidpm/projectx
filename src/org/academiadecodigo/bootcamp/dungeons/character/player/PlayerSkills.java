@@ -18,7 +18,7 @@ public enum PlayerSkills {
     TRAP_SOUL (30, DamageTypes.MAGICAL, 20, "Trap Soul"),
     INFINITE_LOOP (45, DamageTypes.MAGICAL, 35, "Infinite Loop"),
     CRUMBLE_FIST (45, DamageTypes.PHYSICAL, 35, "Crumble Fist"),
-    UNHANDLED_EXCEPTION (100, DamageTypes.PHYSICAL, 60, "Unhandled Exception"),
+    UNHANDLED_EXCEPTION (100, DamageTypes.PHYSICAL, 60, "Exception"),
     SPLASH (1, DamageTypes.PHYSICAL, 1, "Splash");
 
 

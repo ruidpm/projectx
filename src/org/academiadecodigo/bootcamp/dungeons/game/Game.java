@@ -55,10 +55,6 @@ public class Game {
         images.backgound();
         images.choosePlayer();
 
-        System.out.println("1 for Warrior");
-        System.out.println("2 for Ninja");
-        System.out.println("3 for Wizard");
-        System.out.println("SPACEBAR to start");
     }
 
 
@@ -73,6 +69,7 @@ public class Game {
          images.healthManaText(player.getHealthPoints(),player.getMaxHealthPoints(),
                 player.getManaPoints(), player.getMaxManaPoints());
 
+        images.storyMenu();
     }
 
 
@@ -98,7 +95,6 @@ public class Game {
 
         images.healthManaText(player.getHealthPoints(),player.getMaxHealthPoints(),
                 player.getManaPoints(), player.getMaxManaPoints());
-        System.out.println("Press A to attack, M for Mana Potion, H for Health Potion, F to flee");
     }
 
 
@@ -113,8 +109,6 @@ public class Game {
 
             generateLoot(enemy.getExperience());
 
-            System.out.println("Press N for new enemy or R to rest");
-
             return;
         }
 
@@ -125,14 +119,14 @@ public class Game {
     void playerChooseSkill(int choice){
 
         if (choice == 1){
-            System.out.println("You choose " + player.getPlayerPossibleSpellsList().get(skillIndex1).toString());
+            images.textStory("You chose " + player.getPlayerPossibleSpellsList().get(skillIndex1).toString());
             player.chooseSkill(skillIndex1, skillIndex2);
             choosingSkill = false;
             createEnemy();
             return;
         }
 
-        System.out.println("You choose " + player.getPlayerPossibleSpellsList().get(skillIndex2).toString());
+        images.textStory("You chose " + player.getPlayerPossibleSpellsList().get(skillIndex2).toString());
         player.chooseSkill(skillIndex2, skillIndex1);
 
         choosingSkill = false;
@@ -149,12 +143,12 @@ public class Game {
         }
 
         images.chooseSkillMenu();
-        System.out.println("You found two scrolls with ancient techniques but can only take one");
-        System.out.println("Press K to take " + player.getPlayerPossibleSpellsList().get(skillIndex1).toString());
-        System.out.println("Press L to take " + player.getPlayerPossibleSpellsList().get(skillIndex2).toString());
 
+        images.textStory(
+                "Press K to take " , player.getPlayerPossibleSpellsList().get(skillIndex1).toString(),
+        "Press L to take " , player.getPlayerPossibleSpellsList().get(skillIndex2).toString() );
         choseSkill = true;
-        images.deleteBattleMenu();
+        images.deleteAfterBattleMenu();
     }
 
 
@@ -178,7 +172,7 @@ public class Game {
         if (!player.rest()){
 
             GameSounds.ambushSound.play(true);
-            System.out.println("You are ambushed while resting");
+            images.textStory("You are ambushed while resting");
             enemy = EnemyFactory.createEliteEnemy();
             GameSounds.enemyAppears.play(true);     // TODO: 15/06/2019 change to unique sound
             images.enemy(enemy.getEnemyTypes());
@@ -196,7 +190,7 @@ public class Game {
             return;
         }
 
-        System.out.println("You rest successfully");
+        images.textStory("You rest successfully");
         createEnemy();
         images.healthManaText(player.getHealthPoints(),player.getMaxHealthPoints(),
                 player.getManaPoints(), player.getMaxManaPoints());
@@ -206,7 +200,7 @@ public class Game {
     void playerUseHealthPotion(){
 
         if (player.useHealthPotion()){
-            System.out.println("Used Health Potion");
+            images.textStory("Used Health Potion");
 
             GameSounds.drinkPotion.play(true);
 
@@ -220,6 +214,7 @@ public class Game {
             enemyTurn();
         }
 
+        images.textStory("You don't have any");
         GameSounds.wrongMenuChoice.play(true);
     }
 
@@ -227,7 +222,7 @@ public class Game {
     void playerUseManaPotion(){
 
         if (player.useManaPotion()){
-            System.out.println("Used Mana Potion");
+            images.textStory("Used Mana Potion");
 
             GameSounds.drinkPotion.play(true);
 
@@ -242,29 +237,31 @@ public class Game {
             enemyTurn();
         }
 
+        images.textStory("You don't have any");
         GameSounds.wrongMenuChoice.play(true);
     }
 
     void playerFlee(){
 
-        System.out.println("You attempt to flee");
         if (player.flee()){
             outOfCombat = true;
 
             images.deleteEnemy();
             images.deleteBattleMenu();
             images.afterBattleMenu();
-            System.out.println("Rest or keep going?");
+
+            images.textStory("You flee successfully");
             return;
         }
 
+        images.textStory("You fail to flee");
         enemyTurn();
     }
 
 
     void playerUseSkill(int skillNumber) {
 
-        ReturningAttackValues damage = player.castSpell(skillNumber);
+        ReturningAttackValues damage = player.castSpell(skillNumber,images);
 
         if (damage != null){
 
@@ -276,8 +273,6 @@ public class Game {
             if (enemy.getHealthPoints() <= 0){
 
                 generateLoot(enemy.getExperience());
-
-                System.out.println("Press N for new enemy or R to rest");
 
                 return;
             }
@@ -340,7 +335,7 @@ public class Game {
     private void generateLoot(int experience){
 
         images.deleteEnemyHealth();
-       // images.deleteEnemyHealthText();
+        images.deleteEnemyHealtText();
 
         gotLoot = false;
         gotWeapon = false;
@@ -365,14 +360,14 @@ public class Game {
         System.out.println("Enemy dead\nGained " + enemy.getExperience() + " experience");
 
         if (Randomizer.getPercentage() <= MANA_POTION_DROP_CHANCE){
-            System.out.println("You got a Mana Potion");
+            images.textStory("You got a Mana Potion");
             player.addManaPotion();
             gotLoot = true;
             images.lootGenerated(ItemTypes.MANAPOTION);
         }
 
         if (Randomizer.getPercentage() <= HEALTH_POTION_DROP_CHANCE && !gotLoot){
-            System.out.println("You got a Health Potion");
+            images.textStory("You got a Health Potion");
             player.addHealthPotion();
             gotLoot = true;
             images.lootGenerated(ItemTypes.HEALTHPOTION);
@@ -428,19 +423,23 @@ public class Game {
         choosingWeapon = true;
         weaponIndex = Randomizer.randomizeBetween(0, WeaponTypes.values().length -1);
 
-        System.out.println("The enemy dropped a " + WeaponTypes.values()[weaponIndex].toString());
-        System.out.println("Press Y to switch from " + player.getWeapon().toString());
+        images.textStory("The enemy dropped a ",  WeaponTypes.values()[weaponIndex].toString(),
+                "Press Y to switch from ", player.getWeapon().toString());
     }
 
     void playerSwitchWeapon(){
 
         player.setWeapon(weaponIndex);
+
+        images.textStory("You now have a " + WeaponTypes.values()[weaponIndex]);
         choosingWeapon = false;
+        images.deleteChangeWeaponMenu();
     }
 
 
     private void win(){
 
+        GameSounds.finalVictory.play(true);
         images.deletePlayer();
         images.credits();
         gameStarted = false;

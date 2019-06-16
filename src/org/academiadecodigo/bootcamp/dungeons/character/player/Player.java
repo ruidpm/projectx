@@ -7,6 +7,7 @@ import org.academiadecodigo.bootcamp.dungeons.character.ReturningAttackValues;
 import org.academiadecodigo.bootcamp.dungeons.character.player.items.ItemTypes;
 import org.academiadecodigo.bootcamp.dungeons.character.player.items.WeaponTypes;
 import org.academiadecodigo.bootcamp.dungeons.game.Game;
+import org.academiadecodigo.bootcamp.dungeons.game.Images;
 import org.academiadecodigo.bootcamp.dungeons.game.sounds.GameSounds;
 
 import java.util.LinkedList;
@@ -103,14 +104,14 @@ public class Player extends Character {
     }
 
 
-    public ReturningAttackValues castSpell(int skillIndex){
+    public ReturningAttackValues castSpell(int skillIndex, Images images){
 
         if (skills[skillIndex] == null){
-            System.out.println("No skill in that index");
+            images.textStory("No skill in that index");
             return null;
         }
         if (skills[skillIndex].manaNeeded > manaPoints){
-            System.out.println("You don't have sufficient manaPoints");
+            images.textStory("Insufficient Mana");
             return null;
         }
 
@@ -119,7 +120,7 @@ public class Player extends Character {
 
         manaPoints = manaPoints - skills[skillIndex].manaNeeded;
 
-        System.out.println("You use " + skills[skillIndex].getName());
+        images.textStory("You use " + skills[skillIndex].getName());
         return returningAttackValues;
     }
 
@@ -137,8 +138,6 @@ public class Player extends Character {
             healthPotion--;
             return true;
         }
-
-        System.out.println("You have no Health Potions");
         return false;
     }
 
@@ -157,7 +156,6 @@ public class Player extends Character {
             return true;
         }
 
-        System.out.println("You have no Mana Potions");
         return false;
     }
 
@@ -273,7 +271,6 @@ public class Player extends Character {
 
     public void setWeapon(int index) {
         this.weapon = WeaponTypes.values()[index];
-        System.out.println("Switched weapon");
     }
 
     public int getMaxHealthPoints() {

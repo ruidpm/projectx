@@ -405,7 +405,7 @@ public class Images {
         this.textstory = textStory;
     }
 
-    public  void textStory(String story, String story1, String story2, String story3) {
+    public void textStory(String story, String story1, String story2, String story3) {
         textstory.delete();
         textstory1.delete();
         textstory2.delete();
