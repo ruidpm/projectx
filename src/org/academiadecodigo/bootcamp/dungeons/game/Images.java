@@ -434,32 +434,56 @@ public class Images {
         mana.draw();
         this.mana = mana;
 
+        Text textHealth = new Text(110, 262," ");
+        textHealth.setColor(Color.WHITE);
+        textHealth.draw();
+        this.textHealth = textHealth;
+
+        Text textMaxHealth = new Text(145, 262," ");
+        textMaxHealth.setColor(Color.WHITE);
+        textMaxHealth.draw();
+        this.textMaxHealth = textMaxHealth;
+
         Picture health = new Picture(85, 260, "pics/health.gif");
         health.draw();
         this.health = health;
+
+        Text textMana = new Text(110, 282," ");
+        textMana.setColor(Color.WHITE);
+        textMana.draw();
+        this.textMana = textMana;
+
+        Text textMaxMana = new Text(145, 282," ");
+        textMaxMana.setColor(Color.WHITE);
+        textMaxMana.draw();
+        this.textMaxMana = textMaxMana;
     }
 
     public void healthManaText(int healthText, int maxHealthText, int manaText, int maxManaText){
+        textHealth.delete();
         this.healthText = String.valueOf(healthText);
         Text textHealth = new Text(110, 262,this.healthText + " / ");
         textHealth.setColor(Color.WHITE);
         textHealth.draw();
         this.textHealth = textHealth;
 
+        textMaxHealth.delete();
         this.maxHealthText = String.valueOf(maxHealthText);
-        Text textMaxHealth = new Text(130, 262,this.maxHealthText);
+        Text textMaxHealth = new Text(145, 262,this.maxHealthText);
         textMaxHealth.setColor(Color.WHITE);
         textMaxHealth.draw();
         this.textMaxHealth = textMaxHealth;
 
+        textMana.delete();
         this.manaText = String.valueOf(manaText);
         Text textMana = new Text(110, 282,this.manaText+ " / ");
         textMana.setColor(Color.WHITE);
         textMana.draw();
         this.textMana = textMana;
 
+        textMaxMana.delete();
         this.maxManaText = String.valueOf(maxManaText);
-        Text textMaxMana = new Text(130, 282,this.maxManaText);
+        Text textMaxMana = new Text(145, 282,this.maxManaText);
         textMaxMana.setColor(Color.WHITE);
         textMaxMana.draw();
         this.textMaxMana = textMaxMana;
@@ -471,22 +495,22 @@ public class Images {
         health.delete();
     }
 
-    public void deleteHealthText(){
-        textHealth.delete();
-        textMaxHealth.delete();
-
-    }
-
     public void enemyHealth(){
         Picture enemyHealth = new Picture(410, 240, "pics/health.gif");
         enemyHealth.draw();
         this.enemyHealth = enemyHealth;
+
+        Text textEnemyHealth = new Text(435, 242," ");
+        textEnemyHealth.setColor(Color.WHITE);
+        textEnemyHealth.draw();
+        this.textEnemyHealth = textEnemyHealth;
     }
     public void deleteEnemyHealth(){
         enemyHealth.delete();
     }
 
     public void enemyHealtText(int enemyHealthText){
+        textEnemyHealth.delete();
         this.enemyHealthText = String.valueOf(enemyHealthText);
         Text textEnemyHealth = new Text(435, 242,this.enemyHealthText);
         textEnemyHealth.setColor(Color.WHITE);
@@ -494,9 +518,6 @@ public class Images {
         this.textEnemyHealth = textEnemyHealth;
     }
 
-    public void deleteEnemyHealthText(){
-        textEnemyHealth.delete();
-    }
 
 
 
