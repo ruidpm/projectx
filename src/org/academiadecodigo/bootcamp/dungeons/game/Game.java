@@ -27,6 +27,7 @@ public class Game {
     boolean outOfCombat;
     boolean choosingSkill;
     boolean choosingWeapon;
+    boolean gameInit;
 
 
     public Game(Images images){
@@ -40,6 +41,7 @@ public class Game {
 
     void init(){
 
+        gameStarted = true;
         images.deleteInitialImage();
         outOfCombat = true;
         currentLevel = 1;
@@ -84,6 +86,8 @@ public class Game {
 
 
     void playerAttack(){
+
+        GameSounds.playerWeaponAttack.play(true);
 
         enemy.calculateDamageTaken(player.attack());
 
@@ -229,7 +233,7 @@ public class Game {
 
     void start() {
 
-        gameStarted = true;
+
 
         images.afterBattleMenu();
 
