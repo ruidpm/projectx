@@ -26,7 +26,9 @@ public class GameSounds {
 
     public static Sound ambushSound = new Sound("/resources/enemy-wins.wav");
 
-    public static Sound victorySound = new Sound("/resources/cheering.wav");
+    //public static Sound victorySound = new Sound("/resources/cheering.wav");
+
+    public static Sound victorySound = new Sound("/resources/cheer.wav");
 
     public static Sound enemyWins = new Sound("/resources/enemy-wins.wav");
 
