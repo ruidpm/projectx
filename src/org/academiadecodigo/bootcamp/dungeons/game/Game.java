@@ -168,6 +168,8 @@ public class Game {
             System.out.println("Used Health Potion");
             enemyTurn();
         }
+
+        GameSounds.wrongMenuChoice.play(true);
     }
 
 
@@ -177,6 +179,8 @@ public class Game {
             System.out.println("Used Mana Potion");
             enemyTurn();
         }
+
+        GameSounds.wrongMenuChoice.play(true);
     }
 
     void playerFlee(){
@@ -214,8 +218,11 @@ public class Game {
             }
 
             enemyTurn();
+            return;
 
         }
+
+        GameSounds.wrongMenuChoice.play(true);
     }
 
 
@@ -234,6 +241,12 @@ public class Game {
     void createEnemy(){
 
         enemy = EnemyFactory.createEnemy();
+
+        if (player.getPlayerLevel() >= 5){
+
+            enemy = EnemyFactory.createBoss();
+        }
+
         GameSounds.enemyAppears.play(true);
         images.deleteAfterBattleMenu();
         images.battleMenu();
@@ -248,7 +261,7 @@ public class Game {
         images.deleteBattleMenu();
         images.deleteEnemy();
         images.afterBattleMenu();
-        GameSounds.victorySound.play(true);
+        GameSounds.levelUp.play(true);
 
 
         outOfCombat = true;

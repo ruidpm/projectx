@@ -253,11 +253,6 @@ public class Player extends Character {
         }
     }
 
-    public String getName() {
-        return name;
-    }
-
-
     private void levelUp(){
         GameSounds.levelUp.play(true);
 
