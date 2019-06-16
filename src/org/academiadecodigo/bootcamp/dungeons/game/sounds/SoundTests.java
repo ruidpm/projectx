@@ -9,7 +9,7 @@ public class SoundTests {
 
        //GameSounds.wrongMenuChoice.play(true);
 
-       //GameSounds.gameStart.play(true);
+       GameSounds.gameStart.play(true);
 
        //GameSounds.enemyAppears.play(true);
 
@@ -31,7 +31,7 @@ public class SoundTests {
 
        //GameSounds.enemyWins.play(true);
 
-        GameSounds.finalVictory.play(true);
+        //GameSounds.finalVictory.play(true);
 
 
         while(true){
