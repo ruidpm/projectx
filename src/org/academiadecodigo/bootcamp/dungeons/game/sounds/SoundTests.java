@@ -27,9 +27,11 @@ public class SoundTests {
 
        //GameSounds.ambushSound.play(true);
 
-       GameSounds.victorySound.play(true);
+       //GameSounds.victorySound.play(true);
 
        //GameSounds.enemyWins.play(true);
+
+        GameSounds.finalVictory.play(true);
 
 
         while(true){

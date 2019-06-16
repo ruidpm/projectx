@@ -4,7 +4,7 @@ package org.academiadecodigo.bootcamp.dungeons.game.sounds;
 public class GameSounds {
 
 
-    public static Sound gameMusic = new Sound("/resources/Background/Forward-Assault.wav");
+    public static Sound gameMusic = new Sound("/resources/Background/Forward-Assault_Loop.wav");
 
     public static Sound wrongMenuChoice = new Sound("/resources/wrong-choice.wav");
 
@@ -26,10 +26,10 @@ public class GameSounds {
 
     public static Sound ambushSound = new Sound("/resources/enemy-wins.wav");
 
-    //public static Sound victorySound = new Sound("/resources/cheering.wav");
-
-    public static Sound victorySound = new Sound("/resources/cheer.wav");
+    public static Sound victorySound = new Sound("/resources/cheering.wav");
 
     public static Sound enemyWins = new Sound("/resources/enemy-wins.wav");
+
+    public static Sound finalVictory = new Sound("/resources/victory-final.wav");
 
 }
