@@ -33,12 +33,14 @@ public class Game {
 
         GameSounds.gameMusic.play(true);        // TODO: 15/06/2019 change to loop
         this.images = images;
-        init();
+
+        images.initialImage();
     }
 
 
-    private void init(){
+    void init(){
 
+        images.deleteInitialImage();
         outOfCombat = true;
         currentLevel = 1;
         images.backgound();
@@ -87,7 +89,6 @@ public class Game {
 
         if (enemy.getHealthPoints() <= 0){
 
-            images.afterBattleMenu();         // TODO: 15/06/2019 check this
             generateLoot(enemy.getExperience());
 
             System.out.println("Press N for new enemy or R to rest");
@@ -226,7 +227,6 @@ public class Game {
         images.afterBattleMenu();
 
         createEnemy();
-        images.battleMenu();
         images.player(player.getPlayerClass());
     }
 
@@ -283,6 +283,14 @@ public class Game {
     private void gameOver(){
         System.out.println("You died on level " + player.getPlayerLevel());
         images.deletePlayer();
+        images.gameOver();
+
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         System.exit(0);
     }
 

@@ -36,9 +36,9 @@ public class GameKeyboardHandler implements KeyboardHandler {
 
             case KeyboardEvent.KEY_SPACE:
 
-                if (game.characterChosen && !game.gameStarted) {
+                if (!game.characterChosen && !game.gameStarted) {
 
-                    game.start();
+                    game.init();
                 }
 
                 break;
@@ -48,6 +48,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
                 if (!game.characterChosen){
                     game.createPlayer(PlayerClasses.WARRIOR);
                     game.images.deleteChoosePlayer();
+                    game.start();
                 }
 
                 break;
@@ -57,6 +58,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
                 if (!game.characterChosen){
                     game.createPlayer(PlayerClasses.NINJA);
                     game.images.deleteChoosePlayer();
+                    game.start();
                 }
 
                 break;
@@ -66,6 +68,7 @@ public class GameKeyboardHandler implements KeyboardHandler {
                 if (!game.characterChosen){
                     game.createPlayer(PlayerClasses.WIZARD);
                     game.images.deleteChoosePlayer();
+                    game.start();
                 }
                 break;
 

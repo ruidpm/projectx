@@ -87,9 +87,11 @@ public class Player extends Character {
 
     public void chooseSkill(int skillIndex, int discardIndex){
 
+        PlayerSkills skillToRemove = playerPossibleSpellsList.get(discardIndex);
+
         skills[playerLevel - 1] = playerPossibleSpellsList.get(skillIndex);
         playerPossibleSpellsList.remove(skillIndex);
-        playerPossibleSpellsList.remove(discardIndex);
+        playerPossibleSpellsList.remove(skillToRemove);
     }
 
     private void createPlayerPossibleSkillsList(){
