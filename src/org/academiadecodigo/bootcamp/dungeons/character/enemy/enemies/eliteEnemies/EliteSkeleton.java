@@ -24,7 +24,7 @@ public class EliteSkeleton extends Enemy {
 
         attackDamage = new ReturningAttackValues((int )(super.getIntelligence() * random), DamageTypes.MAGICAL);
 
-        System.out.println(ANSI_BLUE + getEnemyName() + " Skeleton throw a bone on you. " + attackDamage.getDamage() + " Magical Damage."  + ANSI_RESET);
+        System.out.println(ANSI_BLUE + getEnemyName() + " throw a bone on you. " + attackDamage.getDamage() + " Magical Damage."  + ANSI_RESET);
 
         return attackDamage;
     }

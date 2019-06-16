@@ -228,7 +228,7 @@ public class Images {
                 return;
 
             case MARIANAMON:
-                Picture mariana = new Picture(380,50, "pics/Mariana.png");
+                Picture mariana = new Picture(380,50, "pics/mariana3.png");
                 mariana.draw();
                 this.enemy = mariana;
                 return;
@@ -430,6 +430,46 @@ public class Images {
         this.textstory2 = textStory2;
         this.textstory3 = textStory3;
     }
+
+    public  void textStory(String story, String story1) {
+        textstory.delete();
+        textstory1.delete();
+        textstory2.delete();
+        textstory3.delete();
+        this.story = story;
+        this.story1 = story1;
+        Text textStory = new Text(55, 60, story);
+        textStory.draw();
+        Text textStory1 = new Text(55, 80, story1);
+        textStory1.draw();
+        this.textstory = textStory;
+        this.textstory1 = textStory1;
+    }
+
+    public void deleteTextStory(){
+        textstory.delete();
+        textstory1.delete();
+    }
+
+    public  void textEnemyStory(String story2, String story3) {
+
+        textstory2.delete();
+        textstory3.delete();
+        this.story2 = story2;
+        this.story3 = story3;
+        Text textStory2 = new Text(55, 100, story2);
+        textStory2.draw();
+        Text textStory3 = new Text(55, 120, story3);
+        textStory3.draw();
+        this.textstory2 = textStory2;
+        this.textstory3 = textStory3;
+    }
+
+    public void deleteTextEnemyStory(){
+        textstory2.delete();
+        textstory3.delete();
+    }
+
 
 
     public void healthMana(){

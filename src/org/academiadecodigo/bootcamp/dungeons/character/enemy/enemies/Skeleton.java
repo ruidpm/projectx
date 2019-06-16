@@ -21,7 +21,7 @@ public class Skeleton extends Enemy {
 
         double random = ThreadLocalRandom.current().nextDouble(1.2, 1.7);
 
-        attackDamage = new ReturningAttackValues((int )(super.getIntelligence() * random), DamageTypes.MAGICAL);
+        attackDamage = new ReturningAttackValues((int )(super.getStrength() * random), DamageTypes.MAGICAL);
 
         System.out.println(ANSI_BLUE + getEnemyName() + " Skeleton throw a bone on you. " + attackDamage.getDamage() + " Magical Damage."  + ANSI_RESET);
 
