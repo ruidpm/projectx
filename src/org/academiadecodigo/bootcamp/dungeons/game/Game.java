@@ -124,12 +124,17 @@ public class Game {
             images.textStory("You chose " + player.getPlayerPossibleSpellsList().get(skillIndex1).toString());
             player.chooseSkill(skillIndex1, skillIndex2);
             choosingSkill = false;
-            createEnemy();
+
+            images.deleteChooseSkillMenu();
+            images.afterBattleMenu();
+
             return;
         }
 
         images.textStory("You chose " + player.getPlayerPossibleSpellsList().get(skillIndex2).toString());
         player.chooseSkill(skillIndex2, skillIndex1);
+        images.deleteChooseSkillMenu();
+        images.afterBattleMenu();
 
         choosingSkill = false;
     }
