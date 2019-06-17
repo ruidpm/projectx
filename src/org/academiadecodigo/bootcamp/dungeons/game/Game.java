@@ -170,6 +170,8 @@ public class Game {
 
     void playerRest(){
         outOfCombat = false;
+        choosingWeapon = false;
+
         GameSounds.restSound.play(true);
         images.deleteAfterBattleMenu();
         images.deleteBattleMenu();
@@ -192,6 +194,10 @@ public class Game {
             images.enemy(enemy.getEnemyTypes());
 
             images.battleMenu();
+
+            if (gotWeapon){
+                images.deleteChangeWeaponMenu();
+            }
 
             images.enemyHealth();
             images.enemyHealtText(enemy.getHealthPoints());
@@ -320,6 +326,8 @@ public class Game {
 
 
     void createEnemy(){
+
+        choosingWeapon = false;
 
         if (gotLoot){
             images.deleteGeneratedLoot();

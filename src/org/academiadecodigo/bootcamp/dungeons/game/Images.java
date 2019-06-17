@@ -56,11 +56,11 @@ public class Images {
 
     public void initialImage(){
 
-        Picture background = new Picture(PADDING, PADDING, "pics/Background.png");
+        Picture background = new Picture(PADDING, PADDING, "resources/pics/Background.png");
         background.draw();
         this.background = background;
 
-        Picture initialImage = new Picture(90,90, "pics/initialImage.png");
+        Picture initialImage = new Picture(90,90, "resources/pics/initialImage.png");
         initialImage.draw();
         this.initialImage = initialImage;
     }
@@ -72,7 +72,7 @@ public class Images {
 
 
     public void backgound (){
-        Picture background = new Picture(PADDING, PADDING, "pics/Background.png");
+        Picture background = new Picture(PADDING, PADDING, "resources/pics/Background.png");
         background.draw();
         this.background = background;
     }
@@ -83,31 +83,31 @@ public class Images {
 
     public void choosePlayer(){
 
-        Picture choosePlayer1 = new Picture(45,280, "pics/warrior.png");
+        Picture choosePlayer1 = new Picture(45,280, "resources/pics/warrior.png");
         choosePlayer1.draw();
         this.player1 = choosePlayer1;
 
-        Picture choosePlayer2 = new Picture(425,280, "pics/wizard.png");
+        Picture choosePlayer2 = new Picture(425,280, "resources/pics/wizard.png");
         choosePlayer2.draw();
         this.player2 = choosePlayer2;
 
-        Picture choosePlayer3 = new Picture(235,280, "pics/ninja.png");
+        Picture choosePlayer3 = new Picture(235,280, "resources/pics/ninja.png");
         choosePlayer3.draw();
         this.player3 = choosePlayer3;
 
-        Picture press1 = new Picture(80, 180, "pics/press1.png");
+        Picture press1 = new Picture(80, 180, "resources/pics/press1.png");
         press1.draw();
         this.press1 = press1;
 
-        Picture press2 = new Picture(270,180, "pics/press2.png");
+        Picture press2 = new Picture(270,180, "resources/pics/press2.png");
         press2.draw();
         this.press2 = press2;
 
-        Picture press3 = new Picture(460, 180, "pics/press3.png");
+        Picture press3 = new Picture(460, 180, "resources/pics/press3.png");
         press3.draw();
         this.press3 = press3;
 
-        Picture selectPlayer = new Picture(90,70, "pics/selectPlayer.png");
+        Picture selectPlayer = new Picture(90,70, "resources/pics/selectPlayer.png");
         selectPlayer.draw();
         this.selectPlayer = selectPlayer;
     }
@@ -127,19 +127,19 @@ public class Images {
         switch (playerClasses){
 
             case NINJA:
-                Picture ninja = new Picture(70,300 , "pics/ninja.png");
+                Picture ninja = new Picture(70,300 , "resources/pics/ninja.png");
                 ninja.draw();
                 this.player = ninja;
                 return;
 
             case WIZARD:
-                Picture wizard = new Picture(70,300, "pics/wizard.png" );
+                Picture wizard = new Picture(70,300, "resources/pics/wizard.png" );
                 wizard.draw();
                 this.player = wizard;
                 return;
 
             case WARRIOR:
-                Picture warrior = new Picture(70,300, "pics/warrior.png" );
+                Picture warrior = new Picture(70,300, "resources/pics/warrior.png" );
                 warrior.draw();
                 this.player = warrior;
                 return;
@@ -156,79 +156,79 @@ public class Images {
         switch (enemyTypes){
 
             case RAT:
-                Picture rat = new Picture(380,50 ,"pics/rat.png");
+                Picture rat = new Picture(380,50 ,"resources/pics/rat.png");
                 rat.draw();
                 this.enemy = rat;
                 return;
 
             case TROLL:
-                Picture troll = new Picture(380,50, "pics/troll.png" );
+                Picture troll = new Picture(380,50, "resources/pics/troll.png" );
                 troll.draw();
                 this.enemy = troll;
                 return;
 
             case GOBLIN:
-                Picture goblin = new Picture(380,50, "pics/goblin.png");
+                Picture goblin = new Picture(380,50, "resources/pics/goblin.png");
                 goblin.draw();
                 this.enemy = goblin;
                 return;
 
             case ORC:
-                Picture orc = new Picture(380,50, "pics/orc.png");
+                Picture orc = new Picture(380,50, "resources/pics/orc.png");
                 orc.draw();
                 this.enemy = orc;
                 return;
 
             case SKELETON:
-                Picture skeleton = new Picture(380,50, "pics/skeleton.png");
+                Picture skeleton = new Picture(380,50, "resources/pics/skeleton.png");
                 skeleton.draw();
                 this.enemy = skeleton;
                 return;
 
             case MINOTAUR:
-                Picture minotaur = new Picture(380,50, "pics/minotaur.png" );
+                Picture minotaur = new Picture(380,50, "resources/pics/minotaur.png" );
                 minotaur.draw();
                 this.enemy = minotaur;
                 return;
 
             case HUNTER:
-                Picture hunter = new Picture(380,50, "pics/hunter.png" );
+                Picture hunter = new Picture(380,50, "resources/pics/hunter.png" );
                 hunter.draw();
                 this.enemy = hunter;
                 return;
 
             case ELITE_HUNTER:
-                Picture eliteHunter = new Picture(380,50, "pics/eliteHunter.png" );
+                Picture eliteHunter = new Picture(380,50, "resources/pics/eliteHunter.png" );
                 eliteHunter.draw();
                 this.enemy = eliteHunter;
                 return;
 
             case ELITE_MINOTAUR:
-                Picture eliteMinotaur = new Picture(380,50, "pics/eliteMinotaur.png" );
+                Picture eliteMinotaur = new Picture(380,50, "resources/pics/eliteMinotaur.png" );
                 eliteMinotaur.draw();
                 this.enemy = eliteMinotaur;
                 return;
 
             case ELITE_SKELETON:
-                Picture eliteSkeleton = new Picture(380,50, "pics/eliteSkeleton.png" );
+                Picture eliteSkeleton = new Picture(380,50, "resources/pics/eliteSkeleton.png" );
                 eliteSkeleton.draw();
                 this.enemy = eliteSkeleton;
                 return;
 
             case FAUSTINOMON:
-                Picture faustino = new Picture(380, 50, "pics/Faustino.png");
+                Picture faustino = new Picture(380, 50, "resources/pics/Faustino.png");
                 faustino.draw();
                 this.enemy = faustino;
                 return;
 
             case SERINGASMON:
-                Picture seringas = new Picture(380,50, "pics/Seringas.png");
+                Picture seringas = new Picture(380,50, "resources/pics/Seringas.png");
                 seringas.draw();
                 this.enemy = seringas;
                 return;
 
             case MARIANAMON:
-                Picture mariana = new Picture(380,50, "pics/mariana3.png");
+                Picture mariana = new Picture(380,50, "resources/pics/mariana3.png");
                 mariana.draw();
                 this.enemy = mariana;
                 return;
@@ -240,7 +240,7 @@ public class Images {
     }
 
     public void battleMenu(){
-        Picture battleMenu = new Picture(260, 300, "pics/battleMenu.png");
+        Picture battleMenu = new Picture(260, 300, "resources/pics/battleMenu.png");
         battleMenu.draw();
         this.battleMenu = battleMenu;
     }
@@ -250,7 +250,7 @@ public class Images {
     }
 
     public void afterBattleMenu(){
-        Picture afterBattleMenu = new Picture(260, 350, "pics/restMenu.png");
+        Picture afterBattleMenu = new Picture(260, 350, "resources/pics/restMenu.png");
         afterBattleMenu.draw();
         this.afterBattleMenu = afterBattleMenu;
     }
@@ -263,13 +263,13 @@ public class Images {
         switch (itemTypes){
 
             case MANAPOTION:
-                Picture lootGenerated = new Picture(380,50, "pics/manaPotion.png" );
+                Picture lootGenerated = new Picture(380,50, "resources/pics/manaPotion.png" );
                 lootGenerated.draw();
                 this.lootGenerated = lootGenerated;
                 return;
 
             case HEALTHPOTION:
-                Picture lootGenerated2 = new Picture(380,50, "pics/healthPotion.png" );
+                Picture lootGenerated2 = new Picture(380,50, "resources/pics/healthPotion.png" );
                 lootGenerated2.draw();
                 this.lootGenerated = lootGenerated2;
                 return;
@@ -280,43 +280,43 @@ public class Images {
         switch (weaponTypes){
 
             case STAFF:
-                Picture lootGenerated3 = new Picture(380,50, "pics/staff.png" );
+                Picture lootGenerated3 = new Picture(380,50, "resources/pics/staff.png" );
                 lootGenerated3.draw();
                 this.lootGenerated = lootGenerated3;
                 return;
 
             case IRONAXE:
-                Picture lootGenerated4 = new Picture(380,50, "pics/axe.png" );
+                Picture lootGenerated4 = new Picture(380,50, "resources/pics/axe.png" );
                 lootGenerated4.draw();
                 this.lootGenerated = lootGenerated4;
                 return;
 
             case SHURIKEN:
-                Picture lootGenerated5 = new Picture(380,50, "pics/shuriken.png" );
+                Picture lootGenerated5 = new Picture(380,50, "resources/pics/shuriken.png" );
                 lootGenerated5.draw();
                 this.lootGenerated = lootGenerated5;
                 return;
 
             case SHOE:
-                Picture lootGenerated6 = new Picture(380,50, "pics/shoe.png" );
+                Picture lootGenerated6 = new Picture(380,50, "resources/pics/shoe.png" );
                 lootGenerated6.draw();
                 this.lootGenerated = lootGenerated6;
                 return;
 
             case CROSSBOW:
-                Picture lootGenerated7 = new Picture(380,50, "pics/cannon.png" );
+                Picture lootGenerated7 = new Picture(380,50, "resources/pics/cannon.png" );
                 lootGenerated7.draw();
                 this.lootGenerated = lootGenerated7;
                 return;
 
             case FIRESWORD:
-                Picture lootGenerated8 = new Picture(380,50, "pics/fireSword.png" );
+                Picture lootGenerated8 = new Picture(380,50, "resources/pics/fireSword.png" );
                 lootGenerated8.draw();
                 this.lootGenerated = lootGenerated8;
                 return;
 
             case METALSWORD:
-                Picture lootGenerated9 = new Picture(380,50, "pics/sword.png" );
+                Picture lootGenerated9 = new Picture(380,50, "resources/pics/sword.png" );
                 lootGenerated9.draw();
                 this.lootGenerated = lootGenerated9;
                 return;
@@ -328,7 +328,7 @@ public class Images {
     }
 
     public void gameOver(){
-        Picture gameOver = new Picture(120,160,"pics/gameOver.png");
+        Picture gameOver = new Picture(120,160,"resources/pics/gameOver.png");
         gameOver.draw();
         this.gameOver = gameOver;
     }
@@ -338,11 +338,11 @@ public class Images {
     }
 
     public void credits(){
-        Picture credits = new Picture(200, 100, "pics/credits.png");
+        Picture credits = new Picture(200, 100, "resources/pics/credits.png");
         credits.draw();
         this.credits = credits;
 
-        Picture group = new Picture(140, 180, "pics/grupo.jpg");
+        Picture group = new Picture(140, 180, "resources/pics/grupo.jpg");
         group.draw();
         this.group = group;
     }
@@ -353,7 +353,7 @@ public class Images {
     }
 
     public void changeWeaponMenu(){
-        Picture changeWeaponMenu = new Picture(440,360, "pics/changeWeapon.png");
+        Picture changeWeaponMenu = new Picture(440,360, "resources/pics/changeWeapon.png");
         changeWeaponMenu.draw();
         this.changeWeaponMenu = changeWeaponMenu;
     }
@@ -363,7 +363,7 @@ public class Images {
     }
 
     public void chooseSkillMenu(){
-        Picture chooseSkillMenu = new Picture(260,330, "pics/chooseSkill.png");
+        Picture chooseSkillMenu = new Picture(260,330, "resources/pics/chooseSkill.png");
         chooseSkillMenu.draw();
         this.chooseSkillMenu = chooseSkillMenu;
     }
@@ -373,7 +373,7 @@ public class Images {
     }
 
     public void storyMenu (){
-        Picture storyMenu = new Picture(45,50, "pics/storyMenu6.png");
+        Picture storyMenu = new Picture(45,50, "resources/pics/storyMenu6.png");
         storyMenu.draw();
         this.storyMenu = storyMenu;
 
@@ -473,7 +473,7 @@ public class Images {
 
 
     public void healthMana(){
-        Picture mana = new Picture(85,280,"pics/mana.gif");
+        Picture mana = new Picture(85,280,"resources/pics/mana.gif");
         mana.draw();
         this.mana = mana;
 
@@ -487,7 +487,7 @@ public class Images {
         textMaxHealth.draw();
         this.textMaxHealth = textMaxHealth;
 
-        Picture health = new Picture(85, 260, "pics/health.gif");
+        Picture health = new Picture(85, 260, "resources/pics/health.gif");
         health.draw();
         this.health = health;
 
@@ -546,7 +546,7 @@ public class Images {
     }
 
     public void enemyHealth(){
-        Picture enemyHealth = new Picture(538, 70, "pics/health.gif");
+        Picture enemyHealth = new Picture(538, 70, "resources/pics/health.gif");
         enemyHealth.draw();
         this.enemyHealth = enemyHealth;
 
